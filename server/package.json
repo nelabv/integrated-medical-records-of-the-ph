@@ -1,0 +1,25 @@
+{
+  "name": "medirecords",
+  "version": "1.0.0",
+  "description": "Server code for MediRecords (An application that stores your medical records for easier access)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "type": "module",
+  "author": "nelabv",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongodb-session": "^3.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.0.5",
+    "uuid": "^8.3.2"
+  }
+}
