@@ -86,4 +86,23 @@ export default class UsersAPI {
       })
     }
   }
+
+  static async fetchUserInfo(req, res) {
+    const username = req.params.username;
+    
+    try {
+      let userData = await User.findOne({ username });
+
+      res.status(200).json({
+        status: "Success",
+        userData
+      })
+    } catch (error) {
+      console.log(`Error occurred in UsersAPI (fetchUserInfo): ${error} `);
+      res.status(402).json({
+        error
+      })
+    }
+  
+  }
 }

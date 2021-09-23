@@ -1,5 +1,6 @@
 import express from "express";
 import UsersAPI from "./users.js";
+import SharedAPI from "./shared.js";
 
 const router = express.Router(); 
 
@@ -27,11 +28,10 @@ router.route("/users/register")
 router.route("/users/login")
   .post(UsersAPI.login);
 
-router.route("/dashboard")
-  .get(checkAuth, (req, res) => {
-    res.json({
-      message: "Dashboard sample. Route should be protected."
-    })
-  })
+router.route("/:username/dashboard")
+  .get(checkAuth, UsersAPI.fetchUserInfo)
+
+router.route("/logout")
+  .post(checkAuth, SharedAPI.logout)
 
 export default router;
