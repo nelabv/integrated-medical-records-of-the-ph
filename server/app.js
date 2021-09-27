@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import session from "express-session";
 import router from "./methods/router.js";
 import dotenv from "dotenv";
@@ -9,6 +10,7 @@ const MongoDBSession = connectMongo(session);
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 const MongoDBStore = new MongoDBSession({
   uri: process.env.MEDIRECORDS_URI,
