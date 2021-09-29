@@ -1,0 +1,28 @@
+import React from "react";
+import User from "../http";
+import { useHistory } from "react-router-dom";
+
+export default function Logout() {
+  let history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    User.logout()
+      .then((response, err) => {
+        if (err)
+          throw err;
+        
+        sessionStorage.removeItem("auth");
+        history.push("/");
+      })
+  }
+
+  return (
+    <>
+    <form onSubmit={handleSubmit}>
+      <button>Logout</button>
+    </form>
+    </>
+  );
+}

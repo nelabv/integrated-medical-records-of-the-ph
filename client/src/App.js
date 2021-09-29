@@ -1,8 +1,14 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 function App() {
   return (
-    <div>
+    <>
       MediRecords 2021
-    </div>
+      <Link to="/users/login">
+        <button>Login for Users</button>
+      </Link>
+    </>
   );
 }
 
