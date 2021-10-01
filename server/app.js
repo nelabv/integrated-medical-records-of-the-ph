@@ -10,7 +10,10 @@ const MongoDBSession = connectMongo(session);
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',  // Dev only
+  credentials: true,
+}));
 
 const MongoDBStore = new MongoDBSession({
   uri: process.env.MEDIRECORDS_URI,
@@ -19,9 +22,14 @@ const MongoDBStore = new MongoDBSession({
 
 app.use(session({
   secret: process.env.SESSION_KEY,
-  resave: false,
+  resave: true,
   saveUninitialized: false,
-  store: MongoDBStore
+  httpOnly: false,
+  maxAge: 7200000, // 2 hrs validity
+  store: MongoDBStore,
+  cookie: {
+    secure: false
+  }
 }))
 
 app.use(express.json());

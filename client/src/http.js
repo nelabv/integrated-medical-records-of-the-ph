@@ -13,14 +13,15 @@ class User {
   login(form) {
     return http.post("/users/login", form, { withCredentials: true })
   }
-
+  
+  fetchUserInformation() {
+    return http.get("/dashboard")
+  }
+  
   logout() {
     return http.post("/logout")
   }
 
-  testing(message) {
-    return http.post("/testing", message )
-  }
 }
 
 export default new User();

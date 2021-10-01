@@ -29,7 +29,7 @@ export default function UserLogin() {
     
     User.login(loginForm)
       .then((response) => {
-        sessionStorage.setItem("auth", true);
+        sessionStorage.setItem("AUTH", true);
         history.push("/dashboard");
       })
 

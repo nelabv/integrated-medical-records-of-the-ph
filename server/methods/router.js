@@ -1,18 +1,9 @@
 import express from "express";
 import UsersAPI from "./users.js";
 import SharedAPI from "./shared.js";
+import { checkIfAuthenticated } from "../middlewares/index.js";
 
 const router = express.Router(); 
-
-const checkAuth = (req, res, next) => {
-  if (req.session.isAuth) {
-    next();
-  } else {
-    res.status(403).json({
-      message: "Login to continue."
-    })
-  }
-}
 
 router.route('/')  
   .get((req, res) => {
@@ -28,10 +19,10 @@ router.route("/users/register")
 router.route("/users/login")
   .post(UsersAPI.login);
 
-router.route("/:username/dashboard")
-  .get(checkAuth, UsersAPI.fetchUserInfo)
+router.route("/dashboard")
+  .get(checkIfAuthenticated, UsersAPI.fetchUserInfo)
 
 router.route("/logout")
-  .post(checkAuth, SharedAPI.logout)
+  .post(checkIfAuthenticated, SharedAPI.logout)
 
 export default router;

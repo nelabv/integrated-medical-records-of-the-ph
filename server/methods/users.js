@@ -1,6 +1,8 @@
 import bcryptjs from "bcryptjs";
 import { v4 as uuidv4 } from 'uuid';
 import { User } from "../models/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export default class UsersAPI {
   static async register(req, res) {
@@ -68,7 +70,10 @@ export default class UsersAPI {
       const comparePasswords = await bcryptjs.compare(password, userData.password);
       
       if (comparePasswords) {
-        req.session.isAuth = true;
+        const hashedKey = await bcryptjs.hash(userData.patientID, 10);
+
+        req.session.AUTH = true;
+        req.session.USERNAME = username;
 
         res.status(200).json({
           status: "success",
@@ -88,21 +93,19 @@ export default class UsersAPI {
   }
 
   static async fetchUserInfo(req, res) {
-    const username = req.params.username;
-    
     try {
-      let userData = await User.findOne({ username });
+      const userData = await User.findOne({ username: req.session.USERNAME });
 
+      const { patientID, username, firstName, lastName, birthdate, bloodType } = userData;
+  
       res.status(200).json({
-        status: "Success",
-        userData
+        patientID, username, firstName, lastName, birthdate, bloodType
       })
     } catch (error) {
-      console.log(`Error occurred in UsersAPI (fetchUserInfo): ${error} `);
-      res.status(402).json({
-        error
+      res.status(404).json({
+        error: "Unknown error occurred",
+        message: `${error}`
       })
     }
-  
   }
 }

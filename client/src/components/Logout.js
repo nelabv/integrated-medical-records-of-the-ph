@@ -9,11 +9,11 @@ export default function Logout() {
     e.preventDefault();
 
     User.logout()
-      .then((response, err) => {
+      .then((err) => {
         if (err)
           throw err;
         
-        sessionStorage.removeItem("auth");
+        sessionStorage.removeItem("AUTH");
         history.push("/");
       })
   }
