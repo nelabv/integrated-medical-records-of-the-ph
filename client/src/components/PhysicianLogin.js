@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { useHistory } from "react-router-dom";
 import FormReducer from "../reducers/FormReducer";
-import User from "../methods/users";
+import Physician from "../methods/physicians";
 
 const initialFormState = {
   username: '',
@@ -22,15 +22,16 @@ export default function UserLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const loginForm = {
       username: formState.username[0],
       password: formState.password[0]
     }
-    
-    User.login(loginForm)
+
+    Physician.login(loginForm)
       .then((response) => {
         sessionStorage.setItem("AUTH", true);
-        history.push("/dashboard");
+        history.push("/physician/dashboard");
       })
 
       .catch((error) => 

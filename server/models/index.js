@@ -56,7 +56,7 @@ const InstitutionSchema = new Schema({
   }
 })
 
-const PhysicianSchema = new Schema({ //physicianID, licenseNumber, username, password, firstName, lastName
+const PhysicianSchema = new Schema({
   physicianID: {
     type: String,
     required: true,

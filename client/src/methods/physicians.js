@@ -9,19 +9,10 @@ const http = axios.create({
   credentials: 'same-origin'
 });
 
-class User {
+class Physician {
   login(form) {
-    return http.post("/users/login", form, { withCredentials: true })
+    return http.post("/physicians/login", form, { withCredentials: true })
   }
-  
-  fetchUserInformation() {
-    return http.get("/dashboard")
-  }
-  
-  logout() {
-    return http.post("/logout")
-  }
-
 }
 
-export default new User();
+export default new Physician();

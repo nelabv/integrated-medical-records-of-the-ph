@@ -1,27 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
+import VisibilityReducer from "../reducers/VisiblityReducer";
 import { withRouter } from "react-router";
-import User from "../http";
+import User from "../methods/users";
 import Logout from "./Logout";
 
+const initialVisibility = {
+  userDashboard: false,
+  patientID: false
+}
+
 function UserDashboard() {
-  const [loadDashboard, setLoadDashboard] = useState(false);
+  const [visibilityState, dispatch] = useReducer(VisibilityReducer, initialVisibility);
   const [userInformation, setUserInformation] = useState();
 
   useEffect(() => {
     User.fetchUserInformation(sessionStorage.getItem("LOGIN_INFO"))
       .then((response) => {
         setUserInformation(response.data);
-        setLoadDashboard(true);
+        dispatch({
+          type: 'TOGGLE_VISIBILITY',
+          payload: 'userDashboard'
+        })
       })
 
       .catch(error => console.log(error))
   }, [])
-
+  
   return (
     <>
-      { loadDashboard ? 
+      { visibilityState.userDashboard ? 
           <>
             <h1>Hello, {userInformation.firstName}</h1>
+            
             <Logout />
           </>
       : null

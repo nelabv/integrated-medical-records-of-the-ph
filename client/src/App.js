@@ -8,6 +8,10 @@ function App() {
       <Link to="/users/login">
         <button>Login for Users</button>
       </Link>
+
+      <Link to="/physicians/login">
+        <button>Login for Physicians</button>
+      </Link>
     </>
   );
 }

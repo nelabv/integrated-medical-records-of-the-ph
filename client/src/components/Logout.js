@@ -1,5 +1,5 @@
 import React from "react";
-import User from "../http";
+import User from "../methods/users";
 import { useHistory } from "react-router-dom";
 
 export default function Logout() {
@@ -7,9 +7,9 @@ export default function Logout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     User.logout()
-      .then((err) => {
+      .then((response, err) => {
         if (err)
           throw err;
         
