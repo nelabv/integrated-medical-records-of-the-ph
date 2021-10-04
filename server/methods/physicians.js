@@ -1,17 +1,17 @@
 import bcryptjs from "bcryptjs";
-import { v4 as uuidv4 } from 'uuid';
-import { User } from "../models/index.js";
+import { v1 as uuidv1 } from 'uuid';
+import { Physician } from "../models/index.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-export default class UsersAPI {
+export default class PhysiciansAPI {
   static async register(req, res) {
-    const { username, password, firstName, lastName, birthdate, bloodType } = req.body;
-    const checkIfUsernameIsTaken = await User.findOne({ username });
+    const { licenseNumber, username, password, firstName, lastName, country } = req.body;
+    const checkIfUsernameIsTaken = await Physician.findOne({ username });
 
     if (checkIfUsernameIsTaken) {
       res.status(409).json({
-        status: "Username taken",
+        status: "Physician registration: Username taken",
         message: "Registration cancelled. Username is already taken."
       })
     } else {
@@ -20,30 +20,30 @@ export default class UsersAPI {
           if (error) {
             console.error(`Error in hashing password: ${e}`);
           } else {
-            const user = {
-              patientID: uuidv4(),
+            const physician = {
+              physicianID: uuidv1(), // uuidv4() for patients
+              licenseNumber,
               username,
               password: hash,
               firstName,
               lastName,
-              birthdate,
-              bloodType
+              country
             }
   
-            const newUser = new User(user);
+            const newUser = new Physician(physician);
   
             newUser.save()
               .then((response, error) => {
                 if (error) {
-                  console.log(`User registration error`);
+                  console.log(`Physician registration error`);
                   res.status(404).json({
                     status: "An error occurred",
                     error
                   })
                 } else {
-                  console.log(`User registration successful`);
+                  console.log(`Physician registration successful`);
                   res.status(200).json({
-                    status: "User registered successfully!",
+                    status: "Physician registered successfully!",
                     response
                   })
                 }
@@ -51,10 +51,10 @@ export default class UsersAPI {
           }
         })
       } catch (err) {
-        console.error(`UsersAPI (register): ${err}`);
+        console.error(`PhysiciansAPI (register): ${err}`);
 
         res.status(404).json({
-          status: "UsersAPI (register): An error occurred",
+          status: "PhysiciansAPI (register): An error occurred",
           error
         })
       }
@@ -64,14 +64,14 @@ export default class UsersAPI {
   static async login(req, res) {
     const { username, password } = req.body;
 
-    let userData = await User.findOne({ username });
+    let physicianData = await Physician.findOne({ username });
     
-    if (userData) {
-      const comparePasswords = await bcryptjs.compare(password, userData.password);
+    if (physicianData) {
+      const comparePasswords = await bcryptjs.compare(password, physicianData.password);
       
       if (comparePasswords) {
         req.session.AUTH = true;
-        req.session.USERNAME = username;
+        req.session.PHYSICIAN_USERNAME = username;
 
         res.status(200).json({
           status: "success",
@@ -80,24 +80,24 @@ export default class UsersAPI {
       } else {
         res.status(401).json({
           error: "Wrong password",
-          message: "Incorrect input from user. Access denied."
+          message: "Incorrect input from physician. Access denied."
         })
       }
     } else {
       res.status(404).json({
-        error: "User not found"
+        error: "Physician not found"
       })
     }
   }
 
-  static async fetchUserInfo(req, res) {
+  static async fetchPhysicianInfo(req, res) {
     try {
-      const userData = await User.findOne({ username: req.session.USERNAME });
+      const physicianInfo = await Physician.findOne({ username: req.session.PHYSICIAN_USERNAME });
 
-      const { patientID, username, firstName, lastName, birthdate, bloodType } = userData;
+      const { physicianID, username, firstName, lastName, country } = physicianInfo;
   
       res.status(200).json({
-        patientID, username, firstName, lastName, birthdate, bloodType
+        physicianID, username, firstName, lastName, country
       })
     } catch (error) {
       res.status(404).json({
