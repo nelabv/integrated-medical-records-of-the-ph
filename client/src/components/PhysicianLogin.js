@@ -31,7 +31,8 @@ export default function UserLogin() {
     Physician.login(loginForm)
       .then((response) => {
         sessionStorage.setItem("AUTH", true);
-        history.push("/physician/dashboard");
+        sessionStorage.setItem("ENTITY", "PHYSICIAN");
+        history.push("/dashboard");
       })
 
       .catch((error) => 
