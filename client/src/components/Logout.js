@@ -14,6 +14,7 @@ export default function Logout() {
           throw err;
         
         sessionStorage.removeItem("AUTH");
+        sessionStorage.removeItem("ENTITY");
         history.push("/");
       })
   }
