@@ -13,6 +13,10 @@ class Physician {
   login(form) {
     return http.post("/physicians/login", form, { withCredentials: true })
   }
+
+  generatePrescription() {
+    return http.post("/testing")
+  }
 }
 
 export default new Physician();

@@ -21,6 +21,7 @@ export default function UserLogin() {
   }
 
   const handleSubmit = async (e) => {
+    console.log('click')
     e.preventDefault();
     const loginForm = {
       username: formState.username[0],
