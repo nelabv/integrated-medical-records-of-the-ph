@@ -1,6 +1,7 @@
 import bcryptjs from "bcryptjs";
 import { v1 as uuidv1 } from 'uuid';
 import { Physician } from "../models/index.js";
+import FileGenerators from "./file_generators/file-generators.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -105,5 +106,9 @@ export default class PhysiciansAPI {
         message: `${error}`
       })
     }
+  }
+
+  static async generatePrescription(req, res) {
+    FileGenerators.medicalPrescription(req, res)
   }
 }

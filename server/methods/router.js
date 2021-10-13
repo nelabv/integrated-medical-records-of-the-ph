@@ -41,4 +41,11 @@ router.route("/physicians/dashboard")
 router.route("/logout")
   .post(checkIfAuthenticated, SharedAPI.logout)
 
+
+// TEST ROUTES - for development use only
+
+router.route("/testing")
+  .post(PhysiciansAPI.generatePrescription);
+    
+
 export default router;
