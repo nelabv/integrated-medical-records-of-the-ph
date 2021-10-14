@@ -11,16 +11,25 @@ function PatientForm(props) {
         flexDirection: 'column',
         marginBottom: '1em'}}>
           
-          <label>Patient Name</label>
+          <label>First Name</label>
           <input 
             type="text"
-            value={prescriptionForm.patientName}
-            name="patientName"
+            value={prescriptionForm.patientFirstName}
+            name="patientFirstName"
             onChange={e => {
               handleChange(e)
             }}
           />
-          <span>Please input the name only. Titles will be generated automatically.</span>
+
+          <label>Last Name</label>
+          <input 
+            type="text"
+            value={prescriptionForm.patientLastName}
+            name="patientLastName"
+            onChange={e => {
+              handleChange(e)
+            }}
+          />
 
           <label>Age</label>
           <input 

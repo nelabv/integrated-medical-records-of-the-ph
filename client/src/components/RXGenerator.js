@@ -11,7 +11,8 @@ const initialPrescription = {
   phoneNumber: '',
   email: '',
 
-  patientName: '',
+  patientFirstName: '',
+  patientLastName: '',
   patientAge: '',
   patientSex: '',
 
@@ -40,7 +41,8 @@ function RXGenerator() {
       phoneNumber: prescriptionForm.phoneNumber[0],
       email: prescriptionForm.email[0],
     
-      patientName: prescriptionForm.patientName[0],
+      patientFirstName: prescriptionForm.patientFirstName[0],
+      patientLastName: prescriptionForm.patientLastName[0],
       patientAge: prescriptionForm.patientAge[0],
       patientSex: prescriptionForm.patientSex[0],
 

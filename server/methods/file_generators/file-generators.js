@@ -1,8 +1,9 @@
 import PDFDocument from "pdfkit";
+import fs from 'fs'
 
 export default class FileGenerators {
   static async medicalPrescription(req, res) {
-    const { name, specialization, phoneNumber, email, patientName, patientAge, patientSex, medications } = req.body; 
+    const { name, specialization, phoneNumber, email, patientFirstName, patientLastName, patientAge, patientSex, medications } = req.body; 
 
     const PALETTE = {
       blackCoral: '#646E78',
@@ -55,7 +56,7 @@ export default class FileGenerators {
     // Patient Information
     .fontSize(10)
     .fillColor(PALETTE.cadetGray)
-    .text(`Patient Name: ${patientName}`, {
+    .text(`Patient Name: ${patientFirstName} ${patientLastName}`, {
       lineBreak: true, 
       lineGap: 1
     })
@@ -75,6 +76,8 @@ export default class FileGenerators {
       .text(medications, 20, 210)
 
 
+/*     // Code for creating a blob on the browser for user's view
+    
     filename = encodeURIComponent(filename) + '.pdf'
     res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"')
     res.setHeader('Content-type', 'application/pdf')
@@ -82,6 +85,11 @@ export default class FileGenerators {
     doc.y = 300
     doc.text(content, 50, 50)
     doc.pipe(res)
-    doc.end()
+    doc.end() */
+
+    const fileName = `RX_${today}_${patientFirstName + patientLastName}.pdf`;
+
+    doc.pipe(fs.createWriteStream(`files/${fileName}`));
+    doc.end();
   }
 }
