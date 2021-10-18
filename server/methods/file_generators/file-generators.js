@@ -1,5 +1,6 @@
 import PDFDocument from "pdfkit";
 import fs from 'fs'
+import FileHandler from "../fileHandler.js";
 
 export default class FileGenerators {
   static async medicalPrescription(req, res) {
@@ -75,21 +76,22 @@ export default class FileGenerators {
     doc.fontSize(12)
       .text(medications, 20, 210)
 
-
-/*     // Code for creating a blob on the browser for user's view
-    
-    filename = encodeURIComponent(filename) + '.pdf'
-    res.setHeader('Content-disposition', 'attachment; filename="' + filename + '"')
-    res.setHeader('Content-type', 'application/pdf')
-    const content = req.body.content
-    doc.y = 300
-    doc.text(content, 50, 50)
-    doc.pipe(res)
-    doc.end() */
+      filename = encodeURIComponent(filename) + '.pdf'
+      const content = req.body.content
+      doc.y = 300
+      doc.text(content, 50, 50)
+      doc.end();
 
     const fileName = `RX_${today}_${patientFirstName + patientLastName}.pdf`;
+    const fileLocation = `${patientFirstName + patientLastName}`; // File location is patient first and last name
 
-    doc.pipe(fs.createWriteStream(`files/${fileName}`));
-    doc.end();
+    FileHandler.uploadToBucket(fileLocation, fileName, doc)
+      .catch(() => {
+        res.status(500).json({
+          message: `Unknown error occurred`
+        })
+      })
+
+    doc.pipe(res)
   }
 }

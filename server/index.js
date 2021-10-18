@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import app from "./app.js";
+import AWS from 'aws-sdk';
 
 dotenv.config();
 const port = process.env.PORT || 8080;
@@ -14,6 +15,14 @@ try {
 } catch (err) {
   console.log(`Error: ${err}`)
 }
+
+AWS.config.getCredentials(function(err) {
+  if (err) console.log(err.stack);
+  // credentials not loaded
+  else {
+    console.log('Connected to S3 Bucket')
+  }
+});
 
 app.listen(port, () => {
   console.log(`Listening to port ${port}`);

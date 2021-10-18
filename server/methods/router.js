@@ -2,7 +2,11 @@ import express from "express";
 import UsersAPI from "./users.js";
 import SharedAPI from "./shared.js";
 import PhysiciansAPI from "./physicians.js";
+import FileHandler from "./fileHandler.js";
 import { checkIfAuthenticated } from "../middlewares/index.js";
+import multer from 'multer'
+
+const upload = multer({ dest: 'uploads/' })
 
 const router = express.Router(); 
 
@@ -41,6 +45,9 @@ router.route("/physicians/dashboard")
 router.route("/logout")
   .post(checkIfAuthenticated, SharedAPI.logout)
 
+// FILE HANDLING
+router.route("/upload-to-bucket")
+  .post(upload.single('avatar'), FileHandler.uploadToBucket)
 
 // TEST ROUTES - for development use only
 
