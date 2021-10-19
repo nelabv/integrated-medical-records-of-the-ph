@@ -1,6 +1,6 @@
 import PDFDocument from "pdfkit";
-import fs from 'fs'
 import FileHandler from "../fileHandler.js";
+import { v4 as uuidv4 } from 'uuid';
 
 export default class FileGenerators {
   static async medicalPrescription(req, res) {
@@ -82,8 +82,8 @@ export default class FileGenerators {
       doc.text(content, 50, 50)
       doc.end();
 
-    const fileName = `RX_${today}_${patientFirstName + patientLastName}.pdf`;
-    const fileLocation = `${patientFirstName + patientLastName}`; // File location is patient first and last name
+    const fileName = `RX_${today}_${uuidv4()}.pdf`;
+    const fileLocation = `${patientLastName + patientFirstName}`; // File location is patient first and last name
 
     FileHandler.uploadToBucket(fileLocation, fileName, doc)
       .catch(() => {
