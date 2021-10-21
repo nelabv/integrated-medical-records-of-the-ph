@@ -20,34 +20,44 @@ export default class UsersAPI {
           if (error) {
             console.error(`Error in hashing password: ${e}`);
           } else {
-            const user = {
-              patientID: uuidv4(),
-              username,
-              password: hash,
-              firstName,
-              lastName,
-              birthdate,
-              bloodType
-            }
+            User.countDocuments({}, function(err, count){
+              if (err) {
+                res.status(404).json({
+                  status: "An error occurred in countDocuments",
+                  error
+                })
+              }
+
+              const user = {
+                patientID: count + 1,
+                username,
+                password: hash,
+                firstName,
+                lastName,
+                birthdate,
+                bloodType
+              }
+
+              const newUser = new User(user);
   
-            const newUser = new User(user);
-  
-            newUser.save()
-              .then((response, error) => {
-                if (error) {
-                  console.log(`User registration error`);
-                  res.status(404).json({
-                    status: "An error occurred",
-                    error
-                  })
-                } else {
-                  console.log(`User registration successful`);
-                  res.status(200).json({
-                    status: "User registered successfully!",
-                    response
-                  })
-                }
-              }) 
+              newUser.save()
+                .then((response, error) => {
+                  if (error) {
+                    console.log(`User registration error`);
+                    res.status(404).json({
+                      status: "An error occurred",
+                      error
+                    })
+                  } else {
+                    console.log(`User registration successful`);
+                    res.status(200).json({
+                      status: "User registered successfully!",
+                      response
+                    })
+                  }
+                }) 
+
+            })
           }
         })
       } catch (err) {

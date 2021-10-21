@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default class FileGenerators {
   static async medicalPrescription(req, res) {
+    const { patientID } = req.query;
     const { name, specialization, phoneNumber, email, patientFirstName, patientLastName, patientAge, patientSex, medications } = req.body; 
 
     const PALETTE = {
@@ -82,10 +83,9 @@ export default class FileGenerators {
       doc.text(content, 50, 50)
       doc.end();
 
-    const fileName = `RX_${today}_${uuidv4()}.pdf`;
-    const fileLocation = `${patientLastName + patientFirstName}`; // File location is patient first and last name
+    const fileName = `RX_${today}_${uuidv4()}.pdf`; // File location is patient first and last name
 
-    FileHandler.uploadToBucket(fileLocation, fileName, doc)
+    FileHandler.uploadToBucket(patientID, fileName, doc)
       .catch(() => {
         res.status(500).json({
           message: `Unknown error occurred`

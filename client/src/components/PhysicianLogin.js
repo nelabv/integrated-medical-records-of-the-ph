@@ -32,6 +32,11 @@ export default function UserLogin() {
       .then((response) => {
         sessionStorage.setItem("AUTH", true);
         sessionStorage.setItem("ENTITY", "PHYSICIAN");
+
+        if (response.data.status === 'ADMIN') {
+          sessionStorage.setItem("ADMIN", true);
+        }
+        
         history.push("/dashboard");
       })
 

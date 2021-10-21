@@ -3,7 +3,7 @@ import UsersAPI from "./users.js";
 import SharedAPI from "./shared.js";
 import PhysiciansAPI from "./physicians.js";
 import FileHandler from "./fileHandler.js";
-import { checkIfAuthenticated } from "../middlewares/index.js";
+import { checkIfAuthenticated, checkIfAuthorized } from "../middlewares/index.js";
 import multer from 'multer'
 
 const upload = multer({ dest: 'uploads/' })
@@ -40,6 +40,9 @@ router.route("/physicians/login")
 router.route("/physicians/dashboard")
   .get(checkIfAuthenticated, PhysiciansAPI.fetchPhysicianInfo);
 
+router.route("/physicians/generate-prescription")
+  .post(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.generatePrescription);
+
 // SHARED ACTIONS
 
 router.route("/logout")
@@ -50,9 +53,6 @@ router.route("/upload-to-bucket")
   .post(upload.single('avatar'), FileHandler.uploadToBucket)
 
 // TEST ROUTES - for development use only
-
-router.route("/testing")
-  .post(PhysiciansAPI.generatePrescription);
     
 
 export default router;

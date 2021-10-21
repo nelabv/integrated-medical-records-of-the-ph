@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   patientID: {
-    type: String,
+    type: Number,
     required: true,
     unique: true
   },
@@ -58,12 +58,12 @@ const InstitutionSchema = new Schema({
 
 const PhysicianSchema = new Schema({
   physicianID: {
-    type: String,
+    type: Number,
     required: true,
     unique: true
   },
   licenseNumber: {
-    type: String,
+    type: Number,
     required: true,
     unique: true
   },

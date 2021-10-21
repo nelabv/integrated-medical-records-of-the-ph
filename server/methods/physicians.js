@@ -1,7 +1,7 @@
 import bcryptjs from "bcryptjs";
 import { v1 as uuidv1 } from 'uuid';
 import { Physician } from "../models/index.js";
-import FileGenerators from "./file_generators/file-generators.js";
+import FileGenerators from "./fileGenerators/fileGenerators.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -21,34 +21,44 @@ export default class PhysiciansAPI {
           if (error) {
             console.error(`Error in hashing password: ${e}`);
           } else {
-            const physician = {
-              physicianID: uuidv1(), // uuidv4() for patients
-              licenseNumber,
-              username,
-              password: hash,
-              firstName,
-              lastName,
-              country
-            }
-  
-            const newUser = new Physician(physician);
-  
-            newUser.save()
-              .then((response, error) => {
-                if (error) {
-                  console.log(`Physician registration error`);
-                  res.status(404).json({
-                    status: "An error occurred",
-                    error
-                  })
-                } else {
-                  console.log(`Physician registration successful`);
-                  res.status(200).json({
-                    status: "Physician registered successfully!",
-                    response
-                  })
+            Physician.countDocuments({}, function(err, count){
+              if (err) {
+                res.status(404).json({
+                  status: "An error occurred in countDocuments",
+                  error
+                })
+              }
+              else {
+                const physician = {
+                  physicianID: count + 1, 
+                  licenseNumber,
+                  username,
+                  password: hash,
+                  firstName,
+                  lastName,
+                  country
                 }
-              }) 
+
+                const newPhysician = new Physician(physician);
+  
+                newPhysician.save()
+                  .then((response, error) => {
+                    if (error) {
+                      console.log(`Physician registration error`);
+                      res.status(404).json({
+                        status: "An error occurred",
+                        error
+                      })
+                    } else {
+                      console.log(`Physician registration successful`);
+                      res.status(200).json({
+                        status: "Physician registered successfully!",
+                        response
+                      })
+                    }
+                  })
+              }
+            }) 
           }
         })
       } catch (err) {
@@ -74,10 +84,18 @@ export default class PhysiciansAPI {
         req.session.AUTH = true;
         req.session.PHYSICIAN_USERNAME = username;
 
-        res.status(200).json({
-          status: "success",
-          message: "Successful login"
-        })
+        if (username === process.env.ADMIN_USERNAME) {
+          req.session.ENTITY = "ADMIN";
+
+          res.status(200).json({
+            status: "ADMIN",
+            message: "Successful login"
+          })
+        } else {
+          res.status(200).json({
+            message: "Successful login"
+          })
+        }
       } else {
         res.status(401).json({
           error: "Wrong password",

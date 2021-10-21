@@ -51,7 +51,7 @@ function RXGenerator() {
 
     const parsed = JSON.stringify(prescriptionBody);
 
-    fetch("http://localhost:8080/testing", { // Does not work in axios for some reason, to FIX
+    fetch("http://localhost:8080/physicians/generate-prescription", { // Does not work in axios for some reason, to FIX
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
