@@ -40,8 +40,11 @@ router.route("/physicians/login")
 router.route("/physicians/dashboard")
   .get(checkIfAuthenticated, PhysiciansAPI.fetchPhysicianInfo);
 
-router.route("/physicians/generate-prescription")
+router.route("/physicians/generate-prescription") // ADMIN ONLY
   .post(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.generatePrescription);
+
+router.route("/physicians/fetch-patient")
+  .get(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.fetchPatientInfoByID);
 
 // SHARED ACTIONS
 

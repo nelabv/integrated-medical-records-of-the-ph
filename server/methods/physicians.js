@@ -1,6 +1,7 @@
 import bcryptjs from "bcryptjs";
 import { v1 as uuidv1 } from 'uuid';
 import { Physician } from "../models/index.js";
+import { User } from "../models/index.js";
 import FileGenerators from "./fileGenerators/fileGenerators.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -128,5 +129,25 @@ export default class PhysiciansAPI {
 
   static async generatePrescription(req, res) {
     FileGenerators.medicalPrescription(req, res)
+  }
+
+  static async fetchPatientInfoByID(req, res) {
+    const { patientID } = req.query;
+
+    let patientData = await User.findOne({ patientID });
+    if (!patientData) {
+      res.status(400).json({
+        status: "Patient not found!"
+      })
+    } else {
+      const { firstName, lastName, birthdate, bloodType } = patientData;
+      const patientInfo = {
+        firstName, lastName, birthdate, bloodType
+      }
+
+      res.status(200).json({
+        patientInfo
+      })
+    }
   }
 }

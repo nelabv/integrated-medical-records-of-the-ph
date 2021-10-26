@@ -17,6 +17,10 @@ class Physician {
   generatePrescription(patientInfo) {
     return http.post("/physicians/generate-prescription", patientInfo)
   }
+
+  fetchPatientData(patientID) {
+    return http.get(`/physicians/fetch-patient?patientID=${patientID}`)
+  }
 }
 
 export default new Physician();
