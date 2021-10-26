@@ -15,7 +15,7 @@ export default function PhysicianDashboard() {
     <>
       <Logout />
 
-      <Link to="/physician/generate-rx" >
+      <Link to="/generate-prescription" >
         <button>Generate Prescription</button>
       </Link>
     </>

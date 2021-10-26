@@ -1,39 +1,36 @@
-import React, {useEffect, useReducer} from "react";
-import { useHistory } from 'react-router-dom'
-import FormReducer from "../reducers/FormReducer";
+import React, { useState } from "react";
 import Physician from "../methods/physicians"
-
-const initialFormState = {
-  firstName: '',
-  lastName: ''
-}
+import ErrorSpan from "./ErrorSpan";
+import CommonRXGenerator from "./CommonRXGenerator";
 
 function PatientIDInput() {
-  let history = useHistory();
-  const [patientForm, dispatch] = useReducer(FormReducer, initialFormState);
+  const [patientID, setPatientID] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showRXGenerator, setShowRXGenerator] = useState(false);
+  const [patientInfo, setPatientInfo] = useState('');
 
   const handleChange = (e) => {
-    dispatch({
-      type: 'ON CHANGE',
-      field: e.target.name,
-      payload: e.target.value
-    })
+    setPatientID(e.target.value)
+    setShowRXGenerator(false);
+    setErrorMessage('')
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    Physician.generatePrescription({
-      firstName: patientForm.firstName[0],
-      lastName: patientForm.lastName[0]
-    })
-  }
 
-  useEffect(() => {
-    if (sessionStorage.getItem('ENTITY')) {
-      history.push('/admin/generate-rx')
-    }
-  }, [history])
+    Physician.fetchPatientData(patientID)
+      .then(res => {
+        if (res.status === 200) {
+          setPatientInfo(res.data.patientInfo)
+          setShowRXGenerator(true);
+        }
+      })
+      .catch(error => {
+        if (error.response.status) {
+          setErrorMessage("Patient not found!")
+        }
+      })
+  }
 
   return (
     <>
@@ -43,35 +40,24 @@ function PatientIDInput() {
           flexDirection: 'column',
           marginBottom: '1em'}}>
             
-            <label>Patient Last Name</label>
+            <label>Patient ID Number:</label>
             <input 
-              type="text"
+              type="number"
               style={{
                 whiteSpace:'pre-line'
               }}
-              value={patientForm.lastName}
-              name="lastName"
-              onChange={e => {
-                handleChange(e)
-              }}
-            />
-
-            <label>Patient First Name</label>
-            <input 
-              type="text"
-              style={{
-                whiteSpace:'pre-line'
-              }}
-              value={patientForm.firstName}
-              name="firstName"
-              onChange={e => {
-                handleChange(e)
-              }}
+              value={patientID}
+              onChange={handleChange}
             />
         </div>
 
         <button type="submit">Verify</button>
+        <ErrorSpan errorMessage={errorMessage} />
     </form>
+
+    { showRXGenerator 
+      ? <CommonRXGenerator patientInfo={patientInfo}/> 
+      : null}
     </>
   );
 }

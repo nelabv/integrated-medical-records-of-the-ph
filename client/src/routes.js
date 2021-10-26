@@ -19,7 +19,7 @@ export const routes = (
       <Route path='/physicians/login' component={PhysicianLogin} />
 
       <ProtectedRoute path="/dashboard" component={DashboardHandler} />
-      <ProtectedRoute path="/physician/generate-rx" component={PatientIDInput} />
+      <ProtectedRoute path="/generate-prescription" component={PatientIDInput} />
 
       <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
     </Switch>

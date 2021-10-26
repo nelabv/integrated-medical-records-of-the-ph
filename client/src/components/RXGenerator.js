@@ -73,16 +73,10 @@ function RXGenerator() {
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem("ENTITY") !== "PHYSICIAN") {
-      history.push('/')
+    if (sessionStorage.getItem("ENTITY") !== "ADMIN") {
+      history.push('/physician/generate-rx');
     }
   }, [history])
-
-  const test = (e) => {
-    e.preventDefault()
-    console.log(prescriptionForm)
-  }
-
 
   return (
     <>
