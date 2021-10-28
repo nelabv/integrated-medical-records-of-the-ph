@@ -25,6 +25,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  sex: {
+    type: String,
+    required: true
+  },
   birthdate: {
     type: Date,
     required: true
@@ -66,6 +70,10 @@ const PhysicianSchema = new Schema({
     type: Number,
     required: true,
     unique: true
+  },
+  specialization: {
+    type: String,
+    required: true
   },
   username: {
     type: String,
