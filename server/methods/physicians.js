@@ -128,7 +128,10 @@ export default class PhysiciansAPI {
   }
 
   static async generatePrescription(req, res) {
-    FileGenerators.medicalPrescription(req, res)
+    const PHYSICIAN_INFO = await Physician.findOne({ username: req.session.PHYSICIAN_USERNAME });
+    const PATIENT_ID = req.body.patientID;
+
+    FileGenerators.medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO)
   }
 
   static async fetchPatientInfoByID(req, res) {

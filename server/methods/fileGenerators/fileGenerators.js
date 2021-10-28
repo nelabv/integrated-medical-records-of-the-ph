@@ -1,11 +1,13 @@
 import PDFDocument from "pdfkit";
+import { User } from "../../models/index.js"
 import FileHandler from "../fileHandler.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export default class FileGenerators {
-  static async medicalPrescription(req, res) {
-    const { patientID } = req.query;
-    const { name, specialization, phoneNumber, email, patientFirstName, patientLastName, patientAge, patientSex, medications } = req.body; 
+  static async medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO,) {
+    console.log(PHYSICIAN_INFO)
+    const PATIENT_INFO = await User.findOne({ patientID: PATIENT_ID });
+    const { medications, patientAge } = req.body;
 
     const PALETTE = {
       blackCoral: '#646E78',
@@ -26,26 +28,26 @@ export default class FileGenerators {
     doc.fillColor(PALETTE.blackCoral)
       .fontSize(14)
       .font('Helvetica-Bold')
-      .text(`Dr. ${name}` , 20, 20, {
+      .text(`Dr. ${PHYSICIAN_INFO.firstName} ${PHYSICIAN_INFO.lastName}` , 20, 20, {
         lineBreak: true, 
         lineGap: 1
       })
       .moveDown(0.25)
       .fontSize(10)
       .font('Helvetica')
-      .text(`${specialization}`, {
+      .text(`${PHYSICIAN_INFO.specialization}`, {
         lineBreak: true, 
         lineGap: 1
       })
       .moveDown(0.5)
       .fontSize(8)
       .fillColor(PALETTE.cadetGray)
-      .text(`Phone: ${phoneNumber}`, {
+      .text(`Phone: ${PHYSICIAN_INFO.phoneNumber}`, {
         lineBreak: true, 
         lineGap: 1
       })
       .moveDown(0.25)
-      .text(`E-mail: ${email}`, {
+      .text(`E-mail: ${PHYSICIAN_INFO.email}`, {
         lineBreak: true, 
         lineGap: 1
       })
@@ -58,13 +60,13 @@ export default class FileGenerators {
     // Patient Information
     .fontSize(10)
     .fillColor(PALETTE.cadetGray)
-    .text(`Patient Name: ${patientFirstName} ${patientLastName}`, {
+    .text(`Patient Name: ${PATIENT_INFO.firstName} ${PATIENT_INFO.lastName}`, {
       lineBreak: true, 
       lineGap: 1
     })
     .fontSize(10)
     .fillColor(PALETTE.cadetGray)
-    .text(`Age: ${patientAge} / ${patientSex}`, {
+    .text(`Age: ${patientAge} / ${PHYSICIAN_INFO.sex}`, {
       lineBreak: true, 
       lineGap: 1
     })
@@ -85,7 +87,7 @@ export default class FileGenerators {
 
     const fileName = `RX_${today}_${uuidv4()}.pdf`; // File location is patient first and last name
 
-    FileHandler.uploadToBucket(patientID, fileName, doc)
+    FileHandler.uploadToBucket(PATIENT_ID, fileName, doc)
       .catch(() => {
         res.status(500).json({
           message: `Unknown error occurred`
