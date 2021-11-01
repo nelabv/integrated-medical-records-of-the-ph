@@ -4,8 +4,7 @@ import FileHandler from "../fileHandler.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export default class FileGenerators {
-  static async medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO,) {
-    console.log(PHYSICIAN_INFO)
+  static async medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO) {
     const PATIENT_INFO = await User.findOne({ patientID: PATIENT_ID });
     const { medications, patientAge } = req.body;
 

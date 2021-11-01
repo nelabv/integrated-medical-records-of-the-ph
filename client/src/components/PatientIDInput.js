@@ -56,7 +56,7 @@ function PatientIDInput() {
     </form>
 
     { showRXGenerator 
-      ? <CommonRXGenerator patientInfo={patientInfo}/> 
+      ? <CommonRXGenerator patientInfo={patientInfo} patientID={patientID} /> 
       : null}
     </>
   );

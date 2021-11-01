@@ -14,8 +14,8 @@ class Physician {
     return http.post("/physicians/login", form, { withCredentials: true })
   }
 
-  generatePrescription(patientInfo) {
-    return http.post("/physicians/generate-prescription", patientInfo)
+  generatePrescription(config) {
+    return http.post("/physicians/generate-prescription", config)
   }
 
   fetchPatientData(patientID) {
