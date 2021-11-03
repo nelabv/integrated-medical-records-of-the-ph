@@ -33,3 +33,13 @@ export const verifyPatientData = async (req, res, next) => {
     })
   }
 }
+
+export const userAccessOnly = (req, res, next) => {
+  if (req.session.USERNAME) {
+    next();
+  } else {
+    res.status(403).json({
+      message: "Unauthorized. For user's access only."
+    })
+  }
+}

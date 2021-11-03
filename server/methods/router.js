@@ -3,7 +3,7 @@ import UsersAPI from "./users.js";
 import SharedAPI from "./shared.js";
 import PhysiciansAPI from "./physicians.js";
 import FileHandler from "./fileHandler.js";
-import { checkIfAuthenticated, checkIfAuthorized } from "../middlewares/index.js";
+import { checkIfAuthenticated, checkIfAuthorized, userAccessOnly } from "../middlewares/index.js";
 import multer from 'multer'
 
 const upload = multer({ dest: 'uploads/' })
@@ -55,7 +55,10 @@ router.route("/logout")
 router.route("/upload-to-bucket")
   .post(upload.single('avatar'), FileHandler.uploadToBucket)
 
-// TEST ROUTES - for development use only
-    
+  
+  // TEST ROUTES - for development use only
+  router.route("/fetch-files")
+    .post(userAccessOnly, FileHandler.fetchUserFiles)
+  
 
 export default router;

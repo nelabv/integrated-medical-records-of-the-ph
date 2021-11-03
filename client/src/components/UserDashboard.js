@@ -3,6 +3,7 @@ import VisibilityReducer from "../reducers/VisiblityReducer";
 import { withRouter } from "react-router";
 import User from "../methods/users";
 import Logout from "./Logout";
+import UserFileList from "./UserFileList";
 
 const initialVisibility = {
   userDashboard: false,
@@ -33,6 +34,7 @@ function UserDashboard() {
             <h1>Hello, {userInformation.firstName}</h1>
             
             <Logout />
+            <UserFileList />
           </>
       : null
       }

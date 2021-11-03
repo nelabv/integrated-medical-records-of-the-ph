@@ -21,6 +21,10 @@ class User {
   logout() {
     return http.post("/logout")
   }
+
+  fetchFileList(patientID) {
+    return http.post(`/fetch-files`)
+  }
 }
 
 export default new User();

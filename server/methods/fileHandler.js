@@ -1,7 +1,6 @@
-import multer from 'multer'
+import { User } from "../models/index.js"
 import AWS from 'aws-sdk'
 
-const upload = multer({ dest: 'uploads/' })
 const s3 = new AWS.S3();
 
 export default class FileHandler {
@@ -19,5 +18,27 @@ export default class FileHandler {
       }
       else return
     });
+  }
+
+  static async fetchUserFiles(req, res, next) {
+    const userData = await User.findOne({ username: req.session.USERNAME });
+
+    const params = {
+      Bucket: process.env.BUCKET_NAME,
+      Delimiter: '/',
+      Prefix: `${userData.patientID}/`
+    };
+      
+    s3.listObjects(params, function(err, data) {
+      if (err) {
+        res.status(500).json({
+          error: err.message
+        })
+      } else {
+        res.status(200).json({
+          data: data.Contents
+        })
+      }
+    })
   }
 }
