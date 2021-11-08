@@ -12,6 +12,13 @@ function UserFileList() {
       setIsLoading(false)
     })
   }, [])
+
+  const downloadFile = async (fileName) => {
+    User.downloadFile(fileName)
+      .then((res) => {
+        window.open(res.data.url)
+    })
+  }
   
   return (
     <>
@@ -23,7 +30,7 @@ function UserFileList() {
               <div key={file.Key}>
                 <span>{file.Key}</span>
 
-                <button>DOWNLOAD</button>
+                <button onClick={() => downloadFile(file.Key)}>DOWNLOAD</button>
               </div>
             )
           })

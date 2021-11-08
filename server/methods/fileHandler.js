@@ -41,4 +41,21 @@ export default class FileHandler {
       }
     })
   }
+
+  static async downloadFile(req, res, next) {
+    s3.getSignedUrl('getObject', {
+      Bucket: process.env.BUCKET_NAME,
+      Key: req.body.fileName
+    }, (error, url) => {
+      if (error) {
+        res.status(403).json({
+          error
+        })
+      } else {
+        res.status(200).json({
+          url
+        })
+      }
+    })
+  }
 }

@@ -58,7 +58,8 @@ router.route("/upload-to-bucket")
   
   // TEST ROUTES - for development use only
   router.route("/fetch-files")
-    .post(userAccessOnly, FileHandler.fetchUserFiles)
+    .get(userAccessOnly, FileHandler.fetchUserFiles)
   
-
+  router.route("/download-file")
+    .post(FileHandler.downloadFile)
 export default router;
