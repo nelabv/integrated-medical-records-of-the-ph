@@ -21,6 +21,10 @@ function App() {
       <Link to="/physicians/login">
         <button>Login for Physicians</button>
       </Link>
+
+      <Link to="/register">
+        <button>Register</button>
+      </Link>
     </>
   );
 }

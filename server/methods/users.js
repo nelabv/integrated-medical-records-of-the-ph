@@ -6,7 +6,7 @@ dotenv.config();
 
 export default class UsersAPI {
   static async register(req, res) {
-    const { username, password, firstName, lastName, birthdate, bloodType } = req.body;
+    const { username, password, firstName, lastName, sex, birthdate, bloodType } = req.body;
     const checkIfUsernameIsTaken = await User.findOne({ username });
 
     if (checkIfUsernameIsTaken) {
@@ -34,6 +34,7 @@ export default class UsersAPI {
                 password: hash,
                 firstName,
                 lastName,
+                sex,
                 birthdate,
                 bloodType
               }

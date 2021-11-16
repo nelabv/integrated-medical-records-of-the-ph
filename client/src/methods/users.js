@@ -29,6 +29,10 @@ class User {
   downloadFile(fileName) {
     return http.post("/download-file", {fileName})
   }
+
+  register(userInformation) {
+    return http.post("/users/register", userInformation)
+  }
 }
 
 export default new User();
