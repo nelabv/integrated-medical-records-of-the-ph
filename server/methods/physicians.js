@@ -8,7 +8,7 @@ dotenv.config();
 
 export default class PhysiciansAPI {
   static async register(req, res) {
-    const { licenseNumber, username, password, firstName, lastName, country } = req.body;
+    const { licenseNumber, specialization, username, password, firstName, lastName } = req.body;
     const checkIfUsernameIsTaken = await Physician.findOne({ username });
 
     if (checkIfUsernameIsTaken) {

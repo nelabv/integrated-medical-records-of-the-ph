@@ -1,32 +1,18 @@
-import React, { useReducer, useState } from 'react';
-import FormReducer from '../reducers/FormReducer';
+import React, { useState } from 'react';
 import UserRegistrationForm from './FormComponents/UserRegistrationForm';
-
-const initialUserForm = {
-  username: '',
-  password: '',
-  firstName: '',
-  lastName: '',
-  sex: '',
-  birthdate: '',
-  bloodType: ''
-}
+import PhysicianRegistrationForm from './FormComponents/PhysicianRegistrationForm';
 
 function RegisterForm() {
-  const [userForm, dispatch] = useReducer(FormReducer, initialUserForm);
   const [showUserForm, setShowUserForm] = useState(false);
-
-  const handleChange = (e) => {
-    dispatch({
-      type: 'ON CHANGE',
-      field: e.target.name,
-      payload: e.target.value
-    })
-  }
+  const [showPhysicianForm, setShowPhysicianForm] = useState(false);
 
   const handleVisibility = (formType) => {
     if (formType === "USER") {
-      setShowUserForm(prevState => !prevState)
+      setShowUserForm(prevState => !prevState);
+      setShowPhysicianForm(false);
+    } else {
+      setShowPhysicianForm(true);
+      setShowUserForm(false)
     }
   }
 
@@ -35,14 +21,17 @@ function RegisterForm() {
     <h1>View your medical records in one tap</h1>
     <p>Register as:</p>
 
-    <button>Physician</button>
+    <button onClick={() => handleVisibility()}>Physician</button>
     <button onClick={() => handleVisibility('USER')}>User</button>
 
     { showUserForm 
-        ? <UserRegistrationForm 
-              userForm={userForm} 
-              handleChange={handleChange} />
+        ? <UserRegistrationForm />
         : null }
+
+    { showPhysicianForm
+        ? <PhysicianRegistrationForm />
+        : null
+    }
     </>
   );
 }

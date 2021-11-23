@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import User from "../../methods/users.js";
+import FormReducer from '../../reducers/FormReducer';
 import BloodTypeForm from './BloodTypeForm';
 
+const initialUserForm = {
+  username: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+  sex: '',
+  birthdate: '',
+  bloodType: ''
+}
+
 function UserRegistrationForm(props) {
-  const { userForm, handleChange, hasEmptyField } = props;
+  const [userForm, dispatch] = useReducer(FormReducer, initialUserForm);
+
+  const handleChange = (e) => {
+    dispatch({
+      type: 'ON CHANGE',
+      field: e.target.name,
+      payload: e.target.value
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +40,8 @@ function UserRegistrationForm(props) {
     User.register(userInformation)
         .then((res) => {
           console.log(res)
+
+          // do redirections here
         })
         .catch(err => console.log(err))
   }
@@ -109,10 +130,7 @@ function UserRegistrationForm(props) {
 
           <BloodTypeForm handleChange={handleChange} />
 
-          { hasEmptyField 
-              ? <div>WALANG BUTTON DAPAT</div> 
-              : <button type="submit">Register as User</button>
-          }
+          <button type="submit">Register as User</button>
       </div>
     </form>
   );

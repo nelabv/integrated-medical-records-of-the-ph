@@ -91,10 +91,6 @@ const PhysicianSchema = new Schema({
   lastName: {
     type: String,
     required: true
-  },
-  country: {
-    type: String,
-    required: true
   }
 })
 
