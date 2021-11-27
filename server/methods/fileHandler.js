@@ -5,7 +5,8 @@ const s3 = new AWS.S3();
 
 export default class FileHandler {
   static async uploadToBucket(patientID, fileName, document) {
-    const params = {
+    console.log(req.query)
+/*     const params = {
       Key : `${patientID}/${fileName}`,
       Body : document,
       Bucket : process.env.BUCKET_NAME,
@@ -17,7 +18,7 @@ export default class FileHandler {
         console.log(`Error in file handler: ${error}`)
       }
       else return
-    });
+    }); */
   }
 
   static async fetchUserFiles(req, res, next) {

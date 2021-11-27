@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useHistory } from 'react-router-dom'
+import UploadFile from "./FormComponents/UploadFile";
 import Logout from "./Logout"
 
 export default function PhysicianDashboard() {
@@ -18,6 +19,8 @@ export default function PhysicianDashboard() {
       <Link to="/generate-prescription" >
         <button>Generate Prescription</button>
       </Link>
+
+      <UploadFile />
     </>
   );
 }
