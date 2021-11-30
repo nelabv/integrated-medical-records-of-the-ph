@@ -1,24 +1,23 @@
 import PDFDocument from "pdfkit";
 import { User } from "../../models/index.js"
 import FileHandler from "../fileHandler.js";
-import { v4 as uuidv4 } from 'uuid';
 
 export default class FileGenerators {
   static async medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO) {
     const PATIENT_INFO = await User.findOne({ patientID: PATIENT_ID });
     const { medications, patientAge } = req.body;
 
-    const PALETTE = {
-      blackCoral: '#646E78',
-      cadetGray: '#8D98A7',
-      almond: '#DCCCBB'
-    }
-  
     const today = new Date().toLocaleDateString('en-GB', {
       day : 'numeric',
       month : 'short',
       year : 'numeric'
     }).split(' ').join('-');
+
+    const PALETTE = {
+      blackCoral: '#646E78',
+      cadetGray: '#8D98A7',
+      almond: '#DCCCBB'
+    }
 
     const doc = new PDFDocument({size: 'A5'})
     let filename = req.body.filename;
@@ -84,9 +83,21 @@ export default class FileGenerators {
       doc.text(content, 50, 50)
       doc.end();
 
-    const fileName = `RX_${today}_${uuidv4()}.pdf`; // File location is patient first and last name
+    const paramsForBucketUpload = {
+      patientID: PATIENT_ID,
+      file: doc,
+      recordType: 'PRESCRIPTION',
+      _contentType: 'application/pdf'
+    }
+    /* 
+        Params for uploading to S3 Bucket:
+        * patientID: This serves as the directory to a patient's files.
+        * file: The document to be uploaded
+        * recordType: Type of document (could be prescription, image, etc.)
+        * _contentType: For uploading purposes only
+     */
 
-    FileHandler.uploadToBucket(PATIENT_ID, fileName, doc)
+    FileHandler.uploadToBucket(paramsForBucketUpload)
       .catch(() => {
         res.status(500).json({
           message: `Unknown error occurred`

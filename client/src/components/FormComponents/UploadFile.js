@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Physician from "../../methods/physicians"
 
 export default function UploadFile() {
@@ -11,7 +11,16 @@ export default function UploadFile() {
 	};
 
 	const handleSubmission = (e) => {
-    Physician.uploadFileToPatientDatabase(selectedFile, 'Record')
+    e.preventDefault();
+
+    const paramsForBucketUpload = {
+      patientID: 1,
+      file: selectedFile,
+      recordType: 'IMAGE',
+      _contentType: selectedFile.type
+    }
+
+    Physician.uploadFileToPatientDatabase(paramsForBucketUpload)
 	};
 
   return (

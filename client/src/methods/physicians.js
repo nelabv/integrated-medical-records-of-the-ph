@@ -23,8 +23,8 @@ class Physician {
   }
 
   // new route for uploading files: WORK IN PROGRESS
-  uploadFileToPatientDatabase(file, fileType) {
-    return http.post(`/physicians/generate-prescription?fileType=${fileType}`, file)
+  uploadFileToPatientDatabase(paramsForBucketUpload) {
+    return http.post(`/upload-to-bucket`, paramsForBucketUpload)
   }
 
   fetchPatientData(patientID) {
