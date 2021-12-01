@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import UserRegistrationForm from './FormComponents/UserRegistrationForm';
-import PhysicianRegistrationForm from './FormComponents/PhysicianRegistrationForm';
+import UserRegistrationForm from '../components/FormComponents/UserRegistrationForm';
+import PhysicianRegistrationForm from '../components/FormComponents/PhysicianRegistrationForm';
 
 function RegisterForm() {
   const [showUserForm, setShowUserForm] = useState(false);

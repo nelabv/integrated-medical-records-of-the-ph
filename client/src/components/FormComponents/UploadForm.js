@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Physician from "../../methods/physicians"
 
-export default function UploadFile() {
+export default function UploadForm() {
 	const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 
