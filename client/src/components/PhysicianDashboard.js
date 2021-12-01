@@ -20,7 +20,9 @@ export default function PhysicianDashboard() {
         <button>Generate Prescription</button>
       </Link>
 
-      <UploadFile />
+      <Link to="/upload" >
+        <button>Upload Document</button>
+      </Link>
     </>
   );
 }

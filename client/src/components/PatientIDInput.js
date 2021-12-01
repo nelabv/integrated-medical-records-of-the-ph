@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import Physician from "../methods/physicians"
 import ErrorSpan from "./ErrorSpan";
-import CommonRXGenerator from "./CommonRXGenerator";
 
-function PatientIDInput() {
+function PatientIDInput({Component}) {
   const [patientID, setPatientID] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [showRXGenerator, setShowRXGenerator] = useState(false);
+  const [showComponent, setShowComponent] = useState(false);
   const [patientInfo, setPatientInfo] = useState('');
 
   const handleChange = (e) => {
     setPatientID(e.target.value)
-    setShowRXGenerator(false);
+    setShowComponent(false);
     setErrorMessage('')
   }
 
@@ -22,7 +21,7 @@ function PatientIDInput() {
       .then(res => {
         if (res.status === 200) {
           setPatientInfo(res.data.patientInfo)
-          setShowRXGenerator(true);
+          setShowComponent(true);
         }
       })
       .catch(error => {
@@ -55,8 +54,10 @@ function PatientIDInput() {
         <ErrorSpan errorMessage={errorMessage} />
     </form>
 
-    { showRXGenerator 
-      ? <CommonRXGenerator patientInfo={patientInfo} patientID={patientID} /> 
+    { showComponent 
+      ? <Component 
+            patientInfo={patientInfo} 
+            patientID={patientID} /> 
       : null}
     </>
   );
