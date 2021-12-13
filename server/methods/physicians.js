@@ -1,10 +1,20 @@
 import bcryptjs from "bcryptjs";
-import { v1 as uuidv1 } from 'uuid';
+import multer from 'multer';
+import multerS3 from 'multer-s3';
+import aws from 'aws-sdk';
 import { Physician } from "../models/index.js";
 import { User } from "../models/index.js";
 import FileGenerators from "./fileGenerators/fileGenerators.js";
 import dotenv from "dotenv";
+
 dotenv.config();
+
+aws.config.update({
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID
+});
+
+const s3 = new aws.S3();
 
 export default class PhysiciansAPI {
   static async register(req, res) {
@@ -132,6 +142,38 @@ export default class PhysiciansAPI {
     const PATIENT_ID = req.body.patientID;
 
     FileGenerators.medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO)
+  }
+
+  static async imageUpload(req, res) {
+    // CONFIGURE THE TYPE OF FILE TO BE UPLOADED FIRST
+    const fileName = `${req.query.id}/${Date.now().toString()}`
+
+    const uploadS3 = multer({
+      storage: multerS3({
+        s3: s3,
+        bucket: process.env.BUCKET_NAME,
+        acl: "public-read",
+        metadata: function(req, file, cb) {
+          cb(null, { fieldName: "TESTING_META_DATA!" });
+        },
+    
+        key: function(req, file, cb) {
+          cb(null, fileName);
+        }
+      })
+    });
+
+    const singleUpload = uploadS3.single("file");
+
+    singleUpload(req, res, function(err, some) {
+        if (err) {
+          console.log(err)
+          return res.status(422).send({
+            errors: [{ title: "Image Upload Error", detail: err.message }]
+          });
+        }
+        return res.status(200).json({ status: 'uploaded' });
+      });
   }
 
   static async fetchPatientInfoByID(req, res) {

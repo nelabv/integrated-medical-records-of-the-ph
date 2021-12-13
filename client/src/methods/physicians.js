@@ -9,6 +9,15 @@ const http = axios.create({
   credentials: 'same-origin'
 });
 
+const httpTESTING = axios.create({
+  baseURL: "http://localhost:8080/",
+  headers: {
+    "Content-type": "multipart/form-data",
+  },
+  withCredentials: true,
+  credentials: 'same-origin'
+});
+
 class Physician {
   login(form) {
     return http.post("/physicians/login", form, { withCredentials: true })
@@ -23,8 +32,8 @@ class Physician {
   }
 
   // new route for uploading files: WORK IN PROGRESS
-  uploadFileToPatientDatabase(paramsForBucketUpload) {
-    return http.post(`/upload-to-bucket`, paramsForBucketUpload)
+  uploadFileToPatientDatabase(formData, id) {
+    return httpTESTING.post(`/upload-to-bucket?id=${id}`, formData)
   }
 
   fetchPatientData(patientID) {

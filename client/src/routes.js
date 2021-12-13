@@ -30,9 +30,7 @@ export const routes = (
       <ProtectedRoute path="/generate-prescription" component={GeneratePrescription} />
       <ProtectedRoute path="/upload" component={UploadFile} />
 
-
-
-      {/* ----- Note: ADMIN SECTION is  ----- */}
+      {/* ----- Note: ADMIN SECTION is a work in progress ----- */}
       <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
 
 

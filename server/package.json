@@ -15,6 +15,7 @@
   "dependencies": {
     "aws-sdk": "^2.1008.0",
     "bcryptjs": "^2.4.3",
+    "buffer": "^6.0.3",
     "connect-mongodb-session": "^3.1.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -22,6 +23,7 @@
     "express-session": "^1.17.2",
     "mongoose": "^6.0.5",
     "multer": "^1.4.3",
+    "multer-s3": "^2.10.0",
     "pdfkit": "^0.12.3",
     "uuid": "^8.3.2"
   }

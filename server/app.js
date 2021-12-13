@@ -2,6 +2,7 @@ import express from "express";
 import cors from 'cors';
 import session from "express-session";
 import router from "./methods/router.js";
+import bodyParser from 'body-parser';
 import dotenv from "dotenv";
 import connectMongo from 'connect-mongodb-session';
 
@@ -31,6 +32,9 @@ app.use(session({
     secure: false
   }
 }))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.json());
 

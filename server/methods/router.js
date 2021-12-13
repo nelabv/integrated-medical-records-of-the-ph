@@ -4,9 +4,6 @@ import SharedAPI from "./shared.js";
 import PhysiciansAPI from "./physicians.js";
 import FileHandler from "./fileHandler.js";
 import { checkIfAuthenticated, checkIfAuthorized, userAccessOnly } from "../middlewares/index.js";
-import multer from 'multer'
-
-const upload = multer({ dest: 'uploads/' })
 
 const router = express.Router(); 
 
@@ -52,8 +49,8 @@ router.route("/logout")
   .post(checkIfAuthenticated, SharedAPI.logout)
 
 // FILE HANDLING
-router.route("/upload-to-bucket")
-  .post(upload.single('avatar'), FileHandler.uploadToBucket)
+router.route('/upload-to-bucket')
+  .post(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.imageUpload);
 
   
   // TEST ROUTES - for development use only
