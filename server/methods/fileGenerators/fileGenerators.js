@@ -87,7 +87,8 @@ export default class FileGenerators {
       patientID: PATIENT_ID,
       file: doc,
       recordType: 'PRESCRIPTION',
-      _contentType: 'application/pdf'
+      _contentType: 'application/pdf',
+      fileExtension: 'pdf'
     }
     /* 
         Params for uploading to S3 Bucket:

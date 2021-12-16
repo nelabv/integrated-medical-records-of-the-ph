@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom"
 import Physician from "../../methods/physicians"
 
-export default function UploadForm() {
+export default function UploadForm(props) {
+  const { patientID } = props;
+  
 	const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 
@@ -25,7 +27,7 @@ export default function UploadForm() {
     formData.append("file", selectedFile.file);
 
     const params = {
-      patientID: 1,
+      patientID,
       fileExtension: selectedFile.file.name.split('.').pop()
     }
     

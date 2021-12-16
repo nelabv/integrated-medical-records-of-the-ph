@@ -7,14 +7,6 @@ const s3 = new AWS.S3();
 
 export default class FileHandler {
   static async uploadToBucket(params) {
-/*     let base64str;
-
-
-    function getImgBuffer(base64) {
-      const base64str = base64.replace(/^data:image\/\w+;base64,/, '')
-      return Buffer.from(base64str, 'base64');  
-    } */
-
     console.log(params.recordType)
     /* 
         Params for uploading to S3 Bucket:
