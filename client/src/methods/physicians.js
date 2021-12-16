@@ -32,8 +32,8 @@ class Physician {
   }
 
   // new route for uploading files: WORK IN PROGRESS
-  uploadFileToPatientDatabase(formData, id) {
-    return httpTESTING.post(`/upload-to-bucket?id=${id}`, formData)
+  uploadFileToPatientDatabase(formData, params) {
+    return httpTESTING.post(`/upload-to-bucket?id=${params.patientID}&type=${params.fileExtension}`, formData)
   }
 
   fetchPatientData(patientID) {

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link, useHistory } from 'react-router-dom'
-import UploadForm from "./FormComponents/UploadForm";
 import Logout from "./Logout"
 
 export default function PhysicianDashboard() {

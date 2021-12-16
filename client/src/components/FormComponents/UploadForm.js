@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom"
 import Physician from "../../methods/physicians"
 
-export default function UploadForm(props) {
-  const { patientID } = props;
-
+export default function UploadForm() {
 	const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
+
+  let history = useHistory();
 
   const changeHandler = (event) => {
 		setSelectedFile({
@@ -22,21 +23,25 @@ export default function UploadForm(props) {
 
     const formData = new FormData();
     formData.append("file", selectedFile.file);
-    formData.append("patientID", patientID);
 
-/*     for (var key of formData.entries()) {
-      console.log(key[0] + ", " + key[1]);
-    } */
-
-/*     const paramsForBucketUpload = {
+    const params = {
       patientID: 1,
-      recordType: 'IMAGE',
-      _contentType: selectedFile.file.type,
       fileExtension: selectedFile.file.name.split('.').pop()
-    } */
+    }
     
-    Physician.uploadFileToPatientDatabase(formData, patientID)
-      .then((res) => console.log(res));
+    Physician.uploadFileToPatientDatabase(formData, params)
+      .then((res) => {
+        setIsFilePicked(false);
+
+        if (res.status === 200) {
+          history.push({
+            pathname: '/confirmed',
+            state: {
+              test: "MONAYMONAY"
+            },
+          })
+        }
+      });
 	};
 
   return (

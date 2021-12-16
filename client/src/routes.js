@@ -13,6 +13,7 @@ import RXGenerator from "./components/RXGenerator";
 import GeneratePrescription from "./pages/GeneratePrescription";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UploadFile from "./pages/UploadFile";
+import UploadSuccess from "./pages/UploadSuccess";
 
 export const routes = (
   <Router>
@@ -33,7 +34,8 @@ export const routes = (
       {/* ----- Note: ADMIN SECTION is a work in progress ----- */}
       <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
 
-
+      {/* ----- Note: OTHERS ----- */}
+      <Route path="/confirmed" component={UploadSuccess} />
     </Switch>
   </Router>
 );

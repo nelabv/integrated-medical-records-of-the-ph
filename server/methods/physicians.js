@@ -146,7 +146,7 @@ export default class PhysiciansAPI {
 
   static async imageUpload(req, res) {
     // CONFIGURE THE TYPE OF FILE TO BE UPLOADED FIRST
-    const fileName = `${req.query.id}/${Date.now().toString()}`
+    const fileName = `${req.query.id}/${Date.now().toString()}.${req.query.type}`
 
     const uploadS3 = multer({
       storage: multerS3({
