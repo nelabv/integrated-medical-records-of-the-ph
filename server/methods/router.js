@@ -52,11 +52,15 @@ router.route("/logout")
 router.route('/upload-to-bucket')
   .post(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.imageUpload);
 
-  
-  // TEST ROUTES - for development use only
-  router.route("/fetch-files")
-    .get(userAccessOnly, FileHandler.fetchUserFiles)
-  
-  router.route("/download-file")
-    .post(FileHandler.downloadFile)
+router.route("/fetch-files")
+  .get(userAccessOnly, FileHandler.fetchUserFiles)
+
+router.route("/download-file")
+  .post(FileHandler.downloadFile)
+
+
+// DEVELOPMENT
+router.route("/verify")
+  .get(checkIfAuthenticated, PhysiciansAPI.verifyPatientID)
+    
 export default router;

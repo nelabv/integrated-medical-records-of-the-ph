@@ -195,4 +195,27 @@ export default class PhysiciansAPI {
       })
     }
   }
+
+  static async verifyPatientID(req, res, next) {
+    const { patientID, patientLastName } = req.body;
+  
+    const checkLastName = await User.findOne({ patientID });
+    
+    if ([checkLastName].length === 1) {
+      if (checkLastName.lastName === patientLastName) {
+        res.status(200).json({
+          message: "Patient verified!"
+        })
+      } else {
+        res.status(400).json({
+          message: "Invalid patient information!"
+        })
+      }
+    } else {
+      res.status(400).json({
+        message: "Patient not found."
+      })
+    }
+  }
 }
+

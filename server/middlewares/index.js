@@ -20,20 +20,6 @@ export const checkIfAuthorized = (req, res, next) => {
   }
 }
 
-export const verifyPatientData = async (req, res, next) => {
-  const { patientID } = req.query;
-
-  const checkLastName = await User.findOne({ patientID });
-  
-  if ([checkLastName].length === 1) {
-    next()
-  } else {
-    res.status(400).json({
-      message: "Patient not found."
-    })
-  }
-}
-
 export const userAccessOnly = (req, res, next) => {
   if (req.session.USERNAME) {
     next();
