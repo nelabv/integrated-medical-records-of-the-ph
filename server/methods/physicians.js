@@ -197,12 +197,14 @@ export default class PhysiciansAPI {
   }
 
   static async verifyPatientID(req, res, next) {
-    const { patientID, patientLastName } = req.body;
+    const { id, last } = req.query;
+    console.log(id, last)
   
-    const checkLastName = await User.findOne({ patientID });
+    const checkLastName = await User.findOne({ id });
+    console.log(checkLastName)
     
     if ([checkLastName].length === 1) {
-      if (checkLastName.lastName === patientLastName) {
+      if (checkLastName.lastName === last) {
         res.status(200).json({
           message: "Patient verified!"
         })

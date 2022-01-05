@@ -31,13 +31,12 @@ class Physician {
     return http.post("/physicians/generate-prescription", config)
   }
 
-  // new route for uploading files: WORK IN PROGRESS
   uploadFileToPatientDatabase(formData, params) {
     return httpTESTING.post(`/upload-to-bucket?id=${params.patientID}&type=${params.fileExtension}`, formData)
   }
 
-  fetchPatientData(patientID) {
-    return http.get(`/physicians/fetch-patient?patientID=${patientID}`)
+  verifyPatientInformation(query) {
+    return http.get(`/verify?id=${query.patientID}&last=${query.patientLastName}`)
   }
 }
 

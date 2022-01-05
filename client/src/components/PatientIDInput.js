@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import Physician from "../methods/physicians"
 import ErrorSpan from "./ErrorSpan";
+import FormReducer from "../reducers/FormReducer";
+
+const initialPatientVerificationForm = {
+  patientID: 0,
+  patientLastName: ''
+}
 
 function PatientIDInput({Component}) {
   const [patientID, setPatientID] = useState('');
@@ -8,16 +14,31 @@ function PatientIDInput({Component}) {
   const [showComponent, setShowComponent] = useState(false);
   const [patientInfo, setPatientInfo] = useState('');
 
+  const [patientForm, dispatch] = useReducer(FormReducer, initialPatientVerificationForm);
+
   const handleChange = (e) => {
-    setPatientID(e.target.value)
     setShowComponent(false);
     setErrorMessage('')
+
+    let surnameInput = e.target.value.toUpperCase();
+
+    dispatch({
+      type: 'ON CHANGE',
+      field: e.target.name,
+      payload: surnameInput
+    })
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Physician.fetchPatientData(patientID)
+    const patientInfo = {
+      patientID: patientForm.patientID[0],
+      patientLastName: patientForm.patientLastName[0]
+    }
+
+    
+    Physician.verifyPatientInformation(patientInfo)
       .then(res => {
         if (res.status === 200) {
           setPatientInfo(res.data.patientInfo)
@@ -25,8 +46,8 @@ function PatientIDInput({Component}) {
         }
       })
       .catch(error => {
-        if (error.response.status) {
-          setErrorMessage("Patient not found!")
+        if (error.response.headers) {
+          setErrorMessage('Patient not found')
         }
       })
   }
@@ -45,7 +66,19 @@ function PatientIDInput({Component}) {
               style={{
                 whiteSpace:'pre-line'
               }}
-              value={patientID}
+              value={patientForm.patientID}
+              name="patientID"
+              onChange={handleChange}
+            />
+
+            <label>Patient Last Name</label>
+            <input 
+              type="text"
+              style={{
+                whiteSpace:'pre-line'
+              }}
+              value={patientForm.patientLastName}
+              name="patientLastName"
               onChange={handleChange}
             />
         </div>

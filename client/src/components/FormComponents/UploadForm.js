@@ -47,24 +47,26 @@ export default function UploadForm(props) {
 	};
 
   return (
-    <form onSubmit={handleSubmission} encType="multipart/form-data">
-      <div>
-          <input type="file" name="file" onChange={changeHandler} />
-          { isFilePicked ? (
-            <div>
-              <p>File Name: {selectedFile.file.name}</p>
-              <p>File Type: {selectedFile.filetype}</p>
-              <p>
-                Last Modified Date:{' '}
-                {selectedFile.file.lastModifiedDate.toLocaleDateString()}
-              </p>
+    <>
+      <form onSubmit={handleSubmission} encType="multipart/form-data">
+        <div>
+            <input type="file" name="file" onChange={changeHandler} />
+            { isFilePicked ? (
+              <div>
+                <p>File Name: {selectedFile.file.name}</p>
+                <p>File Type: {selectedFile.filetype}</p>
+                <p>
+                  Last Modified Date:{' '}
+                  {selectedFile.file.lastModifiedDate.toLocaleDateString()}
+                </p>
 
-              <button type="submit">Submit</button>
-            </div>
-          ) : (
-            <p>Select a file to show details</p>
-          )}
-        </div>
-    </form>
+                <button type="submit">Submit</button>
+              </div>
+            ) : (
+              <p>Select a file to show details</p>
+            )}
+          </div>
+      </form>
+    </>
   );
 }
