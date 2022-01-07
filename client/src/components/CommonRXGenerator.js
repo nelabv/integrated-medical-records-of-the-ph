@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function CommonRXGenerator(props) {
-  const { patientInfo, patientID } = props;
+  const { patientInfo , patientID } = props;
   const [prescriptionText, setPrescriptionText] = useState('')
   const [statusMsg, setStatusMsg] = useState('')
 

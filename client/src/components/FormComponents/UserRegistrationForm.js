@@ -17,10 +17,16 @@ function UserRegistrationForm(props) {
   const [userForm, dispatch] = useReducer(FormReducer, initialUserForm);
 
   const handleChange = (e) => {
+    let input = e.target.value;
+
+    if (e.target.name !== 'password' && e.target.name !== 'username') {
+      input = e.target.value.toUpperCase();
+    }
+
     dispatch({
       type: 'ON CHANGE',
       field: e.target.name,
-      payload: e.target.value
+      payload: input
     })
   }
 
