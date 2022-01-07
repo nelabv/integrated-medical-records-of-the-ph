@@ -5,7 +5,7 @@ import CommonRXGenerator from "../components/CommonRXGenerator";
 export default function GeneratePrescription() {
   return (
     <>
-{/*       <PatientIDInput Component={CommonRXGenerator} /> */}
+      <PatientIDInput Component={CommonRXGenerator} />
     </>
   );
 }

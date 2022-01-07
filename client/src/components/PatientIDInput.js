@@ -17,6 +17,10 @@ function PatientIDInput({Component}) {
   const [patientForm, dispatch] = useReducer(FormReducer, initialPatientVerificationForm);
 
   const handleChange = (e) => {
+    if (e.target.name === 'patientID') {
+      setPatientID(e.target.value)
+    }
+
     setShowComponent(false);
     setErrorMessage('')
 
@@ -71,7 +75,7 @@ function PatientIDInput({Component}) {
               onChange={handleChange}
             />
 
-            <label>Patient Last Name</label>
+            <label>Patient's Last Name:</label>
             <input 
               type="text"
               style={{

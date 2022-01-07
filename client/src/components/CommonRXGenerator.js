@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 function CommonRXGenerator(props) {
-  const { firstName, lastName } = props.patientInfo;
-  const { patientID } = props;
+  const { patientInfo, patientID } = props;
   const [prescriptionText, setPrescriptionText] = useState('')
   const [statusMsg, setStatusMsg] = useState('')
 
@@ -44,7 +43,6 @@ function CommonRXGenerator(props) {
 
   return (
     <div>
-      Generating prescription for <span style={{textTransform: 'uppercase'}}>{lastName}, {firstName}</span>
 
       <div style={{
         display: 'flex', 
