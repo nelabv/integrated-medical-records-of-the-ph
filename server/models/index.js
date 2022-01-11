@@ -62,7 +62,7 @@ const InstitutionSchema = new Schema({
 
 const PhysicianSchema = new Schema({
   physicianID: {
-    type: Number,
+    type: String,
     required: true,
     unique: true
   },

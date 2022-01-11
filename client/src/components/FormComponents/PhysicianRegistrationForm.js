@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import FormReducer from '../../reducers/FormReducer';
-import CountrySelector from '../CountrySelector';
+import Physician from "../../methods/physicians"
 
 const initialPhysicianForm = {
   licenseNumber: '',
@@ -8,8 +8,7 @@ const initialPhysicianForm = {
   username: '',
   password: '',
   firstName: '',
-  lastName: '',
-  country: 'Philippines'
+  lastName: ''
 }
 
 function UserRegistrationForm(props) {
@@ -33,7 +32,7 @@ function UserRegistrationForm(props) {
     e.preventDefault();
 
     console.log(physicianForm)
-/*     // Code below is for registration
+    // Code below is for registration
     e.preventDefault();
     // Prepare object
     const physicianInformation = {
@@ -51,7 +50,7 @@ function UserRegistrationForm(props) {
           alert('registered')
           // do redirections here
         })
-        .catch(err => console.log(err)) */
+        .catch(err => console.log(err))
   }
 
   return (
@@ -128,10 +127,6 @@ function UserRegistrationForm(props) {
             }}
             required
           />
-
-          <CountrySelector 
-              initialValue={initialPhysicianForm}
-              handleChange={handleChange} />
 
       <button type="submit">Submit</button>
 

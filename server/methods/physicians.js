@@ -6,6 +6,7 @@ import { Physician } from "../models/index.js";
 import { User } from "../models/index.js";
 import FileGenerators from "./fileGenerators/fileGenerators.js";
 import dotenv from "dotenv";
+import { v4 as uuidv4 } from 'uuid';
 
 dotenv.config();
 
@@ -41,13 +42,13 @@ export default class PhysiciansAPI {
               }
               else {
                 const physician = {
-                  physicianID: count + 1, 
+                  physicianID: uuidv4(),
                   licenseNumber,
+                  specialization,
                   username,
                   password: hash,
                   firstName,
-                  lastName,
-                  country
+                  lastName
                 }
 
                 const newPhysician = new Physician(physician);
@@ -124,10 +125,10 @@ export default class PhysiciansAPI {
     try {
       const physicianInfo = await Physician.findOne({ username: req.session.PHYSICIAN_USERNAME });
 
-      const { physicianID, username, firstName, lastName, country } = physicianInfo;
+      const { physicianID, username, firstName, lastName } = physicianInfo;
   
       res.status(200).json({
-        physicianID, username, firstName, lastName, country
+        physicianID, username, firstName, lastName
       })
     } catch (error) {
       res.status(404).json({
