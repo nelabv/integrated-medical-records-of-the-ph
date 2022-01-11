@@ -13,10 +13,10 @@ function App() {
   }, [history])
 
   return (
-    <div>
-      <div>
-        <h1>MediRecords</h1>
-        <Link to="/users/login">
+    <div className="center-align default">
+      <div className="home-container">
+        <h1>integrated medical records of the philippines</h1>
+{/*         <Link to="/users/login">
           <button>Login for Users</button>
         </Link>
 
@@ -26,15 +26,20 @@ function App() {
 
         <Link to="/register">
           <button>Register</button>
+        </Link> */}
+
+        <Link to="/login/as">
+            <button className='primary-btn'>Login</button>  
+        </Link>
+        
+        <Link to="/register">
+            <button className='secondary-btn'>Register</button>   
         </Link>
       </div>
 
-      <div>
         <h2>How it works</h2>
 
-        <p>An organized health record system is a mislooked problem in most third world countries which results to misdiagnosis.
-          MediRecords is a project that aims to provide an organized medical health record system.</p>
-      </div>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
     </div>
   );
 }

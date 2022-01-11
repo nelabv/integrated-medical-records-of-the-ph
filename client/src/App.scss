@@ -1,11 +1,11 @@
 @import './styling/colors';
+@import './styling/containers';
+@import './styling/elements';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-h1 {
-  color: $red;
+  font-family: 'Cabin', sans-serif;
+  color: $gray;
 }

@@ -1,0 +1,14 @@
+.primary-btn {
+  background-color: $accentYellow;
+  color: white;
+  border: 1px solid $accentYellow;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+}
+
+.secondary-btn {
+  @extend .primary-btn;
+
+  background-color: white;
+  color: $accentYellow;
+}

@@ -1,0 +1,36 @@
+.center-align {
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  text-align: center;
+}
+
+.home-container {
+  padding: 12em 1em;
+  margin: 1em;
+  background-color: white;
+  border-radius: 1em;
+  height: 90vh;
+
+  h1 {
+    color: $blueGreen;
+    margin-bottom: 0.5em;
+  }
+
+  .secondary-btn {
+    margin-left: 1em;
+  }
+}
+
+.default {
+  background-color: $tonedGray;
+
+  h2 {
+    color: $blueGreen;
+    margin-bottom: 1em;
+  }
+
+  p {
+    padding: 0 1em;
+  }
+}

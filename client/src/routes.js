@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import RegisterForm from "./pages/RegisterForm";
+import LoginAs from "./pages/LoginAs";
 import UserLogin from "./pages/UserLogin";
 import PhysicianLogin from "./pages/PhysicianLogin";
 
@@ -21,6 +22,7 @@ export const routes = (
       {/* ----- UNPROTECTED ROUTES ----- */}
       <Route exact path='/' component={App} />
       <Route path="/register" component={RegisterForm} />
+      <Route path="/login/as" component={LoginAs} />
       <Route path='/users/login' component={UserLogin} />
       <Route path='/physicians/login' component={PhysicianLogin} />
 
