@@ -4,7 +4,7 @@ import { Institution } from "../models/index.js";
 
 export default class InstitutionsAPI {
   static async register(req, res) {
-    const { username, password, name } = req.body;
+    const { username, password, registeredName, email, location, profile, website } = req.body;
 
     try {
       bcryptjs.hash(password, 10, async function(error, hash) {
@@ -15,7 +15,11 @@ export default class InstitutionsAPI {
             institutionID: uuidv4(),
             username,
             password: hash,
-            name
+            registeredName,
+            email,
+            location,
+            profile,
+            website
           }
 
           const newInstitution = new Institution(institution);
@@ -29,9 +33,9 @@ export default class InstitutionsAPI {
                   error
                 })
               } else {
-                console.log(`Institution registration successful`);
+                console.log(`Institution waitlisted successfully. Please wait for approval.`);
                 res.status(200).json({
-                  status: "Institution registered successfully!",
+                  status: "Institution waitlisted.",
                   response
                 })
               }

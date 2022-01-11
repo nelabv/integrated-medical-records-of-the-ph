@@ -2,6 +2,7 @@ import express from "express";
 import UsersAPI from "./users.js";
 import SharedAPI from "./shared.js";
 import PhysiciansAPI from "./physicians.js";
+import InstitutionsAPI from "./institutions.js";
 import FileHandler from "./fileHandler.js";
 import { checkIfAuthenticated, checkIfAuthorized, userAccessOnly } from "../middlewares/index.js";
 
@@ -62,5 +63,10 @@ router.route("/download-file")
 // DEVELOPMENT
 router.route("/verify")
   .get(checkIfAuthenticated, PhysiciansAPI.verifyPatientID)
+
+
+// ADMIN ACCESS ONLY
+router.route('/approval')
+  .post(InstitutionsAPI.register)
     
 export default router;

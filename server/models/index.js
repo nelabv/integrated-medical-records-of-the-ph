@@ -54,9 +54,24 @@ const InstitutionSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  registeredName: {
     type: String,
     required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  location: {
+    type: String,
+    required: true
+  },
+  profile: {
+    type: String,
+    required: true
+  },
+  website: {
+    type: String
   }
 })
 
@@ -95,5 +110,5 @@ const PhysicianSchema = new Schema({
 })
 
 export const User = mongoose.model('Users', UserSchema);
-export const Institution = mongoose.model('Institutions', InstitutionSchema);
+export const Institution = mongoose.model('Approval', InstitutionSchema);
 export const Physician = mongoose.model('Physician', PhysicianSchema);
