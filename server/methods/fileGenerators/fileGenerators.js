@@ -1,6 +1,7 @@
 import PDFDocument from "pdfkit";
 import { User } from "../../models/index.js"
 import FileHandler from "../fileHandler.js";
+import SharedAPI from "../shared.js";
 
 export default class FileGenerators {
   static async medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO) {
@@ -22,6 +23,8 @@ export default class FileGenerators {
     const doc = new PDFDocument({size: 'A5'})
     let filename = req.body.filename;
 
+    const age = await SharedAPI.computeYearsBetweenTwoDates(PATIENT_INFO.birthdate, 2021);
+
     // Header 
     doc.fillColor(PALETTE.blackCoral)
       .fontSize(14)
@@ -40,20 +43,11 @@ export default class FileGenerators {
       .moveDown(0.5)
       .fontSize(8)
       .fillColor(PALETTE.cadetGray)
-      .text(`Phone: ${PHYSICIAN_INFO.phoneNumber}`, {
+      .text(`Physician ID Number: ${PHYSICIAN_INFO.physicianID}`, {
         lineBreak: true, 
         lineGap: 1
       })
-      .moveDown(0.25)
-      .text(`E-mail: ${PHYSICIAN_INFO.email}`, {
-        lineBreak: true, 
-        lineGap: 1
-      })
-      .moveDown(1)
-
-    // Border
-    doc.rect(20, 90, 375, 5).fill(PALETTE.cadetGray)
-      .moveDown(1)
+      .moveDown(1.25)
 
     // Patient Information
     .fontSize(10)
@@ -64,18 +58,15 @@ export default class FileGenerators {
     })
     .fontSize(10)
     .fillColor(PALETTE.cadetGray)
-    .text(`Age: ${patientAge} / ${PHYSICIAN_INFO.sex}`, {
+    .text(`Age: ${age} / ${PATIENT_INFO.sex}`, {
       lineBreak: true, 
       lineGap: 1
     })
       .text(`Date: ${today}`)
 
-    // Rx logo
-      doc.image('images/rx.jpg', 20, 150, {fit: [30, 30]})
-
     // Medications for Patient
     doc.fontSize(12)
-      .text(medications, 20, 210)
+      .text(medications.toUpperCase(), 20, 140)
 
       filename = encodeURIComponent(filename) + '.pdf'
       const content = req.body.content
@@ -90,13 +81,6 @@ export default class FileGenerators {
       _contentType: 'application/pdf',
       fileExtension: 'pdf'
     }
-    /* 
-        Params for uploading to S3 Bucket:
-        * patientID: This serves as the directory to a patient's files.
-        * file: The document to be uploaded
-        * recordType: Type of document (could be prescription, image, etc.)
-        * _contentType: For uploading purposes only
-     */
 
     FileHandler.uploadToBucket(paramsForBucketUpload)
       .catch(() => {
