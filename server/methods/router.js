@@ -3,6 +3,7 @@ import UsersAPI from "./users.js";
 import SharedAPI from "./shared.js";
 import PhysiciansAPI from "./physicians.js";
 import InstitutionsAPI from "./institutions.js";
+import AdminAPI from "./admin/admin.js";
 import FileHandler from "./fileHandler.js";
 import { checkIfAuthenticated, checkIfAuthorized, userAccessOnly } from "../middlewares/index.js";
 
@@ -68,5 +69,8 @@ router.route("/verify")
 // ADMIN ACCESS ONLY
 router.route('/approval')
   .post(InstitutionsAPI.register)
+
+router.route('/confirm?:type?:id')
+  .post(AdminAPI.approveRegistration)
     
 export default router;

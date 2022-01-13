@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 import { v4 as uuidv4 } from 'uuid';
-import { Institution } from "../models/index.js";
+import { ForApproval } from "../models/index.js";
 
 export default class InstitutionsAPI {
   static async register(req, res) {
@@ -22,7 +22,7 @@ export default class InstitutionsAPI {
             website
           }
 
-          const newInstitution = new Institution(institution);
+          const newInstitution = new ForApproval(institution);
 
           newInstitution.save()
             .then((response, error) => {
@@ -35,8 +35,7 @@ export default class InstitutionsAPI {
               } else {
                 console.log(`Institution waitlisted successfully. Please wait for approval.`);
                 res.status(200).json({
-                  status: "Institution waitlisted.",
-                  response
+                  status: "Institution waitlisted."
                 })
               }
             }) 
