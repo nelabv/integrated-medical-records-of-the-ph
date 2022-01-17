@@ -1,5 +1,4 @@
 import bcryptjs from "bcryptjs";
-import { v4 as uuidv4 } from 'uuid';
 import { ForApproval } from "../models/index.js";
 
 export default class InstitutionsAPI {
@@ -12,7 +11,6 @@ export default class InstitutionsAPI {
           console.error(`Error in hashing password: ${e}`);
         } else {
           const institution = {
-            institutionID: uuidv4(),
             username,
             password: hash,
             registeredName,
