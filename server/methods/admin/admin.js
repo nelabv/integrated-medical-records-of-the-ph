@@ -4,6 +4,7 @@ import { User,
   ForApproval 
 } from "../../models/index.js";
 import { v4 as uuidv4 } from 'uuid';
+import { response } from "express";
 
 export default class AdminAPI {
   static async approveOrDeclineRegistration(req, res) {
@@ -85,7 +86,9 @@ export default class AdminAPI {
       addToCollection(pendingDocument, type)
     } else if (status === 'false') {
       // Unapproved
-
+      res.status(200).json({
+        message: "Application declined successfully."
+      })
     } else {
       res.status(400).json({
         message: "Document exists in the collection. Wrong input from user."

@@ -2,7 +2,7 @@ import bcryptjs from "bcryptjs";
 import multer from 'multer';
 import multerS3 from 'multer-s3';
 import aws from 'aws-sdk';
-import { Physician } from "../models/index.js";
+import { ForApproval, Physician } from "../models/index.js";
 import { User } from "../models/index.js";
 import FileGenerators from "./fileGenerators/fileGenerators.js";
 import dotenv from "dotenv";
@@ -51,20 +51,18 @@ export default class PhysiciansAPI {
                   lastName
                 }
 
-                const newPhysician = new Physician(physician);
+                const newPhysician = new ForApproval(physician);
   
                 newPhysician.save()
                   .then((response, error) => {
                     if (error) {
-                      console.log(`Physician registration error`);
                       res.status(404).json({
-                        status: "An error occurred",
+                        status: "Error in registering physician",
                         error
                       })
                     } else {
-                      console.log(`Physician registration successful`);
                       res.status(200).json({
-                        status: "Physician registered successfully!",
+                        status: "Physician waitlisted successfully! Please wait for approval.",
                         response
                       })
                     }

@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 import { v4 as uuidv4 } from 'uuid';
-import { User } from "../models/index.js";
+import { User, ForApproval } from "../models/index.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -29,7 +29,7 @@ export default class UsersAPI {
               }
 
               const user = {
-                patientID: count + 1,
+                patientID: uuidv4(),
                 username,
                 password: hash,
                 firstName,
@@ -39,20 +39,18 @@ export default class UsersAPI {
                 bloodType
               }
 
-              const newUser = new User(user);
+              const newUser = new ForApproval(user);
   
               newUser.save()
                 .then((response, error) => {
                   if (error) {
-                    console.log(`User registration error`);
                     res.status(404).json({
-                      status: "An error occurred",
+                      status: "Error in registering user.",
                       error
                     })
                   } else {
-                    console.log(`User registration successful`);
                     res.status(200).json({
-                      status: "User registered successfully!",
+                      status: "User waitlisted successfully! Please wait for approval.",
                       response
                     })
                   }
