@@ -13,33 +13,25 @@ function App() {
   }, [history])
 
   return (
-    <div className="center-align default">
-      <div className="home-container">
-        <h1>integrated medical records of the philippines</h1>
-{/*         <Link to="/users/login">
-          <button>Login for Users</button>
-        </Link>
+    <div className='home-container'>
+      <div className="front-homepage">
+        <h1>Integrated Medical Records of the Philippines</h1>
 
-        <Link to="/physicians/login">
-          <button>Login for Physicians</button>
-        </Link>
+        <div className='button-holder'>
+            <Link to="/login/as">
+                <button className='primary-btn'>Login</button>  
+            </Link>
+            
+            <Link to="/register">
+                <button className='secondary-btn'>Register</button>   
+            </Link>
+        </div>
 
-        <Link to="/register">
-          <button>Register</button>
-        </Link> */}
-
-        <Link to="/login/as">
-            <button className='primary-btn'>Login</button>  
-        </Link>
-        
-        <Link to="/register">
-            <button className='secondary-btn'>Register</button>   
-        </Link>
       </div>
 
-        <h2>How it works</h2>
+      <h2>How it works</h2>
 
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+      <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
     </div>
   );
 }

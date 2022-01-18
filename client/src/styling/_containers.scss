@@ -1,36 +1,45 @@
-.center-align {
+// Defa
+@mixin default-padding {
+  padding: 0 1em;
+}
+
+@mixin flex {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
 }
 
+@mixin center-align {
+  @include flex;
+}
+
+@mixin left-align {
+  @include flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+
 .home-container {
-  padding: 12em 1em;
-  margin: 1em;
-  background-color: white;
-  border-radius: 1em;
+  @include default-padding;
+}
+
+.front-homepage {
+  @include left-align;
+  padding: 12em 0;
   height: 90vh;
+  border-bottom: 1px solid $gray;
 
   h1 {
-    color: $blueGreen;
+    color: $primaryGreen;
     margin-bottom: 0.5em;
-  }
-
-  .secondary-btn {
-    margin-left: 1em;
   }
 }
 
-.default {
-  background-color: $tonedGray;
+.button-holder {
+  @include left-align;
 
-  h2 {
-    color: $blueGreen;
-    margin-bottom: 1em;
-  }
-
-  p {
-    padding: 0 1em;
-  }
+  width: 50%;
+  flex-direction: row;
+  justify-content: space-between;
 }
