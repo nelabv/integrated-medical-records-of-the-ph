@@ -1,6 +1,6 @@
 @import './styling/colors';
-@import './styling/containers';
 @import './styling/elements';
+@import './styling/containers';
 
 * {
   margin: 0;
@@ -12,4 +12,12 @@
 
 p {
   line-height: 1.6;
+}
+
+body {
+  padding: 0 1em;
+}
+
+a {
+  text-decoration: none;
 }

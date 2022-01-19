@@ -1,31 +1,8 @@
-// Defa
-@mixin default-padding {
-  padding: 0 1em;
-}
-
-@mixin flex {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-@mixin center-align {
-  @include flex;
-}
-
-@mixin left-align {
-  @include flex;
-  justify-content: flex-start;
-  text-align: left;
-}
-
-.home-container {
-  @include default-padding;
-}
+@import './mixins';
 
 .front-homepage {
-  @include left-align;
+  @include flex-left;
+
   padding: 12em 0;
   height: 90vh;
   border-bottom: 1px solid $gray;
@@ -36,10 +13,36 @@
   }
 }
 
+.form-page {
+  @include flex-center;
+
+  padding-top: 2em;
+
+  h2 {
+    margin-bottom: 1em;
+  }
+}
+
 .button-holder {
-  @include left-align;
+  @include flex-left;
 
   width: 50%;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.login-page {
+  padding-top: 4em;
+  @include flex-center;
+  width: 100%;
+
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  span {
+    margin-bottom: 1.5em;
+
+  }
 }

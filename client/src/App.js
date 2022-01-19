@@ -13,7 +13,7 @@ function App() {
   }, [history])
 
   return (
-    <div className='home-container'>
+    <div>
       <div className="front-homepage">
         <h1>Integrated Medical Records of the Philippines</h1>
 

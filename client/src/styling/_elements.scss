@@ -1,3 +1,8 @@
+@import './mixins';
+@import './colors';
+
+// BUTTONS
+
 .primary-btn {
   background-color: $accentYellow;
   color: white;
@@ -11,3 +16,66 @@
   background-color: white;
   color: $accentYellow;
 }
+
+.huge-btn {
+  @include flex-center;
+  width: 10em;
+  height: 10em;
+  border: 1px solid $primaryGreen;
+  border-radius: 3px;
+  margin-bottom: 1em;
+
+  -webkit-box-shadow:0px 0px 9px 3px rgba(97,97,97,0.2);
+  -moz-box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
+  box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
+
+  span {
+    color: $primaryGreen;
+    font-size: 0.75em;
+  }
+}
+
+// FORMS
+
+.form-group {
+  @include flex-left;
+
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 0.60em;
+  font-kerning: normal;
+}
+
+.form-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid $gray;
+  color: $accentYellow;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin: 0.5em 0;
+  padding: 1em;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form-label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}
+
+// TEXTS (SPANS, ETC)
+
+.colored-text {
+  color: $primaryGreen;
+}
+
+
+

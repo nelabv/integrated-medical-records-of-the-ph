@@ -12,16 +12,27 @@ function LoginAs() {
   }, [history])
 
   return (
-    <div className="center-align default">
-      <h2>Welcome back!</h2>
-         <Link to="/users/login">
-          <button>Login for Users</button>
+    <div className="login-page">
+      <h2><span className='colored-text'>Welcome</span> back!</h2>
+      <span>View your medical records in one tap.</span>
+
+        <Link to="/users/login">
+              <div className='huge-btn'>
+                <span>USER</span>
+              </div>
         </Link>
 
         <Link to="/physicians/login">
-          <button>Login for Physicians</button>
+              <div className='huge-btn'>
+                <span>PHYSICIAN</span>
+              </div>
         </Link>
 
+        <Link to="/physicians/login">
+              <div className='huge-btn'>
+                <span>INSTITUTIONS (soon)</span>
+              </div>
+        </Link>
     </div>
   );
 }

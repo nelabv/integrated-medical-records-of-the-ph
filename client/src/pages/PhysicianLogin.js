@@ -46,16 +46,26 @@ export default function UserLogin() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input type="text" name="username" value={formState.username} onChange={handleInputChange}></input>
+    <div className="form-page">
+      <h2><span className="colored-text">PHYSICIANS'</span> PORTAL</h2>
 
-        <label>Password</label>
-        <input type="password" name="password" value={formState.password} onChange={handleInputChange}></input>
+      <form className='form-group' onSubmit={handleSubmit}>
+        <label className='form-label'>USERNAME</label>
+        <input className='form-field' 
+                type="text" 
+                name="username" 
+                value={formState.username} 
+                onChange={handleInputChange}></input>
 
-        <input type="submit" />
+        <label className='form-label'>PASSWORD</label>
+        <input className='form-field' 
+                type="password" 
+                name="password" 
+                value={formState.password} 
+                onChange={handleInputChange}></input>
+
+        <input className='primary-btn' type="submit" />
       </form>
-    </>
+    </div>
   );
 }
