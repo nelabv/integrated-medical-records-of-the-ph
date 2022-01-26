@@ -26,8 +26,8 @@ class User {
     return http.get(`/fetch-files`)
   }
 
-  downloadFile(fileName) {
-    return http.post("/download-file", {fileName})
+  downloadFile(filename) {
+    return http.get(`/download/${filename}`);
   }
 
   register(userInformation) {

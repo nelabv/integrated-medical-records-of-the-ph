@@ -1,13 +1,11 @@
 import { User } from "../models/index.js"
 import AWS from 'aws-sdk'
 import { v4 as uuidv4 } from 'uuid';
-import { Buffer } from "buffer";
 
 const s3 = new AWS.S3();
 
 export default class FileHandler {
   static async uploadToBucket(params) {
-    console.log(params.recordType)
     /* 
         Params for uploading to S3 Bucket:
         * patientID: This serves as the directory to a patient's files.
@@ -63,19 +61,22 @@ export default class FileHandler {
   }
 
   static async downloadFile(req, res, next) {
-    s3.getSignedUrl('getObject', {
-      Bucket: process.env.BUCKET_NAME,
-      Key: req.body.fileName
-    }, (error, url) => {
-      if (error) {
-        res.status(403).json({
-          error
-        })
-      } else {
-        res.status(200).json({
-          url
-        })
-      }
-    })
+    try {
+      // Get patientID
+      const { filename } = req.params;
+      const decodedFilename = decodeURIComponent(filename);
+
+      const fileURL = `https://${process.env.BUCKET_NAME}.${process.env.REGION_STRING}.amazonaws.com/${decodedFilename}`
+
+      res.status(200).json({
+        fileURL
+      })
+
+    } catch(err) {
+      res.status(400).json({
+        message: "An error occurred. Please see client parameters if file name is valid.",
+        err
+      })
+    }
   }
 }

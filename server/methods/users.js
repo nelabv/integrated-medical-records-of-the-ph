@@ -81,8 +81,10 @@ export default class UsersAPI {
       if (comparePasswords) {
         req.session.AUTH = true;
         req.session.USERNAME = username;
+        req.session.ID = userData.patientID;
 
         res.status(200).json({
+          id: userData.patientID,
           status: "success",
           message: "Successful login"
         })

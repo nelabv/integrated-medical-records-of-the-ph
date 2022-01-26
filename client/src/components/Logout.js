@@ -13,8 +13,7 @@ export default function Logout() {
         if (err)
           throw err;
         
-        sessionStorage.removeItem("AUTH");
-        sessionStorage.removeItem("ENTITY");
+        sessionStorage.clear();
         history.push("/");
       })
   }

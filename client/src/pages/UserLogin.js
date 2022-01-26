@@ -21,7 +21,6 @@ export default function UserLogin() {
   }
 
   const handleSubmit = async (e) => {
-    console.log('click')
     e.preventDefault();
     const loginForm = {
       username: formState.username[0],
@@ -30,7 +29,10 @@ export default function UserLogin() {
     
     User.login(loginForm)
       .then((response) => {
+        console.log(response);
+
         sessionStorage.setItem("AUTH", true);
+        sessionStorage.setItem("ID", response.data.id);
         history.push("/dashboard");
       })
 

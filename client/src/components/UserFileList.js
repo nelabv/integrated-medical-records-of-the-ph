@@ -5,6 +5,8 @@ function UserFileList() {
   const [fileList, setFileList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [downloadURL, setDownloadURL] = useState('');
+
   useEffect(() => {
     User.fetchFileList()
     .then((res) => {
@@ -14,10 +16,12 @@ function UserFileList() {
   }, [])
 
   const downloadFile = async (fileName) => {
-    User.downloadFile(fileName)
-      .then((res) => {
-        window.open(res.data.url)
-    })
+    const encodedURI = encodeURIComponent(fileName);
+
+    await User.downloadFile(encodedURI)
+        .then(res => 
+          window.open(res.data.fileURL, "_blank")
+        )
   }
   
   return (
@@ -26,11 +30,13 @@ function UserFileList() {
         isLoading 
           ? null
           : fileList.map((file) => {
+            let fileName = file.Key;
+
             return (
               <div key={file.Key}>
                 <span>{file.Key}</span>
 
-                <button onClick={() => downloadFile(file.Key)}>DOWNLOAD</button>
+                <button onClick={() => downloadFile(fileName)}>DOWNLOAD</button>
               </div>
             )
           })

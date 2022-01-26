@@ -5,7 +5,7 @@ import PhysiciansAPI from "./physicians.js";
 import InstitutionsAPI from "./institutions.js";
 import AdminAPI from "./admin/admin.js";
 import FileHandler from "./fileHandler.js";
-import { checkIfAuthenticated, checkIfAuthorized, userAccessOnly } from "../middlewares/index.js";
+import { checkIfAuthenticated, physiciansAccessOnly, userAccessOnly } from "../middlewares/index.js";
 
 const router = express.Router(); 
 
@@ -37,13 +37,13 @@ router.route("/physicians/login")
   .post(PhysiciansAPI.login);
 
 router.route("/physicians/dashboard")
-  .get(checkIfAuthenticated, PhysiciansAPI.fetchPhysicianInfo);
+  .get(physiciansAccessOnly, PhysiciansAPI.fetchPhysicianInfo);
 
 router.route("/physicians/generate-prescription") // ADMIN ONLY
-  .post(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.generatePrescription);
+  .post(checkIfAuthenticated, physiciansAccessOnly, PhysiciansAPI.generatePrescription);
 
 router.route("/physicians/fetch-patient")
-  .get(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.fetchPatientInfoByID);
+  .get(checkIfAuthenticated, physiciansAccessOnly, PhysiciansAPI.fetchPatientInfoByID);
 
 // SHARED ACTIONS
 
@@ -52,13 +52,13 @@ router.route("/logout")
 
 // FILE HANDLING
 router.route('/upload-to-bucket')
-  .post(checkIfAuthenticated, checkIfAuthorized, PhysiciansAPI.imageUpload);
+  .post(checkIfAuthenticated, physiciansAccessOnly, PhysiciansAPI.imageUpload);
 
 router.route("/fetch-files")
   .get(userAccessOnly, FileHandler.fetchUserFiles)
 
-router.route("/download-file")
-  .post(FileHandler.downloadFile)
+router.route("/download/:filename")
+  .get(checkIfAuthenticated, FileHandler.downloadFile)
 
 
 // DEVELOPMENT
