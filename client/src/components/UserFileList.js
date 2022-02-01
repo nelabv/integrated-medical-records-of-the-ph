@@ -5,8 +5,6 @@ function UserFileList() {
   const [fileList, setFileList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [downloadURL, setDownloadURL] = useState('');
-
   useEffect(() => {
     User.fetchFileList()
     .then((res) => {
@@ -21,11 +19,11 @@ function UserFileList() {
     await User.downloadFile(encodedURI)
         .then(res => 
           window.open(res.data.fileURL, "_blank")
-        )
+        ) // Might not be the best practice. To replace for now
   }
   
   return (
-    <>
+    <div className="file-container">
       {
         isLoading 
           ? null
@@ -33,15 +31,15 @@ function UserFileList() {
             let fileName = file.Key;
 
             return (
-              <div key={file.Key}>
+              <div className="user-file" key={file.Key}>
                 <span>{file.Key}</span>
 
-                <button onClick={() => downloadFile(fileName)}>DOWNLOAD</button>
+                <button className="primary-btn" onClick={() => downloadFile(fileName)}>DOWNLOAD</button>
               </div>
             )
           })
       }
-    </>
+    </div>
   );
 }
 

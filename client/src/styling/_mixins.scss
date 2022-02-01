@@ -12,3 +12,22 @@
   
   justify-content: flex-start;
 }
+
+@mixin background($path,$position:0 0,$size: center,$repeat: no-repeat) {
+  background: linear-gradient(to top, rgba(0, 195, 255, 0.5), #ffffffd2), url($path);
+
+  background: {
+      position: $position;
+      size: $size;
+      repeat: $repeat;
+  }
+}
+
+@mixin background-overlay($height, $width) {
+  height: $height;
+  width: $width;
+  background-color: rgb(207, 183, 102);
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+}
