@@ -1,6 +1,5 @@
-@import './styling/colors';
-@import './styling/elements';
-@import './styling/containers';
+@import './styling/imports';
+
 
 * {
   margin: 0;
@@ -10,7 +9,7 @@
   color: $gray;
 }
 
-p {
+p, span {
   line-height: 1.6;
 }
 

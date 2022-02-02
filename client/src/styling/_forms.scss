@@ -1,0 +1,38 @@
+@import './mixins';
+@import './colors';
+
+// FORMS
+
+.form-group {
+  @include flex-left;
+
+  align-items: flex-start;
+  width: 100%;
+}
+
+.form-label {
+  font-size: 0.60em;
+  font-kerning: normal;
+}
+
+.form-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid $gray;
+  color: $accentYellow;
+  background: transparent;
+  transition: border-color 0.2s;
+  margin: 0.5em 0;
+  padding: 1em;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .form-label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  }
+}

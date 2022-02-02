@@ -1,0 +1,30 @@
+@import './colors';
+
+.colored-text {
+  color: $paleGreen;
+}
+
+.heading {
+  @include flex-left;
+
+  flex-direction: row;
+  margin: 1rem 0;
+
+  path {
+    fill: $primaryGreen;
+  }
+  
+  h2 {
+    margin-left: 0.5em;
+    color: $primaryGreen;
+  }
+}
+
+.block-text {
+  margin: 1rem 0;
+}
+
+.all-caps {
+  font-size: 0.75rem;
+  font-kerning: normal;
+}

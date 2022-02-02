@@ -1,0 +1,38 @@
+@import './colors';
+@import './mixins';
+
+// BUTTONS
+
+.primary-btn {
+  background-color: $accentYellow;
+  color: white;
+  border: 1px solid $accentYellow;
+  padding: 1rem;
+  @include flex-center;
+  flex-direction: row;
+}
+
+.secondary-btn {
+  @extend .primary-btn;
+
+  background-color: white;
+  color: $accentYellow;
+}
+
+.huge-btn {
+  @include flex-center;
+  width: 10em;
+  height: 10em;
+  border: 1px solid $primaryGreen;
+  border-radius: 3px;
+  margin-bottom: 1em;
+
+  -webkit-box-shadow:0px 0px 9px 3px rgba(97,97,97,0.2);
+  -moz-box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
+  box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
+
+  span {
+    color: $primaryGreen;
+    font-size: 0.75em;
+  }
+}

@@ -1,16 +1,27 @@
 @import './mixins';
 
+.standard-cont {
+  @include flex-left;
+
+  padding: 4rem 1rem;
+}
+
 .front-homepage {
-  @include flex-center;
+  @include flex-left;
   @include background('./assets/homepage.jpeg', 60% 50%, cover, no-repeat);
 
-  padding: 12em 0;
+  align-items: flex-start;
+  padding: 12rem 1rem;
   height: 90vh;
-  border-bottom: 1px solid $gray;
 
   h1 {
-    color: $primaryGreen;
+    color: $paleGreen;
     margin-bottom: 0.5em;
+  }
+
+  span {
+    color: white;
+    margin-bottom: 1em;
   }
 }
 
@@ -89,5 +100,30 @@
   span {
     order: 1;
     font-weight: 600;
+  }
+}
+
+.footer {
+  background-color: $gray;
+  padding: 3em 1em;
+  
+  span {
+    color: white;
+  }
+}
+
+.footer-contact {
+  @include flex-left;
+}
+
+.homepage-image-banner {
+  @include background('./assets/homepage2.jpg', 60% 50%, cover, no-repeat);
+  @include flex-left;
+  height: 40vh;
+
+  h3 {
+    color: white;
+    font-size: 1.5rem;
+    padding-left: 1em;
   }
 }
