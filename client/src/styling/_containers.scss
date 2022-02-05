@@ -2,6 +2,7 @@
 
 .standard-cont {
   @include flex-left;
+  width: 100%;
 
   padding: 4rem 1rem;
 }
@@ -44,8 +45,9 @@
 }
 
 .login-page {
-  padding-top: 4em;
-  @include flex-center;
+  @include flex-left;
+  
+  padding: 2em 1em;
   width: 100%;
 
 
@@ -103,6 +105,29 @@
   }
 }
 
+.nav-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(7, 7, 7, 0.301);
+}
+
+.nav-sidebar {
+  @include flex-left;
+
+  align-items: flex-end;
+  justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  padding: 3em 1em;
+  background-color: white;
+}
+
 .footer {
   background-color: $gray;
   padding: 3em 1em;
@@ -116,14 +141,8 @@
   @include flex-left;
 }
 
-.homepage-image-banner {
-  @include background('./assets/homepage2.jpg', 60% 50%, cover, no-repeat);
+.getting-started {
   @include flex-left;
-  height: 40vh;
 
-  h3 {
-    color: white;
-    font-size: 1.5rem;
-    padding-left: 1em;
-  }
+  padding: 9em 1em 3em 1em;
 }

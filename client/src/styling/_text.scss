@@ -8,7 +8,8 @@
   @include flex-left;
 
   flex-direction: row;
-  margin: 1rem 0;
+  margin: 1em 0;
+  width: 100%;
 
   path {
     fill: $primaryGreen;

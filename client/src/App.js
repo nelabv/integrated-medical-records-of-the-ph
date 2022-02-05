@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FaNotesMedical, FaGithub } from 'react-icons/fa';
 import './App.scss';
 import NavHandler from './components/Nav/NavHandler';
@@ -22,8 +23,11 @@ function App() {
           <h1>Integrated Medical Records of the Philippines</h1>
 
           <span>At vero eos et accusamus et iusto odio. Dignissimos ducimus qui blanditiis praesentium voluptatum</span>
-
-          <button className='primary-btn'>Get Started</button>
+          
+          
+          <Link to="/getting-started">
+              <button className='primary-btn'>Get Started</button>
+          </Link>
       </div>
       
       <div className='standard-cont'>
