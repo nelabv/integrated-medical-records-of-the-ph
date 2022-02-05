@@ -15,12 +15,14 @@ import GeneratePrescription from "./pages/GeneratePrescription";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UploadFile from "./pages/UploadFile";
 import UploadSuccess from "./pages/UploadSuccess";
+import GettingStarted from "./pages/GettingStarted";
 
 export const routes = (
   <Router>
     <Switch>
       {/* ----- UNPROTECTED ROUTES ----- */}
       <Route exact path='/' component={App} />
+      <Route path="/getting-started" component={GettingStarted} />
       <Route path="/register" component={RegisterForm} />
       <Route path="/login/as" component={LoginAs} />
       <Route path='/users/login' component={UserLogin} />

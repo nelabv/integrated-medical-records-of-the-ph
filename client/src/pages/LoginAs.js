@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
+import NavHandler from '../components/Nav/NavHandler';
+import { FaUserAlt, 
+  FaHospital, 
+  FaHospitalUser 
+} from 'react-icons/fa';
+import Footer from "../components/Footer";
 
 function LoginAs() {
   let history = useHistory();
@@ -12,28 +18,43 @@ function LoginAs() {
   }, [history])
 
   return (
-    <div className="login-page">
-      <h2><span className='colored-text'>Welcome</span> back!</h2>
-      <span>View your medical records in one tap.</span>
+    <>
+      <NavHandler />
 
-        <Link to="/users/login">
-              <div className='huge-btn'>
-                <span>USER</span>
-              </div>
-        </Link>
+      <div className='login-image'>
+        <h2>Welcome</h2>
+          <span>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</span>
+      </div>
 
-        <Link to="/physicians/login">
-              <div className='huge-btn'>
-                <span>PHYSICIAN</span>
-              </div>
-        </Link>
+      <div className="login-page">
+          <h3>No account? Register.</h3>
+          <div>
+              <Link to="/users/login">
+                    <div className='login-as-btn'>
+                      <FaUserAlt size="1.5em" />
+                      <p>USER</p>
+                    </div>
+              </Link>
 
-        <Link to="/physicians/login">
-              <div className='huge-btn'>
-                <span>INSTITUTIONS (soon)</span>
-              </div>
-        </Link>
-    </div>
+              <Link to="/physicians/login">
+                    <div className='login-as-btn'>
+                      <FaHospitalUser size="1.5em" />
+                      <p>PHYSICIAN</p>
+                    </div>
+              </Link>
+
+              <Link to="/physicians/login">
+                    <div className='login-as-btn'>
+                      <FaHospital size="1.5em" />
+                      <p>INSTITUTIONS (soon)</p>
+                    </div>
+              </Link>
+          </div>
+
+      </div>
+
+      <Footer />
+    </>
   );
 }
 
