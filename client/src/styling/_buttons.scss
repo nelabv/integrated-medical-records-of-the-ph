@@ -10,7 +10,8 @@
   padding: 1rem;
   @include flex-center;
   flex-direction: row;
-  width: 100%;
+  display: block;
+  text-align: center;
 }
 
 .secondary-btn {
