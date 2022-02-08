@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import FormReducer from "../reducers/FormReducer";
 import User from "../methods/users";
 import { setNativeValue } from "./FormComponents/SetNativeValue";
+import PasswordInput from "./FormComponents/PasswordInput";
 
 const initialFormState = {
   username: '',
@@ -66,13 +67,9 @@ export default function UserLoginForm() {
               id="user-username"
               onChange={handleInputChange}></input>
 
-        <label className='form-label'>PASSWORD</label>
-        <input className='form-field'
-              type="password" 
-              name="password" 
-              value={formState.password} 
-              id="user-password"
-              onChange={handleInputChange}></input>
+        <PasswordInput 
+              formState={formState}
+              onChange={handleInputChange} />
 
         <div className="form-buttons">            <span>No account yet? 
                 <span className="colored-text" onClick={setTesterAccount}> Try a tester account.</span>

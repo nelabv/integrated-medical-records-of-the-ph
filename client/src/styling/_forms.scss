@@ -55,3 +55,25 @@
     color: $primaryGreen;
   }
 }
+
+.password-hidden {
+  @include flex-left;
+
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.9em;
+
+  svg {
+    margin-right: 0.5em;
+  }
+}
+
+.password-shown {
+  @extend .password-hidden;
+
+  color: $primaryGreen;
+
+  svg {
+    fill: $primaryGreen;
+  }
+}
