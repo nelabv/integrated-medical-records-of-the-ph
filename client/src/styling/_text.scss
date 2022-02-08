@@ -6,7 +6,7 @@
 
 .heading {
   @include flex-left;
-
+  align-items: center;
   flex-direction: row;
   margin: 1em 0;
   width: 100%;
@@ -19,6 +19,14 @@
     margin-left: 0.5em;
     color: $primaryGreen;
   }
+
+  span {
+    color: $primaryGreen;
+    font-weight: 600;
+    font-size: 1em;
+    margin: 0;
+    margin-left: 0.5em;
+  }
 }
 
 .block-text {
@@ -28,4 +36,11 @@
 .all-caps {
   font-size: 0.75rem;
   font-kerning: normal;
+}
+
+.dev-note-text {
+  path, span {
+    fill: $accentYellow;
+    color: $accentYellow;
+  }
 }

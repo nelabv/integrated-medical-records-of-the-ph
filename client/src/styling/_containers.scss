@@ -1,5 +1,9 @@
 @import './mixins';
 
+.default {
+  padding: 1em;
+}
+
 .standard-cont {
   @include flex-left;
   width: 100%;
@@ -151,7 +155,7 @@
   background-color: #fff6e6;
   border: 1px solid $accentYellow;
   border-radius: 1em;
-  padding: 1em;
+  padding: 1em ;
   padding-top: 0;
   margin-bottom: 1em;
 

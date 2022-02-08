@@ -3,11 +3,14 @@
 
 // FORMS
 
+
+
 .form-group {
   @include flex-left;
 
   align-items: flex-start;
   width: 100%;
+  padding: 2em 0;
 }
 
 .form-label {
@@ -34,5 +37,21 @@
     font-size: 1.3rem;
     cursor: text;
     top: 20px;
+  }
+}
+
+.form-buttons {
+  @include flex-left;
+
+  span {
+    margin: 1em 0;
+  }
+
+  .primary-btn {
+    margin-right: 1em;
+  }
+
+  .colored-text {
+    color: $primaryGreen;
   }
 }

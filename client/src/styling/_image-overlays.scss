@@ -28,3 +28,20 @@
     color: white;
   }
 }
+
+.login-portal-image {
+  @include background('./assets/patient.jpg', 80% 110%, contain, no-repeat);
+  
+  width: 100%;
+  padding: 10em 1em 3em 1em;
+
+  h3 {
+    font-size: 1.5em;
+    color: white  
+  }
+
+  p {
+    color: white;
+    font-size: 0.9em;
+  }
+}

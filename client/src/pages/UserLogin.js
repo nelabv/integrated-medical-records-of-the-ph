@@ -1,67 +1,29 @@
-import React, { useReducer } from "react";
-import { useHistory } from "react-router-dom";
-import FormReducer from "../reducers/FormReducer";
-import User from "../methods/users";
-
-const initialFormState = {
-  username: '',
-  password: ''
-}
+import React from "react";
+import UserLoginForm from "../components/UserLoginForm";
+import NavHandler from "../components/Nav/NavHandler";
+import Footer from "../components/Footer";
+import DevelopersNote from "../components/DevelopersNote";
 
 export default function UserLogin() {
-  const [formState, dispatch] = useReducer(FormReducer, initialFormState);
-  let history = useHistory();
-
-  const handleInputChange = (e) => {
-    dispatch({
-      type: 'ON CHANGE',
-      field: e.target.name,
-      payload: e.target.value
-    })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const loginForm = {
-      username: formState.username[0],
-      password: formState.password[0]
-    }
-    
-    User.login(loginForm)
-      .then((response) => {
-        console.log(response);
-
-        sessionStorage.setItem("AUTH", true);
-        sessionStorage.setItem("ID", response.data.id);
-        history.push("/dashboard");
-      })
-
-      .catch((error) => 
-        console.error(error.response.data, error.response.status)
-      )
-  }
+  const note = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.';
 
   return (
-    <div className="form-page">
-      <h2><span className="colored-text">PATIENTS'</span> PORTAL</h2>
+    <>
+        <NavHandler />
+            <div className='login-portal-image'>
+              <h3><span className='colored-text'>Patients'</span> Portal</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
+            </div>
 
-      <form className='form-group' onSubmit={handleSubmit}>
-        <label className='form-label'>USERNAME</label>
-        <input className='form-field' 
-              type="text" 
-              name="username" 
-              value={formState.username} 
-              onChange={handleInputChange}></input>
 
-        <label className='form-label'>PASSWORD</label>
-        <input className='form-field'
-              type="password" 
-              name="password" 
-              value={formState.password} 
-              onChange={handleInputChange}></input>
+            <div className="default">
+                <DevelopersNote devNote={note} />
 
-        <input className='primary-btn' type="submit" />
-      </form>
-    </div>
+                <UserLoginForm />
+
+
+            </div>
+        <Footer />
+    </>
   );
 }
