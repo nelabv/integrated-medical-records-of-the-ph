@@ -69,7 +69,8 @@ export default function UserLoginForm() {
 
         <PasswordInput 
               formState={formState}
-              onChange={handleInputChange} />
+              onChange={handleInputChange}
+              inputID="user-password" />
 
         <div className="form-buttons">            
             <span>No account yet? 

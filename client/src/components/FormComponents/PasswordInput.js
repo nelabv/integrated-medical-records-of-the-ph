@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 export default function PasswordInput(props) {
-  const { formState, onChange } = props;
+  const { formState, onChange, inputID } = props;
 
   const [passwordVisibility, setPasswordVisibility] = useState(false);
 
@@ -17,7 +17,7 @@ export default function PasswordInput(props) {
               type={passwordVisibility ? "text" : "password"}
               name="password" 
               value={formState.password} 
-              id="user-password"
+              id={inputID}
               onChange={onChange}>
 
               </input>

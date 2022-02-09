@@ -55,8 +55,8 @@ export default function PhysicianLoginForm() {
       password: 'monay'
     }
 
-    const usernameField = document.getElementById("user-username");
-    const passwordField = document.getElementById("user-password");
+    const usernameField = document.getElementById("physician-username");
+    const passwordField = document.getElementById("physician-password");
     setNativeValue(usernameField, testerAccount.username);
     setNativeValue(passwordField, testerAccount.password);
   }
@@ -68,10 +68,12 @@ export default function PhysicianLoginForm() {
             type="text" 
             name="username" 
             value={formState.username} 
+            id="physician-username"
             onChange={handleInputChange}></input>
 
     <PasswordInput onChange={handleInputChange}
-                    formState={formState} />
+                    formState={formState}
+                    inputID="physician-password" />
 
     <div className="form-buttons">            
             <span>No account yet? 
