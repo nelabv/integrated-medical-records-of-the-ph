@@ -1,16 +1,16 @@
 import React, { useReducer } from "react";
 import { useHistory } from "react-router-dom";
 import FormReducer from "../reducers/FormReducer";
-import User from "../methods/users";
-import { setNativeValue } from "./FormComponents/SetNativeValue";
+import Physician from "../methods/physicians";
 import PasswordInput from "./FormComponents/PasswordInput";
+import { setNativeValue } from "./FormComponents/SetNativeValue";
 
 const initialFormState = {
   username: '',
   password: ''
 }
 
-export default function UserLoginForm() {
+export default function PhysicianLoginForm() {
   const [formState, dispatch] = useReducer(FormReducer, initialFormState);
   let history = useHistory();
 
@@ -24,17 +24,21 @@ export default function UserLoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const loginForm = {
       username: formState.username[0],
       password: formState.password[0]
     }
-    
-    User.login(loginForm)
-      .then((response) => {
-        console.log(response);
 
+    Physician.login(loginForm)
+      .then((response) => {
         sessionStorage.setItem("AUTH", true);
-        sessionStorage.setItem("ID", response.data.id);
+        sessionStorage.setItem("ENTITY", "PHYSICIAN");
+
+        if (response.data.status === 'ADMIN') {
+          sessionStorage.setItem("ADMIN", true);
+        }
+        
         history.push("/dashboard");
       })
 
@@ -47,8 +51,8 @@ export default function UserLoginForm() {
     e.preventDefault();
 
     const testerAccount = {
-      username: 'johnsmith',
-      password: 'johnsmith'
+      username: 'monay',
+      password: 'monay'
     }
 
     const usernameField = document.getElementById("user-username");
@@ -58,27 +62,24 @@ export default function UserLoginForm() {
   }
 
   return (
-      <form className='form-group' onSubmit={handleSubmit}>
-        <label className='form-label'>USERNAME</label>
-        <input className='form-field' 
-              type="text" 
-              name="username" 
-              value={formState.username} 
-              id="user-username"
-              onChange={handleInputChange}></input>
+    <form className='form-group' onSubmit={handleSubmit}>
+    <label className='form-label'>USERNAME</label>
+    <input className='form-field' 
+            type="text" 
+            name="username" 
+            value={formState.username} 
+            onChange={handleInputChange}></input>
 
-        <PasswordInput 
-              formState={formState}
-              onChange={handleInputChange} />
+    <PasswordInput onChange={handleInputChange}
+                    formState={formState} />
 
-        <div className="form-buttons">            
+    <div className="form-buttons">            
             <span>No account yet? 
                 <span className="colored-text" onClick={setTesterAccount}> Try a tester account.</span>
             </span>
 
-            
             <input className='primary-btn' type="submit" />
-        </div>
-      </form>
+    </div>
+  </form>
   );
 }

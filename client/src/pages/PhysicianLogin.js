@@ -1,71 +1,29 @@
-import React, { useReducer } from "react";
-import { useHistory } from "react-router-dom";
-import FormReducer from "../reducers/FormReducer";
-import Physician from "../methods/physicians";
-
-const initialFormState = {
-  username: '',
-  password: ''
-}
+import React from "react";
+import PhysicianLoginForm from "../components/PhysicianLoginForm";
+import NavHandler from "../components/Nav/NavHandler";
+import Footer from "../components/Footer";
+import DevelopersNote from "../components/DevelopersNote";
 
 export default function UserLogin() {
-  const [formState, dispatch] = useReducer(FormReducer, initialFormState);
-  let history = useHistory();
+  const note = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.';
 
-  const handleInputChange = (e) => {
-    dispatch({
-      type: 'ON CHANGE',
-      field: e.target.name,
-      payload: e.target.value
-    })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const loginForm = {
-      username: formState.username[0],
-      password: formState.password[0]
-    }
-
-    Physician.login(loginForm)
-      .then((response) => {
-        sessionStorage.setItem("AUTH", true);
-        sessionStorage.setItem("ENTITY", "PHYSICIAN");
-
-        if (response.data.status === 'ADMIN') {
-          sessionStorage.setItem("ADMIN", true);
-        }
-        
-        history.push("/dashboard");
-      })
-
-      .catch((error) => 
-        console.error(error.response.data, error.response.status)
-      )
-  }
 
   return (
-    <div className="form-page">
-      <h2><span className="colored-text">PHYSICIANS'</span> PORTAL</h2>
+    <>
+      <NavHandler />
 
-      <form className='form-group' onSubmit={handleSubmit}>
-        <label className='form-label'>USERNAME</label>
-        <input className='form-field' 
-                type="text" 
-                name="username" 
-                value={formState.username} 
-                onChange={handleInputChange}></input>
+      <div className='physicians-login-img'>
+              <h3><span className='colored-text'>Physicians'</span> Portal</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
+      </div>
 
-        <label className='form-label'>PASSWORD</label>
-        <input className='form-field' 
-                type="password" 
-                name="password" 
-                value={formState.password} 
-                onChange={handleInputChange}></input>
+      <div className="default">
+                <DevelopersNote devNote={note} />
 
-        <input className='primary-btn' type="submit" />
-      </form>
-    </div>
+                <PhysicianLoginForm />
+            </div>
+
+      <Footer />
+    </>
   );
 }

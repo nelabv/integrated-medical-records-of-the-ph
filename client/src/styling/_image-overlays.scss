@@ -45,3 +45,9 @@
     font-size: 0.9em;
   }
 }
+
+.physicians-login-img {
+  @extend .login-portal-image;
+
+  @include background('./assets/physician.jpg', 80% 110%, contain, no-repeat);
+}
