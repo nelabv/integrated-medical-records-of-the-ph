@@ -5,6 +5,7 @@ import { FaNotesMedical, FaGithub } from 'react-icons/fa';
 import './App.scss';
 import NavHandler from './components/Nav/NavHandler';
 import Footer from './components/Footer';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
   let history = useHistory();

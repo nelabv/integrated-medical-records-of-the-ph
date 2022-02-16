@@ -4,6 +4,18 @@
   color: $paleGreen;
 }
 
+.small-caps {
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.heading-text {
+  color: $primaryGreen;
+  font-weight: 600;
+  font-size: 1.25em;
+  margin: 0;
+}
+
 .heading {
   @include flex-left;
   align-items: center;
@@ -42,5 +54,49 @@
   path, span {
     fill: $accentYellow;
     color: $accentYellow;
+  }
+}
+
+.dashboard-tag {
+  @include flex-left;
+  flex-direction: row;
+  align-items: center;
+
+  .profile-name-tag {
+    @include flex-left;
+    width: auto;
+    margin-left: 1em;
+  }
+
+  .sample-profile-icon {
+    @include flex-center;
+    background: $gradient;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+
+    svg {
+      fill: white;
+    }
+  }
+
+  span:not(.small-caps) {
+    font-size: 2em;
+    font-weight: 600;
+    color: $primaryGreen;
+  }
+}
+
+.loading-spinner {
+  @include flex-center;
+  margin: 3em 0;
+
+  span {
+    margin-bottom: 0.5em;
+  }
+  
+  svg {
+    display: block;
+    margin: auto;
   }
 }

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import User from "../methods/users";
+import LoadingSpinner from "./LoadingSpinner";
+import File from "./File";
 
 function UserFileList() {
   const [fileList, setFileList] = useState([]);
@@ -24,20 +26,17 @@ function UserFileList() {
   
   return (
     <div className="file-container">
+      <span className="heading-text">Your Files</span>
       {
         isLoading 
-          ? null
+          ? <LoadingSpinner />
           : fileList.map((file) => {
-            let fileName = file.Key;
 
             return (
-              <div className="user-file" key={file.Key}>
-                <span>{file.Key}</span>
-
-                <button className="primary-btn" onClick={() => downloadFile(fileName)}>DOWNLOAD</button>
-              </div>
+              <File file={file}
+                    downloadFile={downloadFile} />
             )
-          })
+        })
       }
     </div>
   );

@@ -4,6 +4,10 @@
   padding: 1em;
 }
 
+.padding-top {
+  padding-top: 9em;
+}
+
 .standard-cont {
   @include flex-left;
   width: 100%;
@@ -69,18 +73,29 @@
   @include flex-left;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1em;
+  padding: 1.5em 1em;
   border: 1px solid $lightGray;
   border-radius: 0.5em;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
+  height: auto;
+  
+  .file-tag {
+    @include flex-left;
+    flex-direction: row;
 
-  :hover {
-    background-color: #e2e2e2;
+    svg {
+      fill: $ashBlue;
+    }
+
+    span {
+      margin-left: 1em;
+      overflow: hidden;
+      width: 80%;
+    }
   }
 
-  span {
-    font-size: 0.9em;
-    margin-right: 0.5em;
+  svg {
+    fill: $accentYellow;
   }
 }
 

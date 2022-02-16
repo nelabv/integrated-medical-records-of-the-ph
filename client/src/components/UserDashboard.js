@@ -4,6 +4,9 @@ import { withRouter } from "react-router";
 import User from "../methods/users";
 import Logout from "./Logout";
 import UserFileList from "./UserFileList";
+import DashboardTag from "./DashboardTag";
+import NavHandler from "../components/Nav/NavHandler";
+import Footer from "./Footer";
 
 const initialVisibility = {
   userDashboard: false,
@@ -31,13 +34,19 @@ function UserDashboard() {
     <>
       { visibilityState.userDashboard ? 
           <>
-            <h1>Hello, {userInformation.firstName}</h1>
+            <NavHandler />
+
             
-            <Logout />
-            <UserFileList />
+            <div className="default padding-top">
+                <DashboardTag name={userInformation.firstName} />
+              
+                <UserFileList />
+            </div>
           </>
       : null
       }
+
+      <Footer />
     </>
   );
 }
