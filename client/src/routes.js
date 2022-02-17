@@ -13,6 +13,7 @@ import DashboardHandler from "./pages/DashboardHandler";
 import RXGenerator from "./components/RXGenerator";
 import GeneratePrescription from "./pages/GeneratePrescription";
 import ProtectedRoute from "./components/ProtectedRoute";
+import UnprotectedRoute from "./components/UnprotectedRoute";
 import UploadFile from "./pages/UploadFile";
 import UploadSuccess from "./pages/UploadSuccess";
 import GettingStarted from "./pages/GettingStarted";
@@ -21,12 +22,12 @@ export const routes = (
   <Router>
     <Switch>
       {/* ----- UNPROTECTED ROUTES ----- */}
-      <Route exact path='/' component={App} />
-      <Route path="/getting-started" component={GettingStarted} />
-      <Route path="/register" component={RegisterForm} />
-      <Route path="/login/as" component={LoginAs} />
-      <Route path='/users/login' component={UserLogin} />
-      <Route path='/physicians/login' component={PhysicianLogin} />
+      <UnprotectedRoute exact path='/' component={App} />
+      <UnprotectedRoute path="/getting-started" component={GettingStarted} />
+      <UnprotectedRoute path="/register" component={RegisterForm} />
+      <UnprotectedRoute path="/login/as" component={LoginAs} />
+      <UnprotectedRoute path='/users/login' component={UserLogin} />
+      <UnprotectedRoute path='/physicians/login' component={PhysicianLogin} />
 
       {/* ----- PROTECTED ROUTES ----- */}
       <ProtectedRoute path="/dashboard" component={DashboardHandler} />

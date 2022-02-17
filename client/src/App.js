@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaNotesMedical, FaGithub } from 'react-icons/fa';
 import './App.scss';
@@ -8,14 +7,6 @@ import Footer from './components/Footer';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
-  let history = useHistory();
-
-  useEffect(() => {
-    if (sessionStorage.getItem("AUTH")) {
-      history.push("/dashboard")
-    }
-  }, [history])
-
   return (
     <>
       <NavHandler />
