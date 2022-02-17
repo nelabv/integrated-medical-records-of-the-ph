@@ -9,7 +9,7 @@ function File(props) {
   }, [])
 
   return ( 
-      <div className="user-file" key={file.Key} >
+    <>
         <div className="file-tag">
             <FaFileAlt size="1.5em" />
             <span>{file.Key}</span>
@@ -17,7 +17,7 @@ function File(props) {
 
         <FaDownload size="1.5em" 
                     onClick={() => downloadFile(file.Key)} />
-      </div>
+    </>
   );
 }
 

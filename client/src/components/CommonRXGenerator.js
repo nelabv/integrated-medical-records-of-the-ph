@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 function CommonRXGenerator(props) {
+  // eslint-disable-next-line
   const { patientInfo , patientID } = props;
   const [prescriptionText, setPrescriptionText] = useState('')
   const [statusMsg, setStatusMsg] = useState('')

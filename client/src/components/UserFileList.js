@@ -33,8 +33,10 @@ function UserFileList() {
           : fileList.map((file) => {
 
             return (
-              <File file={file}
-                    downloadFile={downloadFile} />
+              <div className="user-file" key={file.Key} >
+                  <File file={file}
+                        downloadFile={downloadFile} />
+              </div>
             )
         })
       }

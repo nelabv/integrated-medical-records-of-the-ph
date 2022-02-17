@@ -2,7 +2,6 @@ import React, { useState, useEffect, useReducer } from "react";
 import VisibilityReducer from "../reducers/VisiblityReducer";
 import { withRouter } from "react-router";
 import User from "../methods/users";
-import Logout from "./Logout";
 import UserFileList from "./UserFileList";
 import DashboardTag from "./DashboardTag";
 import NavHandler from "../components/Nav/NavHandler";
