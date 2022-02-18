@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { AccountContext } from './context/AccountContext';
+import User from "./methods/users";
 import { Link, useHistory } from 'react-router-dom';
 import { FaNotesMedical, FaGithub } from 'react-icons/fa';
 import './App.scss';
@@ -7,13 +9,23 @@ import Footer from './components/Footer';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
+  const { setAccount } = useContext(AccountContext);
+
   let history = useHistory();
 
   useEffect(() => {
-    if (sessionStorage.getItem("AUTH")) {
-      history.push('/dashboard')
+    const accountID = localStorage.getItem('ID');
+
+    if (accountID) {
+      User.fetchUserInformation()
+        .then(response => {
+          setAccount(response.data);
+          history.push('/dashboard');
+        })
+
+        .catch(error => console.log(error))
     }
-  }, [history])
+  }, [history, setAccount])
   
   return (
     <>

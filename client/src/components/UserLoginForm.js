@@ -1,9 +1,10 @@
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
 import FormReducer from "../reducers/FormReducer";
 import User from "../methods/users";
 import { setNativeValue } from "./FormComponents/SetNativeValue";
 import PasswordInput from "./FormComponents/PasswordInput";
+import { AccountContext } from "../context/AccountContext";
 
 const initialFormState = {
   username: '',
@@ -11,7 +12,10 @@ const initialFormState = {
 }
 
 export default function UserLoginForm() {
+  const { setAccount } = useContext(AccountContext);
+
   const [formState, dispatch] = useReducer(FormReducer, initialFormState);
+
   let history = useHistory();
 
   const handleInputChange = (e) => {
@@ -24,6 +28,7 @@ export default function UserLoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const loginForm = {
       username: formState.username[0],
       password: formState.password[0]
@@ -31,10 +36,10 @@ export default function UserLoginForm() {
     
     User.login(loginForm)
       .then((response) => {
-        console.log(response);
-
-        sessionStorage.setItem("AUTH", true);
-        sessionStorage.setItem("ID", response.data.id);
+        localStorage.setItem("AUTH", true);
+        localStorage.setItem("ID", response.data.id);
+        setAccount(response.data.userData);
+        console.log('Should redirect to dashboard');
         history.push("/dashboard");
       })
 

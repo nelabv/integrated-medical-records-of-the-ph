@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import User from "../methods/users";
 import { useHistory } from "react-router-dom";
+import { AccountContext } from "../context/AccountContext";
 
 export default function Logout() {
+  const { setAccount } = useContext(AccountContext);
+
   let history = useHistory();
 
   const handleSubmit = (e) => {
@@ -13,16 +16,18 @@ export default function Logout() {
         if (err)
           throw err;
         
-        sessionStorage.clear();
+          localStorage.clear();
+
+        setAccount(null)
         history.push("/");
       })
   }
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <button>Logout</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <button>Logout</button>
+      </form>
     </>
   );
 }

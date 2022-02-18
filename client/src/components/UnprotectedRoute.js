@@ -5,11 +5,11 @@ import { Route, Redirect } from 'react-router-dom';
 // Redirects to dashboard if currently logged in.
 
 function UnprotectedRoute({ component: Component, ...rest }) {
-  const AUTH = sessionStorage.getItem("AUTH");
+  const account = localStorage.getItem("ID");
 
   return (
     <Route {...rest}
-      render={(props) => AUTH 
+      render={(props) => account  // Should be logged in, else redirect to component
           ? <Redirect to="/dashboard" />
           : <Component {...props} /> } />
   );
