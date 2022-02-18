@@ -25,7 +25,7 @@ router.route("/users/register")
 router.route("/users/login")
   .post(UsersAPI.login);
 
-router.route("/dashboard")
+router.route("/users/profile")
   .get(checkIfAuthenticated, UsersAPI.fetchUserInfo)
 
 // PHYSICIAN-RELATED ACTIONS

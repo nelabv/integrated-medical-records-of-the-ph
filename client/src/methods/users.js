@@ -15,7 +15,7 @@ class User {
   }
   
   fetchUserInformation() {
-    return http.get("/dashboard")
+    return http.get("/users/profile");
   }
   
   logout() {

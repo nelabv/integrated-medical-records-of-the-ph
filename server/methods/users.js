@@ -85,8 +85,7 @@ export default class UsersAPI {
 
         res.status(200).json({
           id: userData.patientID,
-          status: "success",
-          message: "Successful login"
+          userData
         })
       } else {
         res.status(401).json({

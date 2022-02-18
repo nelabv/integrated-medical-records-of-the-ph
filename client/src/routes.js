@@ -1,3 +1,4 @@
+import { React, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,30 +18,32 @@ import UnprotectedRoute from "./components/UnprotectedRoute";
 import UploadFile from "./pages/UploadFile";
 import UploadSuccess from "./pages/UploadSuccess";
 import GettingStarted from "./pages/GettingStarted";
+import { AccountContext } from "./context/AccountContext";
 
-export const routes = (
-  <Router>
-    <Switch>
-      {/* ----- UNPROTECTED ROUTES ----- */}
-      <UnprotectedRoute exact path='/' component={App} />
-      <UnprotectedRoute path="/getting-started" component={GettingStarted} />
-      <UnprotectedRoute path="/register" component={RegisterForm} />
-      <UnprotectedRoute path="/login/as" component={LoginAs} />
-      <UnprotectedRoute path='/users/login' component={UserLogin} />
-      <UnprotectedRoute path='/physicians/login' component={PhysicianLogin} />
+export default function Routes() {
+  const [ account, setAccount ]  = useState('tseting');
 
-      {/* ----- PROTECTED ROUTES ----- */}
-      <ProtectedRoute path="/dashboard" component={DashboardHandler} />
+  return (
+    <AccountContext.Provider value={{account, setAccount}}>
+      <Router>
+        <Switch>
+                <UnprotectedRoute exact path='/' component={App} />
+                <UnprotectedRoute path="/getting-started" component={GettingStarted} />
+                <UnprotectedRoute path="/register" component={RegisterForm} />
+                <UnprotectedRoute path="/login/as" component={LoginAs} />
+                <UnprotectedRoute path='/users/login' component={UserLogin} />
+                <UnprotectedRoute path='/physicians/login' component={PhysicianLogin} />
 
-      {/* ----- PHYSICIAN: PROTECTED ROUTES ----- */}
-      <ProtectedRoute path="/generate-prescription" component={GeneratePrescription} />
-      <ProtectedRoute path="/upload" component={UploadFile} />
+                <ProtectedRoute path="/dashboard" component={DashboardHandler} />
 
-      {/* ----- Note: ADMIN SECTION is a work in progress ----- */}
-      <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
+                <ProtectedRoute path="/generate-prescription" component={GeneratePrescription} />
+                <ProtectedRoute path="/upload" component={UploadFile} />
 
-      {/* ----- Note: OTHERS ----- */}
-      <Route path="/confirmed" component={UploadSuccess} />
-    </Switch>
-  </Router>
-);
+                <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
+
+                <Route path="/confirmed" component={UploadSuccess} />
+        </Switch>
+      </Router>
+    </AccountContext.Provider>
+  )
+}
