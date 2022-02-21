@@ -1,0 +1,74 @@
+@import './mixins';
+
+.nav {
+  background-color: white;
+  border-bottom: 1px solid $lightGray;/* Black background color */
+  position: absolute; 
+  top: 0; /* Stay on top */
+  width: 100%;
+  height: 7em;
+  z-index: 1;
+  padding: 1em;
+
+  @include flex-center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+
+  span {
+    order: 1;
+    font-weight: 600;
+  }
+}
+
+.nav-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(7, 7, 7, 0.301); 
+}
+
+.nav-sidebar {
+  @include flex-left;
+
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.25em;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidebar-not-logged-in {
+  @include flex-left;
+  justify-content: space-between;
+  height: 100%;
+
+  ul {
+    padding: 2em 0;
+
+    li {
+      list-style-type: none;
+      padding: 1em 0;
+    }
+  }
+}
+
+.github-repo-link {
+  border-top: 1px solid $primaryGreen;
+
+  a {
+    @include flex-left;
+    flex-direction: row;
+    padding: 1em 0;
+
+    span {
+      margin-left: 0.5em;
+      font-weight: 100; 
+    }
+  }
+}
