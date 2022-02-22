@@ -35,7 +35,6 @@
 
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 1.25em;
   background-color: white;
   position: fixed;
   top: 0;
@@ -47,9 +46,15 @@
   @include flex-left;
   justify-content: space-between;
   height: 100%;
+  padding: 1.25em;
+
+  svg {
+    order: 1;
+  }
 
   ul {
     padding: 2em 0;
+    order: 2;
 
     li {
       list-style-type: none;
@@ -59,6 +64,7 @@
 }
 
 .github-repo-link {
+  order: 3;
   border-top: 1px solid $primaryGreen;
 
   a {
@@ -70,5 +76,76 @@
       margin-left: 0.5em;
       font-weight: 100; 
     }
+  }
+}
+
+
+
+
+
+.sidebar-logged-in {
+  .action-with-icon {
+    padding-left: 1.25em;
+  }
+
+  form {
+    margin-top: 7em;
+  }
+}
+
+.account-header {
+  padding: 2.5em 1.25em;
+  background: $gradient;
+
+  @include flex-left;
+
+  svg {
+    fill: white;
+  }
+
+  .sample-user-image {
+    @include flex-center;
+    
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: white;
+    margin-top: 2em;
+  
+    span {
+      color: $primaryGreen;
+    }
+  }
+  
+  .user-full-name {
+    color: white;
+    font-weight: 400;
+    margin-top: 0.5em;
+    font-size: 1.25em;
+  }
+  
+  .username {
+    font-weight: 100;
+    color: white;
+    font-size: 0.9em;
+  }
+
+}
+
+.action-with-icon {
+  @include flex-left;
+  flex-direction: row;
+  align-items: center;
+  margin: 1em 0;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 1em;
+    margin-left: 0.75em;
+  }
+
+  svg {
+    fill: $primaryGreen;
   }
 }

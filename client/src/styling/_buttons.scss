@@ -66,3 +66,16 @@
     fill: $primaryGreen;
   }
 }
+
+.action-with-icon {
+  @include flex-left;
+  flex-direction: row;
+
+  svg {
+    fill: $primaryGreen;
+  }
+
+  span {
+    font-weight: 100;
+  }
+}

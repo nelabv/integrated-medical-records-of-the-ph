@@ -39,7 +39,6 @@ export default function UserLoginForm() {
         localStorage.setItem("AUTH", true);
         localStorage.setItem("ID", response.data.id);
         setAccount(response.data.userData);
-        console.log('Should redirect to dashboard');
         history.push("/dashboard");
       })
 

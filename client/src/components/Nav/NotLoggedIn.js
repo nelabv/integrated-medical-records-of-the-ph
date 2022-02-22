@@ -8,9 +8,9 @@ function NotLoggedIn(props) {
 
   return ( 
     <div >
-        <AiOutlineClose className="nav-icon" size="1.5em" onClick={handleClick}/>
-
         <div className="sidebar-not-logged-in">
+          <AiOutlineClose className="nav-icon" size="1.5em" onClick={handleClick}/>
+          
           <ul>
             <Link to="/getting-started">
                 <li>How It Works</li>

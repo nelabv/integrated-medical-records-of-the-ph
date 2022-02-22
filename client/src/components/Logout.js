@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import User from "../methods/users";
 import { useHistory } from "react-router-dom";
 import { AccountContext } from "../context/AccountContext";
-
+import { BiLogOut } from 'react-icons/bi';
+ 
 export default function Logout() {
   const { setAccount } = useContext(AccountContext);
 
@@ -25,7 +26,8 @@ export default function Logout() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="action-with-icon">
+        <BiLogOut size="1.25em" />
         <button>Logout</button>
       </form>
     </>
