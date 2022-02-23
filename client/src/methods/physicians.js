@@ -27,6 +27,10 @@ class Physician {
     return http.post("/physicians/register", physicianInformation)
   }
 
+  fetchPhysicianInformation() {
+    return http.get("/physicians/profile");
+  }
+
   generatePrescription(config) {
     return http.post("/physicians/generate-prescription", config)
   }

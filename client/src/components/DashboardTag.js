@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
+import { AccountContext } from '../context/AccountContext';
 
-export default function DashboardTag(props) {
-  const { name } = props;
+export default function DashboardTag() {
+  const { account } = useContext(AccountContext);
 
   return (
     <div className='dashboard-tag'>
@@ -13,7 +14,7 @@ export default function DashboardTag(props) {
       <div className='profile-name-tag'>
         <span className='small-caps'>HELLO,</span>
 
-        <span >{ name }</span>
+        <span >{ account.firstName }</span>
       </div>
     </div>
   )

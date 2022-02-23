@@ -36,7 +36,7 @@ router.route("/physicians/register")
 router.route("/physicians/login")
   .post(PhysiciansAPI.login);
 
-router.route("/physicians/dashboard")
+router.route("/physicians/profile")
   .get(physiciansAccessOnly, PhysiciansAPI.fetchPhysicianInfo);
 
 router.route("/physicians/generate-prescription") // ADMIN ONLY

@@ -61,6 +61,7 @@
   @include flex-left;
   flex-direction: row;
   align-items: center;
+  margin: 1em 0;
 
   .profile-name-tag {
     @include flex-left;

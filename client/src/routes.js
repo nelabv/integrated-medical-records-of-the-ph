@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import App from "./App";
 import User from "./methods/users";
+import Physician from "./methods/physicians";
 import RegisterForm from "./pages/RegisterForm";
 import LoginAs from "./pages/LoginAs";
 import UserLogin from "./pages/UserLogin";
@@ -24,16 +25,25 @@ import { AccountContext } from "./context/AccountContext";
 export default function Routes() {
   const [ account, setAccount ]  = useState(null);
 
+  // Retrieve account data if an account is logged in
   useEffect(() => {
     const accountID = localStorage.getItem('ID');
 
     if (accountID) {
-      User.fetchUserInformation()
-        .then(response => {
-          setAccount(response.data);
-        })
+      if (localStorage.getItem('ENTITY') === 'PHYSICIAN') {
+        Physician.fetchPhysicianInformation()
+          .then(response => {
+            setAccount(response.data)
+          })
+          .catch(error => console.log(error))
+      } else {
+        User.fetchUserInformation()
+          .then(response => {
+            setAccount(response.data)
+          })
 
-        .catch(error => console.log(error))
+          .catch(error => console.log(error))
+      }
     }
   }, [setAccount])
 
