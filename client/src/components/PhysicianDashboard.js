@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
-import { Link, useHistory } from 'react-router-dom'
-import Logout from "./Logout"
+import React from "react";
+import { Link } from 'react-router-dom';
+import NavHandler from "./Nav/NavHandler";
 
 export default function PhysicianDashboard() {
-  let history = useHistory();
-  
-  useEffect(() => {
-    if (sessionStorage.getItem("ENTITY") !== "PHYSICIAN") {
-      history.push('/')
-    }
-  }, [history])
-
   return (
-    <>
-      <Logout />
+    <> 
+      <NavHandler />
 
       <Link to="/generate-prescription" >
         <button>Generate Prescription</button>

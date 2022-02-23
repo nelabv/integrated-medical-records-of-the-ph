@@ -14,16 +14,20 @@ function App() {
   let history = useHistory();
 
   useEffect(() => {
-    const accountID = localStorage.getItem('ID');
+    if (localStorage.getItem('ENTITY')) {
+      history.push('/dashboard');
+    } else {
+      const accountID = localStorage.getItem('ID');
 
-    if (accountID) {
-      User.fetchUserInformation()
-        .then(response => {
-          setAccount(response.data);
-          history.push('/dashboard');
-        })
-
-        .catch(error => console.log(error))
+      if (accountID) {
+        User.fetchUserInformation()
+          .then(response => {
+            setAccount(response.data);
+            history.push('/dashboard');
+          })
+  
+          .catch(error => console.log(error))
+      }
     }
   }, [history, setAccount])
   

@@ -89,7 +89,7 @@ export default class UsersAPI {
         })
       } else {
         res.status(401).json({
-          error: "Wrong password",
+          status: "Wrong password",
           message: "Incorrect input from user. Access denied."
         })
       }

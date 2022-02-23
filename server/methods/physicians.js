@@ -93,22 +93,24 @@ export default class PhysiciansAPI {
       if (comparePasswords) {
         req.session.AUTH = true;
         req.session.PHYSICIAN_USERNAME = username;
+        req.session.ID = physicianData.physicianID;
 
         if (username === process.env.ADMIN_USERNAME) {
           req.session.ENTITY = "ADMIN";
 
           res.status(200).json({
-            status: "ADMIN",
-            message: "Successful login"
+            id: physicianData.physicianID,
+            physicianData
           })
         } else {
           res.status(200).json({
-            message: "Successful login"
+            id: physicianData.physicianID,
+            physicianData
           })
         }
       } else {
         res.status(401).json({
-          error: "Wrong password",
+          status: "Wrong password",
           message: "Incorrect input from physician. Access denied."
         })
       }

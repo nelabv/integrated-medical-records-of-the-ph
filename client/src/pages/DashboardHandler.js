@@ -3,13 +3,13 @@ import PhysicianDashboard from "../components/PhysicianDashboard";
 import UserDashboard from "../components/UserDashboard";
 
 export default function DashboardHandler() {
-  const entity = sessionStorage.getItem("ENTITY");
+  const entity = localStorage.getItem("ENTITY");
 
   return (
     <>
       { entity === "PHYSICIAN"
-       ? <PhysicianDashboard/>
-       : <UserDashboard/> }
+       ? <PhysicianDashboard />
+       : <UserDashboard /> }
     </>
   );
 }

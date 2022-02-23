@@ -1,9 +1,10 @@
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
 import FormReducer from "../reducers/FormReducer";
 import Physician from "../methods/physicians";
 import PasswordInput from "./FormComponents/PasswordInput";
 import { setNativeValue } from "./FormComponents/SetNativeValue";
+import { AccountContext } from "../context/AccountContext";
 
 const initialFormState = {
   username: '',
@@ -11,6 +12,8 @@ const initialFormState = {
 }
 
 export default function PhysicianLoginForm() {
+  const { setAccount } = useContext(AccountContext);
+
   const [formState, dispatch] = useReducer(FormReducer, initialFormState);
   let history = useHistory();
 
@@ -32,13 +35,10 @@ export default function PhysicianLoginForm() {
 
     Physician.login(loginForm)
       .then((response) => {
-        sessionStorage.setItem("AUTH", true);
-        sessionStorage.setItem("ENTITY", "PHYSICIAN");
-
-        if (response.data.status === 'ADMIN') {
-          sessionStorage.setItem("ADMIN", true);
-        }
-        
+        localStorage.setItem("AUTH", true);
+        localStorage.setItem("ID", response.data.id);
+        localStorage.setItem("ENTITY", "PHYSICIAN");
+        setAccount(response.data.physicianData)
         history.push("/dashboard");
       })
 
