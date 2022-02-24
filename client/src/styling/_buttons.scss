@@ -39,7 +39,7 @@
   }
 }
 
-.login-as-btn {
+.wide-btn {
   @include flex-center;
 
   flex-direction: row;
@@ -51,10 +51,6 @@
   border-radius: 3px;
   margin-bottom: 1em;
 
-/*   -webkit-box-shadow:0px 0px 9px 3px rgba(97,97,97,0.2);
-  -moz-box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
-  box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2); */
-
   p {
     color: $primaryGreen;
     font-size: 0.75em;
@@ -62,7 +58,7 @@
     margin-left: 0.5em;
   }
 
-  path {
+  svg {
     fill: $primaryGreen;
   }
 }

@@ -35,21 +35,21 @@ function LoginAs() {
 
           <div>
               <Link to="/users/login">
-                    <div className='login-as-btn'>
+                    <div className='wide-btn '>
                       <FaUserAlt size="1.5em" />
                       <p>USER</p>
                     </div>
               </Link>
 
               <Link to="/physicians/login">
-                    <div className='login-as-btn'>
+                    <div className='wide-btn'>
                       <FaHospitalUser size="1.5em" />
                       <p>PHYSICIAN</p>
                     </div>
               </Link>
 
               <Link to="/physicians/login">
-                    <div className='login-as-btn'>
+                    <div className='wide-btn'>
                       <FaHospital size="1.5em" />
                       <p>INSTITUTIONS (soon)</p>
                     </div>
