@@ -25,15 +25,15 @@ function UserFileList() {
   }
   
   return (
-    <div className="file-container">
-      <span className="heading-text">Your Files</span>
+    <div className="file--container">
+      <h3>Your Files</h3>
       {
         isLoading 
           ? <LoadingSpinner />
           : fileList.map((file) => {
 
             return (
-              <div className="user-file" key={file.Key} >
+              <div className="file--individual" key={file.Key} >
                   <File file={file}
                         downloadFile={downloadFile} />
               </div>

@@ -62,25 +62,25 @@ export default function PhysicianLoginForm() {
   }
 
   return (
-    <form className='form-group' onSubmit={handleSubmit}>
-    <label className='form-label'>USERNAME</label>
-    <input className='form-field' 
-            type="text" 
-            name="username" 
-            value={formState.username} 
-            id="physician-username"
-            onChange={handleInputChange}></input>
+    <form className='form--group' onSubmit={handleSubmit}>
+      <label className='form--label'>USERNAME</label>
+      <input className='form--field' 
+              type="text" 
+              name="username" 
+              value={formState.username} 
+              id="physician-username"
+              onChange={handleInputChange}></input>
 
     <PasswordInput onChange={handleInputChange}
                     formState={formState}
                     inputID="physician-password" />
+    
+    <input className='btn--primary' type="submit" />
 
-    <div className="form-buttons">            
+    <div className="login--tester-container">
             <span>No account yet? 
-                <span className="colored-text" onClick={setTesterAccount}> Try a tester account.</span>
+                    <span className="teal--highlight" onClick={setTesterAccount}> Try a tester account.</span>
             </span>
-
-            <input className='primary-btn' type="submit" />
     </div>
   </form>
   );

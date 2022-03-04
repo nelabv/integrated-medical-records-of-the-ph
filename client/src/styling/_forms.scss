@@ -2,32 +2,31 @@
 @import './colors';
 
 // FORMS
-
-
-
-.form-group {
-  @include flex-left;
+.form--group {
+  @include flex(column, center, center);
 
   align-items: flex-start;
   width: 100%;
-  padding: 2em 0;
+  padding-top: 2em;
 }
 
-.form-label {
-  font-size: 0.60em;
+.form--label {
+  font-size: 0.8em;
   font-kerning: normal;
+  font-weight: 600;
+  color: $teal;
 }
 
-.form-field {
+.form--field {
   font-family: inherit;
   width: 100%;
   border: 0;
   border-bottom: 1px solid $gray;
-  color: $accentYellow;
+  color: $gray;
   background: transparent;
   transition: border-color 0.2s;
   margin: 0.5em 0;
-  padding: 1em;
+  padding: 0.5em;
 
   &::placeholder {
     color: transparent;
@@ -40,24 +39,8 @@
   }
 }
 
-.form-buttons {
-  @include flex-left;
-
-  span {
-    margin: 1em 0;
-  }
-
-  .primary-btn {
-    margin-right: 1em;
-  }
-
-  .colored-text {
-    color: $primaryGreen;
-  }
-}
-
 .password-hidden {
-  @include flex-left;
+  @include flex(row, center, center);
 
   flex-direction: row;
   align-items: center;
@@ -66,14 +49,10 @@
   svg {
     margin-right: 0.5em;
   }
+
+  margin: 1em 0;
 }
 
 .password-shown {
   @extend .password-hidden;
-
-  color: $primaryGreen;
-
-  svg {
-    fill: $primaryGreen;
-  }
 }

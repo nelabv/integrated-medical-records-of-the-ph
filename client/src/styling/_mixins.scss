@@ -1,26 +1,31 @@
 // ALL COMMONLY-USED PREFERENCES FOR STYLING GOES HERE
 
-@mixin flex-center {
+@mixin flex($direction, $align, $justify) {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin flex-center {
+  background-color: red;
 }
 
 @mixin flex-left {
-  @include flex-center;
-  
-  justify-content: flex-start;
-  align-items: flex-start;
+  background-color: red;
 }
 
-@mixin background($path,$position:0 0,$size: center,$repeat: no-repeat, $degrees: 90deg) {
-  background: linear-gradient($degrees, rgba(40,40,40,0.6) 0%, rgba(255,255,255,0) 100%), url($path);
+@mixin background(
+  $path, 
+  $position:0 0, 
+  $size: center, 
+  $repeat: no-repeat, 
+  $degrees: 90deg) {
+    background: linear-gradient($degrees, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%), url($path);
 
-  background: {
-      position: $position;
-      size: $size;
-      repeat: $repeat;
+    background: {
+        position: $position;
+        size: $size;
+        repeat: $repeat;
   }
 }

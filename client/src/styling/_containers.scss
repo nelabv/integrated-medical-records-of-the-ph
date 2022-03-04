@@ -1,137 +1,192 @@
 @import './mixins';
 
-.default {
+.center {
+  @include flex(column, center, center);
+
+  text-align: center;
+}
+
+.gradient--gray {
+  background: linear-gradient(180deg, #EBF1F4 0%, rgba(235, 241, 244, 0) 47.96%);
+}
+
+.gradient--blue {
+  @include flex(column, center, center);
+
   padding: 1em;
+  background: linear-gradient(180deg, #FEFFFF 0%, #E4F7F7 100%);
 }
 
-.padding-top {
-  padding-top: 9em;
-}
+.dashboard--tag {
+  @include flex(column, flex-start, flex-start);
 
-.standard-cont {
-  @include flex-left;
-  width: 100%;
-
-  padding: 4rem 1rem;
-}
-
-.front-homepage {
-  @include flex-left;
-  @include background('./assets/homepage.jpeg', 60% 50%, cover, no-repeat);
-
-  align-items: flex-start;
-  padding: 12rem 1rem;
-  height: 90vh;
-
-  h1 {
-    color: $paleGreen;
-    margin-bottom: 0.5em;
-  }
+  padding: 7em 1em;
+  background: linear-gradient(104.41deg, #00B3B3 0.58%, #008181 99.19%);
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 20px 20px;
 
   span {
     color: white;
-    margin-bottom: 1em;
+  }
+
+  .dashboard--name {
+    font-size: 1.5em;
   }
 }
 
-.form-page {
-  @include flex-center;
-
-  padding-top: 2em;
-
-  h2 {
-    margin-bottom: 1em;
-  }
-}
-
-.button-holder {
-  @include flex-left;
-
-  width: 50%;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.login-page {
-  @include flex-left;
-  
-  padding: 2em 1em;
+.howitworks--img {
+  background-image: url('./assets/physician.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 15em;
   width: 100%;
+}
 
+.homepage--img {
+  background: linear-gradient(358.32deg, #98D3D3 -11.44%, #FFFFFF 108.43%, #D8F4F4 108.43%);
+  box-shadow: 2px 2px 31px -4px rgba(82, 111, 82, 0.52);
+  border-radius: 0px 0px 50px 50px;
+  height: 60vh;
+
+  @include flex(
+    row,
+    center,
+    center
+  );
+
+  img {
+    order: 1;
+    width: 80%;
+    height: auto;
+    margin-top: 10em;
+  }
+}
+
+.homepage--container {
+  padding: 1em;
+  padding-bottom: 3em;
+}
+
+.howitworks--container {
+  height: 100vh;
+  padding: 2em;
 
   h2 {
-    margin-bottom: 1em;
+    margin: 1em 0;
   }
+}
+
+.sign-in--container {
+  @include flex(column, center, center);
+
+  background: linear-gradient(180deg, #49C9C9 0%, #009F9F 100%);
+  
+  height: 100vh;
+  width: 100%;
+  padding: 0 1em;
+
+  h2, span {
+    color: white;
+  }
+}
+
+.sign-in--btn-container {
+  margin-top: 2em;
+}
+
+.login--container {
+  padding: 7em 1em;
+  background: white;
+  width: 90vw;
+  margin: auto;
+
+  @include flex(column, center, center);
+  
+  span {
+    text-align: center;
+  }
+}
+
+.login--tester-container {
+  @include flex(row, center, center);
+
+  margin-top: 1em;
+
+  .teal--highlight {
+    font-weight: 600;
+  }
+}
+
+.dashboard--container {
+  background: white;
+  padding: 1em;
+
+  .physiciandashboard--actions {
+    h3 {
+      margin: 2em 0 0.5em 0;
+      color: $teal;
+    }
+  }
+}
+
+.physiciandashboard--actions--icon {
+  @extend .file--individual;
 
   span {
-    margin-bottom: 1.5em;
-
-  }
-}
-
-.user-file {
-  @include flex-left;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1.5em 1em;
-  border: 1px solid $lightGray;
-  border-radius: 0.5em;
-  margin-bottom: 0.5em;
-  height: auto;
-  
-  .file-tag {
-    @include flex-left;
-    flex-direction: row;
-
-    svg {
-      fill: $ashBlue;
-    }
-
-    span {
-      margin-left: 1em;
-      overflow: hidden;
-      width: 80%;
-    }
+    margin: 0;
   }
 
   svg {
-    fill: $accentYellow;
+    fill: $teal;
   }
 }
 
-.file-container {
-  margin-top: 1em;
+.file--container {
+  margin-top: 2em;
+
+  h3 {
+    color: $teal;
+    margin-bottom: 0.5em;
+  }
+}
+
+.file--individual {
+  @include flex(row, center, center);
+
+  background: #F9F9F9;
+  border: 1px solid #D6E7E7;
+  border-radius: 1em;
+  padding: 1.5em 1em;
+  margin-bottom: 1em;
+
+  .download--icon {
+    fill: $teal;
+  }
+
+  .file--icon {
+    fill: $orange;
+  }
+  span {
+    margin-left: 0.5em;
+  }
+}
+
+.file--tag {
+  @include flex(row, center, flex-center);
 }
 
 .footer {
-  background-color: $gray;
-  padding: 3em 1em;
-  
+  background: #004848;
+  height: 6em;
+  padding: 1em;
+
   span {
-    color: white;
-  }
-}
-
-.footer-contact {
-  @include flex-left;
-}
-
-.getting-started {
-  @include flex-left;
-
-  padding: 9em 1em 3em 1em;
-}
-
-.developers-note {
-  background-color: #fff6e6;
-  border: 1px solid $accentYellow;
-  border-radius: 1em;
-  padding: 1em ;
-  padding-top: 0;
-  margin-bottom: 1em;
-
-  p {
+    color: rgba(255, 255, 255, 0.685);
     font-size: 0.9em;
-    line-height: 1.5;
   }
+}
+
+.footer--bar {
+  background: #1F6A6A;
+  height: 2em;
 }

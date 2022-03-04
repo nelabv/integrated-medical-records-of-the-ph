@@ -19,7 +19,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import UnprotectedRoute from "./components/UnprotectedRoute";
 import UploadFile from "./pages/UploadFile";
 import UploadSuccess from "./pages/UploadSuccess";
-import GettingStarted from "./pages/GettingStarted";
 import { AccountContext } from "./context/AccountContext";
 
 export default function Routes() {
@@ -52,7 +51,6 @@ export default function Routes() {
       <Router>
         <Switch>
                 <Route exact path='/' component={App} />
-                <UnprotectedRoute path="/getting-started" component={GettingStarted} />
                 <UnprotectedRoute path="/register" component={RegisterForm} />
                 <UnprotectedRoute path="/login/as" component={LoginAs} />
                 <UnprotectedRoute path='/users/login' component={UserLogin} />

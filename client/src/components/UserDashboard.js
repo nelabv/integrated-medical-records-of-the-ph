@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import VisibilityReducer from "../reducers/VisiblityReducer";
 import { withRouter } from "react-router";
 import User from "../methods/users";
@@ -14,12 +14,11 @@ const initialVisibility = {
 
 function UserDashboard() {
   const [visibilityState, dispatch] = useReducer(VisibilityReducer, initialVisibility);
-  const [userInformation, setUserInformation] = useState();
 
   useEffect(() => {
     User.fetchUserInformation(sessionStorage.getItem("LOGIN_INFO"))
       .then((response) => {
-        setUserInformation(response.data);
+        console.log(response);
         dispatch({
           type: 'TOGGLE_VISIBILITY',
           payload: 'userDashboard'
@@ -33,13 +32,14 @@ function UserDashboard() {
     <>
       { visibilityState.userDashboard ? 
           <>
-            <NavHandler />
+            <NavHandler isNavTransparent={false} />
 
-            
-            <div className="default padding-top">
-                <DashboardTag name={userInformation.firstName} />
-              
-                <UserFileList />
+            <div className="gradient--blue">
+                <div className="dashboard--container">
+                    <DashboardTag />
+                  
+                    <UserFileList />
+                </div>
             </div>
           </>
       : null

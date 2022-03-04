@@ -12,11 +12,13 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Cabin', sans-serif;
-  color: $gray;
+  color: $textColor;
+  line-height: 1.6;
+  font-size: 16px;
 }
 
-p, span {
-  line-height: 1.6;
+p {
+  margin-bottom: 1em;
 }
 
 a {
@@ -32,7 +34,18 @@ button {
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: $primaryGreen;
-  margin-bottom: 0.5em;
+span {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 1.802rem;
+}
+
+h2 {
+  font-size: 1.602rem;
+}
+
+h3 {
+  font-size: 1.424rem;
 }

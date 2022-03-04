@@ -10,12 +10,13 @@ function File(props) {
 
   return ( 
     <>
-        <div className="file-tag">
-            <FaFileAlt size="1.5em" />
+        <div className="file--tag">
+            <FaFileAlt className="file--icon" size="1.5em" />
             <span>{file.Key}</span>
         </div>
 
         <FaDownload size="1.5em" 
+                    className="download--icon"
                     onClick={() => downloadFile(file.Key)} />
     </>
   );

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { CgMenuRight } from "react-icons/cg";
 import NavSidebar from "./Sidebar";
 
-function NavHandler() {
+function NavHandler(props) {
+  const { isNavTransparent } = props;
   const [sidebarVisibility, setSidebarVisibility] = useState(false);
 
   const handleClick = () => {
@@ -11,10 +12,10 @@ function NavHandler() {
 
   return (
     <>
-      <div className="nav">
-          <span>LOGO</span>
+      <div className= {isNavTransparent ? "nav--transparent" : "nav"}>
+          <span>LOGO</span> 
 
-          <CgMenuRight size="2em" className="nav-icon" onClick={handleClick}/>
+          <CgMenuRight size="2em" className="nav--icon" onClick={handleClick}/>
 
           { sidebarVisibility ? 
                 <NavSidebar 

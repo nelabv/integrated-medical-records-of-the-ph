@@ -1,23 +1,37 @@
 @import './mixins';
 
 .nav {
+  @include flex(row, center, space-between);
   background-color: white;
-  border-bottom: 1px solid $lightGray;/* Black background color */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.76);/* Black background color */
   position: absolute; 
-  top: 0; /* Stay on top */
-  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
   height: 7em;
   z-index: 1;
   padding: 1em;
 
-  @include flex-center;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
-
   span {
     order: 1;
     font-weight: 600;
+  }
+}
+
+.nav--transparent {
+  @extend .nav;
+
+  background-color: transparent;
+}
+
+.nav--icon {
+  size: 1.5em;
+  order: 2;
+
+  path {
+    fill: $teal;
+    font-size: 1.5em;
   }
 }
 
@@ -31,10 +45,8 @@
 }
 
 .nav-sidebar {
-  @include flex-left;
+  @include flex(row, flex-end, flex-start);
 
-  align-items: flex-end;
-  justify-content: flex-start;
   background-color: white;
   position: fixed;
   top: 0;
@@ -43,8 +55,9 @@
 }
 
 .sidebar-not-logged-in {
-  @include flex-left;
-  justify-content: space-between;
+
+  @include flex(column, flex-start, space-between);
+
   height: 100%;
   padding: 1.25em;
 
@@ -68,8 +81,7 @@
   border-top: 1px solid $primaryGreen;
 
   a {
-    @include flex-left;
-    flex-direction: row;
+    @include flex(row, center, flex-start);
     padding: 1em 0;
 
     span {

@@ -45,6 +45,7 @@ function PatientIDInput({Component}) {
     Physician.verifyPatientInformation(patientInfo)
       .then(res => {
         if (res.status === 200) {
+          setErrorMessage('');
           setPatientInfo(res.data.patientInfo)
           setShowComponent(true);
         }
@@ -58,14 +59,15 @@ function PatientIDInput({Component}) {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-group">
       <div style={{
           display: 'flex', 
           flexDirection: 'column',
           marginBottom: '1em'}}>
             
-            <label>Patient ID Number:</label>
+            <label className="form-label">PATIENT ID</label>
             <input 
+              className="form-field"
               type="number"
               style={{
                 whiteSpace:'pre-line'
@@ -75,8 +77,9 @@ function PatientIDInput({Component}) {
               onChange={handleChange}
             />
 
-            <label>Patient's Last Name:</label>
+            <label className="form-label">PATIENT LAST NAME</label>
             <input 
+              className="form-field"
               type="text"
               style={{
                 whiteSpace:'pre-line'
@@ -87,7 +90,7 @@ function PatientIDInput({Component}) {
             />
         </div>
 
-        <button type="submit">Verify</button>
+        <input className='primary-btn' type="submit" value="Submit" />
         <ErrorSpan errorMessage={errorMessage} />
     </form>
 

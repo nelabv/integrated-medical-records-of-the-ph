@@ -11,9 +11,9 @@ export default function PasswordInput(props) {
   }
   return (
     <>
-        <label className='form-label'>PASSWORD</label>
+        <label className='form--label'>Password</label>
 
-        <input className='form-field'
+        <input className='form--field'
               type={passwordVisibility ? "text" : "password"}
               name="password" 
               value={formState.password} 

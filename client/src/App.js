@@ -1,11 +1,12 @@
 import React, { useEffect, useContext } from 'react';
 import { AccountContext } from './context/AccountContext';
 import User from "./methods/users";
+import homepageImg from "./styling/assets/vector-illustration_homepage.png";
 import { Link, useHistory } from 'react-router-dom';
-import { FaNotesMedical, FaGithub } from 'react-icons/fa';
 import './App.scss';
 import NavHandler from './components/Nav/NavHandler';
 import Footer from './components/Footer';
+import HowItWorks from './pages/HowItWorks';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
@@ -32,39 +33,25 @@ function App() {
   }, [history, setAccount])
   
   return (
-    <>
-      <NavHandler />
+    <div className="center">
+      <NavHandler isNavTransparent={true} />
 
-      <div className="front-homepage">
-          <h1>Integrated Medical Records of the Philippines</h1>
-
-          <span>At vero eos et accusamus et iusto odio. Dignissimos ducimus qui blanditiis praesentium voluptatum</span>
-          
-          
-          <Link to="/getting-started">
-              <button className='primary-btn'>Get Started</button>
-          </Link>
+      <div className="homepage--img">
+        <img src={homepageImg} alt="IMRP 2021" />
       </div>
+
+      <div className="homepage--container">
+        <h1 className="homepage--h1">Your <span className="teal--highlight">medical records </span>in <span className='orange--highlight'>one tap.</span></h1>
+        
+        <Link to="/login/as">
+          <button className="btn--primary">TRY A TESTER ACCOUNT</button>
+        </Link>
+      </div>
+
+      <HowItWorks />
       
-      <div className='standard-cont'>
-            <div className='heading'>
-                <FaNotesMedical size="2em" />
-                <h2>How it works</h2>
-            </div>
-
-            <p className='block-text'>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
-
-            <button className='primary-btn'>
-              <FaGithub size="1.5rem" className="button-icon"/>
-              View Github Repository
-            </button>
-      </div>
-
-      <div className='homepage-image-banner'>
-        <h3><span className='colored-text'>Quis nostrud exercitation</span> ullamco laboris nisi. </h3>
-      </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

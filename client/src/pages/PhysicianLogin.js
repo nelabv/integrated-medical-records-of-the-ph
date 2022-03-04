@@ -2,28 +2,23 @@ import React from "react";
 import PhysicianLoginForm from "../components/PhysicianLoginForm";
 import NavHandler from "../components/Nav/NavHandler";
 import Footer from "../components/Footer";
-import DevelopersNote from "../components/DevelopersNote";
 
 export default function UserLogin() {
-  const note = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.';
-
-
   return (
     <>
-      <NavHandler />
+        <div className="gradient--blue">
+          <div className="login--container">
+            <NavHandler />
 
-      <div className='physicians-login-img'>
-              <h3><span className='colored-text'>Physicians'</span> Portal</h3>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
-      </div>
+            <h2 className="teal--highlight">Welcome back!</h2>
 
-      <div className="default">
-                <DevelopersNote devNote={note} />
+            <span>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. </span>
 
-                <PhysicianLoginForm />
-            </div>
-
-      <Footer />
+            <PhysicianLoginForm />
+          </div>
+        </div>
+        
+        <Footer />
     </>
   );
 }

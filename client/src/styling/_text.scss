@@ -1,103 +1,12 @@
 @import './colors';
 
-.colored-text {
-  color: $paleGreen;
+.teal--highlight {
+  color: $teal;
+}
+.orange--highlight {
+  color: $orange;
 }
 
-.small-caps {
-  font-weight: 600;
-  font-size: 0.9em;
-}
-
-.heading-text {
-  color: $primaryGreen;
-  font-weight: 600;
-  font-size: 1.25em;
-  margin: 0;
-}
-
-.heading {
-  @include flex-left;
-  align-items: center;
-  flex-direction: row;
-  margin: 1em 0;
-  width: 100%;
-
-  path {
-    fill: $primaryGreen;
-  }
-  
-  h2 {
-    margin-left: 0.5em;
-    color: $primaryGreen;
-  }
-
-  span {
-    color: $primaryGreen;
-    font-weight: 600;
-    font-size: 1em;
-    margin: 0;
-    margin-left: 0.5em;
-  }
-}
-
-.block-text {
-  margin: 1rem 0;
-}
-
-.all-caps {
-  font-size: 0.75rem;
-  font-kerning: normal;
-}
-
-.dev-note-text {
-  path, span {
-    fill: $accentYellow;
-    color: $accentYellow;
-  }
-}
-
-.dashboard-tag {
-  @include flex-left;
-  flex-direction: row;
-  align-items: center;
-  margin: 1em 0;
-
-  .profile-name-tag {
-    @include flex-left;
-    width: auto;
-    margin-left: 1em;
-  }
-
-  .sample-profile-icon {
-    @include flex-center;
-    background: $gradient;
-    height: 5em;
-    width: 5em;
-    border-radius: 50%;
-
-    svg {
-      fill: white;
-    }
-  }
-
-  span:not(.small-caps) {
-    font-size: 2em;
-    font-weight: 600;
-    color: $primaryGreen;
-  }
-}
-
-.loading-spinner {
-  @include flex-center;
-  margin: 3em 0;
-
-  span {
-    margin-bottom: 0.5em;
-  }
-  
-  svg {
-    display: block;
-    margin: auto;
-  }
+.homepage--h1 {
+  margin: 1em;
 }

@@ -62,9 +62,9 @@ export default function UserLoginForm() {
   }
 
   return (
-      <form className='form-group' onSubmit={handleSubmit}>
-        <label className='form-label'>USERNAME</label>
-        <input className='form-field' 
+      <form className='form--group' onSubmit={handleSubmit}>
+        <label className='form--label'>Username</label>
+        <input className='form--field' 
               type="text" 
               name="username" 
               value={formState.username} 
@@ -76,13 +76,12 @@ export default function UserLoginForm() {
               onChange={handleInputChange}
               inputID="user-password" />
 
-        <div className="form-buttons">            
-            <span>No account yet? 
-                <span className="colored-text" onClick={setTesterAccount}> Try a tester account.</span>
-            </span>
+        <input className='btn--primary' type="submit" />
 
-            
-            <input className='primary-btn' type="submit" />
+        <div className="login--tester-container">
+            <span>No account yet? 
+                    <span className="teal--highlight" onClick={setTesterAccount}> Try a tester account.</span>
+            </span>
         </div>
       </form>
   );

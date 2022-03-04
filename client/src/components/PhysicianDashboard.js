@@ -2,44 +2,44 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import NavHandler from "./Nav/NavHandler";
 import DashboardTag from "./DashboardTag";
-import DevelopersNote from "./DevelopersNote";
 import { FaFilePrescription } from 'react-icons/fa';
 import { BiUpload } from 'react-icons/bi';
 import { VscFileSubmodule } from "react-icons/vsc";
 import Footer from "./Footer";
 
 export default function PhysicianDashboard() {
-  const note = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.";
-
   return (
     <> 
-      <NavHandler />
+      <NavHandler isNavTransparent={false} />
 
-      <div className="default padding-top">
-          <DashboardTag />
+      <div className="gradient--blue">
+                <div className="dashboard--container">
+                    <DashboardTag />
 
-          <DevelopersNote devNote={note} />
+                    <div className="physiciandashboard--actions">
+                        <h3>Actions</h3>
+                        <Link to="/generate-prescription">
+                            <div className='physiciandashboard--actions--icon'>
+                              <FaFilePrescription size="1.5em" />
+                              <span>GENERATE PRESCRIPTION</span>
+                            </div>
+                        </Link>
 
-          <Link to="/generate-prescription">
-              <div className='wide-btn '>
-                <FaFilePrescription size="1.5em" />
-                <p>GENERATE PRESCRIPTION</p>
-              </div>
-          </Link>
+                        <Link to="/upload">
+                            <div className='physiciandashboard--actions--icon'>
+                              <BiUpload size="1.5em" />
+                              <span>SEND FILE TO A PATIENT</span>
+                            </div>
+                        </Link>
 
-          <Link to="/upload">
-              <div className='wide-btn '>
-                <BiUpload size="1.5em" />
-                <p>UPLOAD A FILE TO A PATIENT'S DATABASE</p>
-              </div>
-          </Link>
-
-          <Link to="/dashboard">
-              <div className='wide-btn '>
-                <VscFileSubmodule size="1.5em" />
-                <p>VIEW A PATIENT'S RECORDS</p>
-              </div>
-          </Link>
+                        <Link to="/dashboard">
+                            <div className='physiciandashboard--actions--icon'>
+                              <VscFileSubmodule size="1.5em" />
+                              <span>VIEW PATIENT'S RECORDS</span>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
       </div>
 
       <Footer />

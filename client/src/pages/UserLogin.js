@@ -2,27 +2,23 @@ import React from "react";
 import UserLoginForm from "../components/UserLoginForm";
 import NavHandler from "../components/Nav/NavHandler";
 import Footer from "../components/Footer";
-import DevelopersNote from "../components/DevelopersNote";
 
 export default function UserLogin() {
-  const note = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in.';
 
   return (
     <>
-        <NavHandler />
-            <div className='login-portal-image'>
-              <h3><span className='colored-text'>Patients'</span> Portal</h3>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
-            </div>
+        <div className="gradient--blue">
+          <div className="login--container">
+            <NavHandler />
 
+            <h2 className="teal--highlight">Welcome back!</h2>
 
-            <div className="default">
-                <DevelopersNote devNote={note} />
+            <span>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. </span>
 
-                <UserLoginForm />
-
-
-            </div>
+            <UserLoginForm />
+          </div>
+        </div>
+        
         <Footer />
     </>
   );

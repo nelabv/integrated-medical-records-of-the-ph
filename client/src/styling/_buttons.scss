@@ -1,77 +1,42 @@
-@import './colors';
 @import './mixins';
+@import './colors';
 
 // BUTTONS
 
-.primary-btn {
-  background-color: $accentYellow;
+.btn--primary {
+  // @include flex(row, center, center);
+
+  background: linear-gradient(270deg, #FFB258 -47.48%, #C26F41 131.72%);
+  border: 0.1px solid $orange;
   color: white;
-  border: 1px solid $accentYellow;
-  padding: 1rem;
-  @include flex-center;
-  flex-direction: row;
-  display: block;
-  text-align: center;
-}
-
-.secondary-btn {
-  @extend .primary-btn;
-
-  background-color: white;
-  color: $accentYellow;
-}
-
-.huge-btn {
-  @include flex-center;
-  width: 10em;
-  height: 10em;
-  border: 1px solid $primaryGreen;
-  border-radius: 3px;
-  margin-bottom: 1em;
-
-  -webkit-box-shadow:0px 0px 9px 3px rgba(97,97,97,0.2);
-  -moz-box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
-  box-shadow: 0px 0px 9px 3px rgba(97,97,97,0.2);
-
-  span {
-    color: $primaryGreen;
-    font-size: 0.75em;
-  }
-}
-
-.wide-btn {
-  @include flex-center;
-
-  flex-direction: row;
-  align-items: center;
-
+  padding: 1em;
+  font-size: 0.9em;
   width: 100%;
-  padding: 2em;
-  border: 1px solid $primaryGreen;
-  border-radius: 3px;
-  margin-bottom: 1em;
+  border-radius: 1.5em;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0.9em;
 
-  p {
-    color: $primaryGreen;
-    font-size: 0.75em;
-    line-height: normal;
-    margin-left: 0.5em;
-  }
-
-  svg {
-    fill: $primaryGreen;
+  span { 
+    color: white; 
   }
 }
 
-.action-with-icon {
-  @include flex-left;
-  flex-direction: row;
+.btn--secondary {
+  @extend .btn--primary;
 
-  svg {
-    fill: $primaryGreen;
-  }
+  background: white;
+  border: 1px solid $orange;
+  color: $orange;
 
-  span {
-    font-weight: 100;
-  }
+}
+
+.btn--disabled {
+  @extend .btn--primary;
+
+  background: #D6D6D6;
+  border: 1px solid #a7a7a7;
+  color: #a7a7a7;
+  cursor: not-allowed;
 }
