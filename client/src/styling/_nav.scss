@@ -35,20 +35,19 @@
   }
 }
 
-.nav-sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.nav-sidebar--overlay {
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
   background-color: rgba(7, 7, 7, 0.301); 
 }
 
-.nav-sidebar {
+.nav-sidebar--container {
   @include flex(row, flex-end, flex-start);
 
   background-color: white;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   right: 0;

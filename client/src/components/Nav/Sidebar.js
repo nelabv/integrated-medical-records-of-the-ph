@@ -9,9 +9,9 @@ function NavSidebar(props) {
 
   return (
     <>
-      <div className="nav-sidebar-overlay" ></div>
+      <div className="nav-sidebar--overlay" ></div>
 
-      <div className="nav-sidebar">
+      <div className="nav-sidebar--container">
         { account 
                 ? <LoggedIn handleClick={handleClick} />
                 : <NotLoggedIn handleClick={handleClick} /> }

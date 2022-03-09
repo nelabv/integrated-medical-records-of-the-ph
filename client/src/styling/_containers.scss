@@ -6,6 +6,11 @@
   text-align: center;
 }
 
+.curved-container--white {
+  background: white;
+  border-radius: 0 0 30px 30px;
+}
+                     
 .gradient--gray {
   background: linear-gradient(180deg, #EBF1F4 0%, rgba(235, 241, 244, 0) 47.96%);
 }
@@ -189,4 +194,11 @@
 .footer--bar {
   background: #1F6A6A;
   height: 2em;
+}
+
+.generate-rx--container {
+  @extend .curved-container--white;
+
+  height: 95vh;
+  padding: 9em 1em;
 }

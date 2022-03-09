@@ -59,46 +59,46 @@ function PatientIDInput({Component}) {
 
   return (
     <>
-    <form onSubmit={handleSubmit} className="form-group">
-      <div style={{
-          display: 'flex', 
-          flexDirection: 'column',
-          marginBottom: '1em'}}>
-            
-            <label className="form-label">PATIENT ID</label>
-            <input 
-              className="form-field"
-              type="number"
-              style={{
-                whiteSpace:'pre-line'
-              }}
-              value={patientForm.patientID}
-              name="patientID"
-              onChange={handleChange}
-            />
+        <form onSubmit={handleSubmit} className="form--group">
+          <div style={{
+              display: 'flex', 
+              flexDirection: 'column',
+              marginBottom: '1em'}}>
+                
+                <label className="form--label">PATIENT ID</label>
+                <input 
+                  className="form--field"
+                  type="number"
+                  style={{
+                    whiteSpace:'pre-line'
+                  }}
+                  value={patientForm.patientID}
+                  name="patientID"
+                  onChange={handleChange}
+                />
 
-            <label className="form-label">PATIENT LAST NAME</label>
-            <input 
-              className="form-field"
-              type="text"
-              style={{
-                whiteSpace:'pre-line'
-              }}
-              value={patientForm.patientLastName}
-              name="patientLastName"
-              onChange={handleChange}
-            />
-        </div>
+                <label className="form--label">PATIENT LAST NAME</label>
+                <input 
+                  className="form--field"
+                  type="text"
+                  style={{
+                    whiteSpace:'pre-line'
+                  }}
+                  value={patientForm.patientLastName}
+                  name="patientLastName"
+                  onChange={handleChange}
+                />
+            </div>
 
-        <input className='primary-btn' type="submit" value="Submit" />
-        <ErrorSpan errorMessage={errorMessage} />
-    </form>
+            <input className='btn--primary' type="submit" value="Submit" />
+            <ErrorSpan errorMessage={errorMessage} />
+        </form>
 
-    { showComponent 
-      ? <Component 
-            patientInfo={patientInfo} 
-            patientID={patientID} /> 
-      : null}
+        { showComponent 
+          ? <Component 
+                patientInfo={patientInfo} 
+                patientID={patientID} /> 
+          : null}
     </>
   );
 }

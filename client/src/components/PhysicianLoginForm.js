@@ -63,7 +63,7 @@ export default function PhysicianLoginForm() {
 
   return (
     <form className='form--group' onSubmit={handleSubmit}>
-      <label className='form--label'>USERNAME</label>
+      <label className='form--label'>Username</label>
       <input className='form--field' 
               type="text" 
               name="username" 
