@@ -205,16 +205,22 @@
   @include flex(row, center, center);
 
   background-color: $paleRed;
-  border-radius: 2px;
+  border-radius: 1em;
   border: 1px solid $red;
   padding: 1em;
 
-  svg {
-    order: 1;
-    fill: $red;
+  span {
+    color: $red;
   }
+}
+
+.success-span--container {
+  @extend .error-span--container;
+
+  background-color: $paleGreen;
+  border: 1px solid $green;
 
   span {
-    order: 2;
+    color: $green;
   }
 }

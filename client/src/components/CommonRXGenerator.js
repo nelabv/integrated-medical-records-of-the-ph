@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import SuccessMsg from "./SuccessMsg";
 
 function CommonRXGenerator(props) {
   // eslint-disable-next-line
   const { patientInfo , patientID } = props;
   const [prescriptionText, setPrescriptionText] = useState('Enter medications (e.g. Amoxicillin 250 mg tablets)')
-  const [statusMsg, setStatusMsg] = useState('')
+  const [statusMsg, setStatusMsg] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setPrescriptionText(e.target.value)
@@ -37,29 +39,36 @@ function CommonRXGenerator(props) {
           );
           const fileURL = URL.createObjectURL(file);
           window.open(fileURL);  
-          setStatusMsg("File uploaded to patient's database successfully.")
+
+          setSuccess(true);
         }
       }) 
   }
 
   return (
     <>
-      <div>
-          <form onSubmit={handleSubmit}>
-                <textarea 
-                 className="textarea"
-                  value={prescriptionText}
-                  name="medications"
-                  onChange={e => {
-                    handleChange(e)
-                  }}
-                />
+      { success 
+            ? null 
+            : <div>
+                  <form onSubmit={handleSubmit}>
+                        <textarea 
+                        className="textarea"
+                          value={prescriptionText}
+                          name="medications"
+                          onChange={e => {
+                            handleChange(e)
+                          }}
+                        />
 
-                <button className="btn--secondary" type="submit">Submit</button>
-            </form>
+                        <button className="btn--secondary" type="submit">Generate Prescription</button>
+                    </form>
+              </div>
+      }
 
-            <span>{statusMsg}</span>
-      </div>
+
+      { success 
+            ? <SuccessMsg msg="File uploadefdfdd to patient's database successfully." /> 
+            : null }
     </>
   )
 }
