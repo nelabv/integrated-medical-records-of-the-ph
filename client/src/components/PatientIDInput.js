@@ -10,7 +10,7 @@ const initialPatientVerificationForm = {
 
 function PatientIDInput({Component}) {
   const [patientID, setPatientID] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
   const [showComponent, setShowComponent] = useState(false);
   const [patientInfo, setPatientInfo] = useState('');
 
@@ -45,14 +45,13 @@ function PatientIDInput({Component}) {
     Physician.verifyPatientInformation(patientInfo)
       .then(res => {
         if (res.status === 200) {
-          setErrorMessage('');
           setPatientInfo(res.data.patientInfo)
           setShowComponent(true);
         }
       })
       .catch(error => {
         if (error.response.headers) {
-          setErrorMessage('Patient not found')
+          setErrorMessage('Patient not found. Please check if Patient ID and Patient Last Name is correct.')
         }
       })
   }
@@ -60,11 +59,6 @@ function PatientIDInput({Component}) {
   return (
     <>
         <form onSubmit={handleSubmit} className="form--group">
-          <div style={{
-              display: 'flex', 
-              flexDirection: 'column',
-              marginBottom: '1em'}}>
-                
                 <label className="form--label">PATIENT ID</label>
                 <input 
                   className="form--field"
@@ -88,10 +82,11 @@ function PatientIDInput({Component}) {
                   name="patientLastName"
                   onChange={handleChange}
                 />
-            </div>
 
             <input className='btn--primary' type="submit" value="Submit" />
-            <ErrorSpan errorMessage={errorMessage} />
+            
+            { errorMessage ? <ErrorSpan errorMessage={errorMessage} /> : null }
+
         </form>
 
         { showComponent 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function CommonRXGenerator(props) {
   // eslint-disable-next-line
   const { patientInfo , patientID } = props;
-  const [prescriptionText, setPrescriptionText] = useState('')
+  const [prescriptionText, setPrescriptionText] = useState('Enter medications (e.g. Amoxicillin 250 mg tablets)')
   const [statusMsg, setStatusMsg] = useState('')
 
   const handleChange = (e) => {
@@ -43,30 +43,24 @@ function CommonRXGenerator(props) {
   }
 
   return (
-    <div>
-
-      <div style={{
-        display: 'flex', 
-        flexDirection: 'column',
-        marginBottom: '1em'}}>
+    <>
+      <div>
           <form onSubmit={handleSubmit}>
-              <textarea 
-                style={{
-                  whiteSpace:'pre-line'
-                }}
-                value={prescriptionText}
-                name="medications"
-                onChange={e => {
-                  handleChange(e)
-                }}
-              />
+                <textarea 
+                 className="textarea"
+                  value={prescriptionText}
+                  name="medications"
+                  onChange={e => {
+                    handleChange(e)
+                  }}
+                />
 
-              <button type="submit">Submit</button>
-          </form>
+                <button className="btn--secondary" type="submit">Submit</button>
+            </form>
+
+            <span>{statusMsg}</span>
       </div>
-
-      <span>{statusMsg}</span>
-    </div>
+    </>
   )
 }
 

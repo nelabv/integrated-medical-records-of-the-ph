@@ -56,3 +56,10 @@
 .password-shown {
   @extend .password-hidden;
 }
+
+
+.textarea {
+  @extend .form--field;
+
+  white-space: pre-line;
+}

@@ -198,7 +198,23 @@
 
 .generate-rx--container {
   @extend .curved-container--white;
+  padding: 9em 1em 3em 1em;
+}
 
-  height: 95vh;
-  padding: 9em 1em;
+.error-span--container {
+  @include flex(row, center, center);
+
+  background-color: $paleRed;
+  border-radius: 2px;
+  border: 1px solid $red;
+  padding: 1em;
+
+  svg {
+    order: 1;
+    fill: $red;
+  }
+
+  span {
+    order: 2;
+  }
 }
