@@ -4,8 +4,7 @@ import SuccessMsg from "./SuccessMsg";
 function CommonRXGenerator(props) {
   // eslint-disable-next-line
   const { patientInfo , patientID } = props;
-  const [prescriptionText, setPrescriptionText] = useState('Enter medications (e.g. Amoxicillin 250 mg tablets)')
-  const [statusMsg, setStatusMsg] = useState('');
+  const [prescriptionText, setPrescriptionText] = useState('Enter medications (e.g. Amoxicillin 250 mg tablets)');
   const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {

@@ -2,6 +2,7 @@ import React from "react";
 import PatientIDInput from "../components/PatientIDInput";
 import CommonRXGenerator from "../components/CommonRXGenerator";
 import NavHandler from "../components/Nav/NavHandler";
+import Footer from "../components/Footer";
 
 export default function GeneratePrescription() {
   return (
@@ -16,6 +17,8 @@ export default function GeneratePrescription() {
                   <PatientIDInput Component={CommonRXGenerator} />
           </div>
         </div>
+
+        <Footer />
     </>
   );
 }
