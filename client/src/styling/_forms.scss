@@ -63,3 +63,32 @@
 
   white-space: pre-line;
 }
+
+.upload--form {
+  div {
+    @include flex(column, center, center);
+  }
+}
+
+.custom-file-upload {
+  input {
+    display: none; // Change the display to none so it becomes customizable with the label
+  }
+
+  svg {
+    fill: $teal;
+  }
+
+  @include flex(column, center, center);
+  text-align: center;
+  padding: 2em;
+  border-radius: 1em;
+  background-color: $paleTeal;
+  width: 100%;
+  border: 1px dashed $teal;
+}
+
+.file-upload-info {
+  text-align: left;
+  margin-top: 1em;
+}

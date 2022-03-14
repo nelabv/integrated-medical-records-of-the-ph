@@ -45,7 +45,7 @@ function PatientIDInput({Component}) {
     Physician.verifyPatientInformation(patientInfo)
       .then(res => {
         if (res.status === 200) {
-          setPatientInfo(res.data.patientInfo)
+          setPatientInfo(res.data.patientInfo);
           setShowComponent(true);
         }
       })

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom"
-import Physician from "../../methods/physicians"
+import Physician from "../../methods/physicians";
+import { AiOutlineUpload } from "react-icons/ai";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 export default function UploadForm(props) {
   const { patientID } = props;
@@ -48,25 +51,25 @@ export default function UploadForm(props) {
 
   return (
     <>
-      <form onSubmit={handleSubmission} encType="multipart/form-data">
-        <div>
+      <form onSubmit={handleSubmission} encType="multipart/form-data" className="upload--form">
+          <label className="custom-file-upload teal--highlight">
             <input type="file" name="file" onChange={changeHandler} />
-            { isFilePicked ? (
-              <div>
+            <AiOutlineUpload size="2em"/>
+            Click here to browse for files.
+          </label>
+      </form>
+
+      { isFilePicked ? (
+              <div className="file-upload-info">
                 <p>File Name: {selectedFile.file.name}</p>
-                <p>File Type: {selectedFile.filetype}</p>
                 <p>
                   Last Modified Date:{' '}
                   {selectedFile.file.lastModifiedDate.toLocaleDateString()}
                 </p>
 
-                <button type="submit">Submit</button>
+                <button type="submit" className="btn--secondary">Submit</button>
               </div>
-            ) : (
-              <p>Select a file to show details</p>
-            )}
-          </div>
-      </form>
+            ) : null }
     </>
   );
 }

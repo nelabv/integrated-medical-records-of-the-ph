@@ -46,6 +46,8 @@ function CommonRXGenerator(props) {
 
   return (
     <>
+      
+
       { success 
             ? null 
             : <div>
