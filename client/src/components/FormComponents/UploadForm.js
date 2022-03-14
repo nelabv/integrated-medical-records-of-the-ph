@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom"
 import Physician from "../../methods/physicians";
 import { AiOutlineUpload } from "react-icons/ai";
 
-const fileTypes = ["JPG", "PNG", "GIF"];
-
 export default function UploadForm(props) {
   const { patientID } = props;
   
@@ -36,6 +34,7 @@ export default function UploadForm(props) {
     
     Physician.uploadFileToPatientDatabase(formData, params)
       .then((res) => {
+        console.log(res)
         setIsFilePicked(false);
 
         if (res.status === 200) {
@@ -57,9 +56,10 @@ export default function UploadForm(props) {
             <AiOutlineUpload size="2em"/>
             Click here to browse for files.
           </label>
-      </form>
 
-      { isFilePicked ? (
+
+
+          { isFilePicked ? (
               <div className="file-upload-info">
                 <p>File Name: {selectedFile.file.name}</p>
                 <p>
@@ -70,6 +70,7 @@ export default function UploadForm(props) {
                 <button type="submit" className="btn--secondary">Submit</button>
               </div>
             ) : null }
+      </form>
     </>
   );
 }
