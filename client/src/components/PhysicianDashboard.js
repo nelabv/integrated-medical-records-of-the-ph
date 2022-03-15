@@ -32,7 +32,7 @@ export default function PhysicianDashboard() {
                             </div>
                         </Link>
 
-                        <Link to="/dashboard">
+                        <Link to="/files">
                             <div className='physiciandashboard--actions--icon'>
                               <VscFileSubmodule size="1.5em" />
                               <span>VIEW PATIENT'S RECORDS</span>

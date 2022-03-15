@@ -20,6 +20,7 @@ import UnprotectedRoute from "./components/UnprotectedRoute";
 import UploadFile from "./pages/UploadFile";
 import UploadSuccess from "./pages/UploadSuccess";
 import { AccountContext } from "./context/AccountContext";
+import ViewPatientRecords from './pages/ViewPatientRecords';
 
 export default function Routes() {
   const [ account, setAccount ]  = useState(null);
@@ -60,6 +61,7 @@ export default function Routes() {
 
                 <ProtectedRoute path="/generate-prescription" component={GeneratePrescription} />
                 <ProtectedRoute path="/upload" component={UploadFile} />
+                <ProtectedRoute path="/files" component={ViewPatientRecords} />
 
                 <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
 
