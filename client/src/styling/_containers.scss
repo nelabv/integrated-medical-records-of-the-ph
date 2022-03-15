@@ -8,6 +8,7 @@
 
 .curved-container--white {
   background: white;
+  min-height: 90vh;
   border-radius: 0 0 30px 30px;
 }
                      
@@ -223,4 +224,11 @@
   span {
     color: $green;
   }
+}
+
+.upload-success--container {
+  @extend .curved-container--white;
+
+  padding: 0 1em;
+  padding-top: 9em;
 }
