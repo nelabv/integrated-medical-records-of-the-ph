@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NavHandler from "../components/Nav/NavHandler";
 import Footer from "../components/Footer";
 
 export default function ViewPatientRecords({patientInfo}) {
-  const [patientInformation, setPatientInformation] = useState(null);
-  const [showLoading, setShowLoading] = useState(false);
 
 /*   useEffect(() => {
     if (!patientInformation) {

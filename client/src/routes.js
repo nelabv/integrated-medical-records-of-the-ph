@@ -15,8 +15,8 @@ import PhysicianLogin from "./pages/PhysicianLogin";
 import DashboardHandler from "./pages/DashboardHandler";
 import RXGenerator from "./components/RXGenerator";
 import GeneratePrescription from "./pages/GeneratePrescription";
-import ProtectedRoute from "./components/ProtectedRoute";
-import UnprotectedRoute from "./components/UnprotectedRoute";
+import PublicRoute from './components/PublicRoute';
+import PhysiciansOnlyRoute from "./components/PhysiciansOnlyRoute";
 import UploadFile from "./pages/UploadFile";
 import UploadSuccess from "./pages/UploadSuccess";
 import { AccountContext } from "./context/AccountContext";
@@ -52,18 +52,21 @@ export default function Routes() {
       <Router>
         <Switch>
                 <Route exact path='/' component={App} />
-                <UnprotectedRoute path="/register" component={RegisterForm} />
-                <UnprotectedRoute path="/login/as" component={LoginAs} />
-                <UnprotectedRoute path='/users/login' component={UserLogin} />
-                <UnprotectedRoute path='/physicians/login' component={PhysicianLogin} />
 
-                <ProtectedRoute path="/dashboard" component={DashboardHandler} />
+                {/* ALL OPEN ACCESS ROUTES */}
+                <PublicRoute path="/register" component={RegisterForm} />
+                <PublicRoute path="/login/as" component={LoginAs} />
+                <PublicRoute path='/users/login' component={UserLogin} />
+                <PublicRoute path='/physicians/login' component={PhysicianLogin} />
 
-                <ProtectedRoute path="/generate-prescription" component={GeneratePrescription} />
-                <ProtectedRoute path="/upload" component={UploadFile} />
-                <ProtectedRoute path="/files" component={ViewPatientRecords} />
+                <Route path="/dashboard" component={DashboardHandler} />
 
-                <ProtectedRoute path="/admin/generate-rx" component={RXGenerator} />
+                {/* PHYSICIANS ONLY */}
+                <PhysiciansOnlyRoute path="/generate-prescription" userAccess={false} component={GeneratePrescription} />
+                <PhysiciansOnlyRoute path="/upload"  component={UploadFile} />
+                <PhysiciansOnlyRoute path="/files" component={ViewPatientRecords} />
+
+                <PhysiciansOnlyRoute path="/admin/generate-rx" component={RXGenerator} />
 
                 <Route path="/confirmed" component={UploadSuccess} />
         </Switch>
