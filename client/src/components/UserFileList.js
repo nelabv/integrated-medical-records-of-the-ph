@@ -8,7 +8,7 @@ function UserFileList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    User.fetchFileList()
+    User.fetchFileList(localStorage.getItem('ID'))
     .then((res) => {
       setFileList(res.data.data)
       setIsLoading(false)

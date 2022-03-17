@@ -22,8 +22,8 @@ class User {
     return http.post("/logout")
   }
 
-  fetchFileList() {
-    return http.get(`/fetch-files`)
+  fetchFileList(patientID) {
+    return http.get(`/user/file/${patientID}`)
   }
 
   downloadFile(filename) {
