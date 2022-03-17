@@ -54,8 +54,8 @@ router.route("/logout")
 router.route('/upload-to-bucket')
   .post(checkIfAuthenticated, physiciansAccessOnly, PhysiciansAPI.imageUpload);
 
-router.route("/fetch-files")
-  .get(userAccessOnly, FileHandler.fetchUserFiles)
+router.route("/user/file/:id")
+  .get(checkIfAuthenticated, FileHandler.fetchUserFiles)
 
 router.route("/download/:filename")
   .get(checkIfAuthenticated, FileHandler.downloadFile)

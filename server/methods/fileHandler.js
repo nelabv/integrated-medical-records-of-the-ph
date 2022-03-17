@@ -39,8 +39,8 @@ export default class FileHandler {
   }
 
   static async fetchUserFiles(req, res, next) {
-    const userData = await User.findOne({ username: req.session.USERNAME });
-
+    const userData = await User.findOne({ patientID: req.params.id });
+    
     const params = {
       Bucket: process.env.BUCKET_NAME,
       Delimiter: '/',
