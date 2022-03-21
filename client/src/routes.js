@@ -64,7 +64,7 @@ export default function Routes() {
                 {/* PHYSICIANS ONLY */}
                 <PhysiciansOnlyRoute path="/generate-prescription" userAccess={false} component={GeneratePrescription} />
                 <PhysiciansOnlyRoute path="/upload"  component={UploadFile} />
-                <PhysiciansOnlyRoute path="/files" component={ViewPatientRecords} />
+                <PhysiciansOnlyRoute path="/view" component={ViewPatientRecords} />
 
                 <PhysiciansOnlyRoute path="/admin/generate-rx" component={RXGenerator} />
 

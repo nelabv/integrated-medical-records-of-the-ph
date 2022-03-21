@@ -3,17 +3,18 @@ import User from "../methods/users";
 import LoadingSpinner from "./LoadingSpinner";
 import File from "./File";
 
-function UserFileList() {
-  const [fileList, setFileList] = useState([]);
+function UserFileList({patientID}) {
   const [isLoading, setIsLoading] = useState(true);
+  const [fileArray, setFileArray] = useState(null);
 
   useEffect(() => {
-    User.fetchFileList(localStorage.getItem('ID'))
-    .then((res) => {
-      setFileList(res.data.data)
-      setIsLoading(false)
-    })
-  }, [])
+    User.fetchFileList(patientID)
+      .then(res => {
+        setFileArray(res.data.data);
+        setIsLoading(false);
+        console.log('set')
+      })
+  }, [patientID])
 
   const downloadFile = async (fileName) => {
     const encodedURI = encodeURIComponent(fileName);
@@ -26,19 +27,17 @@ function UserFileList() {
   
   return (
     <div className="file--container">
-      <h3>Your Files</h3>
       {
         isLoading 
-          ? <LoadingSpinner />
-          : fileList.map((file) => {
-
-            return (
-              <div className="file--individual" key={file.Key} >
-                  <File file={file}
-                        downloadFile={downloadFile} />
-              </div>
-            )
-        })
+            ? <LoadingSpinner />
+            : fileArray.map((file) => {
+                return (
+                  <div className="file--individual" key={file.Key} >
+                      <File file={file}
+                            downloadFile={downloadFile} />
+                  </div>
+                )
+       })
       }
     </div>
   );
