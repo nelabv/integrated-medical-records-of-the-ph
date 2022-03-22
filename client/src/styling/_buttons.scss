@@ -7,7 +7,8 @@
   // @include flex(row, center, center);
 
   background: linear-gradient(270deg, #FFB258 -47.48%, #C26F41 131.72%);
-  border: 0.1px solid $orange;
+  border: none;
+  max-width: 300px;
   color: white;
   padding: 1em;
   font-size: 0.9em;

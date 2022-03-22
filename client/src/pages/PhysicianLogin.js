@@ -7,7 +7,7 @@ export default function UserLogin() {
   return (
     <>
         <div className="gradient--blue">
-          <div className="login--container">
+          <div className="max-width login--container">
             <NavHandler />
 
             <h2 className="teal--highlight">Welcome back!</h2>

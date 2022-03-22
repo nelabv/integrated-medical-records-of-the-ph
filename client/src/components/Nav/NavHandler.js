@@ -12,8 +12,7 @@ function NavHandler(props) {
 
   return (
     <>
-      <div className= {isNavTransparent ? "nav--transparent" : "nav"}>
-        <div className={`max-width ${isNavTransparent ? "nav--transparent" : "nav"}`}> 
+      <div className= {isNavTransparent ? "max-width nav--transparent" : "max-width nav"}>
             <span>LOGO</span> 
 
             <CgMenuRight size="2em" className="nav--icon" onClick={handleClick}/>
@@ -22,7 +21,6 @@ function NavHandler(props) {
                   <NavSidebar 
                       handleClick={handleClick} /> 
                   : null }
-        </div>
       </div>
     </>
   );

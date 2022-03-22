@@ -10,7 +10,7 @@ export default function UploadFile() {
         <NavHandler />
 
         <div className="gradient--blue">
-          <div className="generate-rx--container">
+          <div className="max-width generate-rx--container">
               <h2 className="teal--highlight">Upload a file to a patient's database</h2>
                   <span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem</span>
                   

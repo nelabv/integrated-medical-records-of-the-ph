@@ -13,7 +13,7 @@ export default function PhysicianDashboard() {
       <NavHandler isNavTransparent={false} />
 
       <div className="gradient--blue">
-                <div className="dashboard--container">
+                <div className="max-width dashboard--container">
                     <DashboardTag />
 
                     <div className="physiciandashboard--actions">

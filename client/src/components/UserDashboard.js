@@ -34,7 +34,7 @@ function UserDashboard() {
             <NavHandler isNavTransparent={false} />
 
             <div className="gradient--blue">
-                <div className="dashboard--container">
+                <div className="max-width dashboard--container">
                     <DashboardTag />
                   
                     <UserFileList patientID={localStorage.getItem('ID')}/>

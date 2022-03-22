@@ -32,16 +32,19 @@ function App() {
     <div className="center">
       <NavHandler isNavTransparent={true} />
 
-      <div className="homepage--img">
-        <img src={homepageImg} alt="IMRP 2021" />
-      </div>
 
-      <div className="homepage--container">
-        <h1 className="homepage--h1">Your <span className="teal--highlight">medical records </span>in <span className='orange--highlight'>one tap.</span></h1>
-        
-        <Link to="/login/as">
-          <button className="btn--primary">TRY A TESTER ACCOUNT</button>
-        </Link>
+      <div className="max-width homepage" >
+          <div className="homepage--img">
+            <img src={homepageImg} alt="IMRP 2021" />
+          </div>
+
+          <div className="homepage--container">
+            <h1 className="homepage--h1">Your <span className="teal--highlight">medical records </span>in <span className='orange--highlight'>one tap.</span></h1>
+            
+            <Link to="/login/as">
+              <button className="btn--primary">TRY A TESTER ACCOUNT</button>
+            </Link>
+          </div>
       </div>
 
       <HowItWorks />
