@@ -18,7 +18,6 @@ function UserDashboard() {
   useEffect(() => {
     User.fetchUserInformation(sessionStorage.getItem("LOGIN_INFO"))
       .then((response) => {
-        console.log(response);
         dispatch({
           type: 'TOGGLE_VISIBILITY',
           payload: 'userDashboard'
@@ -38,7 +37,7 @@ function UserDashboard() {
                 <div className="dashboard--container">
                     <DashboardTag />
                   
-                    <UserFileList />
+                    <UserFileList patientID={localStorage.getItem('ID')}/>
                 </div>
             </div>
           </>
