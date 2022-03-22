@@ -1,9 +1,14 @@
 @import './mixins';
+@import './breakpoints';
 
 .center {
   @include flex(column, center, center);
 
   text-align: center;
+}
+
+.max-width {
+  max-width: 700px;
 }
 
 .curved-container--white {
@@ -185,6 +190,7 @@
 .footer {
   background: #004848;
   height: 6em;
+  width: 100%;
   padding: 1em;
 
   span {

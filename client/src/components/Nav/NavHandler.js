@@ -13,14 +13,16 @@ function NavHandler(props) {
   return (
     <>
       <div className= {isNavTransparent ? "nav--transparent" : "nav"}>
-          <span>LOGO</span> 
+        <div className={`max-width ${isNavTransparent ? "nav--transparent" : "nav"}`}> 
+            <span>LOGO</span> 
 
-          <CgMenuRight size="2em" className="nav--icon" onClick={handleClick}/>
+            <CgMenuRight size="2em" className="nav--icon" onClick={handleClick}/>
 
-          { sidebarVisibility ? 
-                <NavSidebar 
-                    handleClick={handleClick} /> 
-                : null }
+            { sidebarVisibility ? 
+                  <NavSidebar 
+                      handleClick={handleClick} /> 
+                  : null }
+        </div>
       </div>
     </>
   );
