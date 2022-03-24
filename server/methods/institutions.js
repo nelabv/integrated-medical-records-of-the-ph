@@ -1,5 +1,5 @@
 import bcryptjs from "bcryptjs";
-import { ForApproval } from "../models/index.js";
+import { InstitutionsForApproval } from "../models/index.js";
 
 export default class InstitutionsAPI {
   static async register(req, res) {
@@ -20,7 +20,7 @@ export default class InstitutionsAPI {
             website
           }
 
-          const newInstitution = new ForApproval(institution);
+          const newInstitution = new InstitutionsForApproval(institution);
 
           newInstitution.save()
             .then((response, error) => {

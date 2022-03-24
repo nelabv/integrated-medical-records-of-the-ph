@@ -70,7 +70,10 @@ router.route("/verify")
 router.route('/approval')
   .post(InstitutionsAPI.register)
 
-router.route('/approve?:type?:id?:status')
-  .post(AdminAPI.approveOrDeclineRegistration)
+router.route('/approval/users?:id?:status')
+  .post(AdminAPI.approveOrDeclineUser)
+
+router.route('/approval/physician?:id?:status')
+  .post(AdminAPI.approveOrDeclinePhysician)
     
 export default router;
