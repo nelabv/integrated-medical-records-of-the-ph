@@ -2,9 +2,30 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
+const AddressSchema = new Schema({
+  houseNumber: { 
+    type: String, 
+    required: true },
+  street: { 
+    type: String, 
+    required: true },
+  barangay: { 
+    type: String, 
+    required: true },
+  city: { 
+    type: String, 
+    required: true },
+  province: { 
+    type: String, 
+    required: true },
+  zipCode: { 
+    type: Number, 
+    required: true },
+})
+
 const UserSchema = new Schema({
   patientID: {
-    type: Number,
+    type: String,
     required: true,
     unique: true
   },
@@ -35,6 +56,10 @@ const UserSchema = new Schema({
   },
   bloodType: {
     type: String,
+    required: true
+  },
+  address: {
+    type: AddressSchema,
     required: true
   }
 })
@@ -109,12 +134,15 @@ const PhysicianSchema = new Schema({
   }
 })
 
-const ForApprovalSchema = new Schema(
+/* const ForApprovalSchema = new Schema(
   {}, 
   { strict: false }
-);
+); */
 
 export const User = mongoose.model('Users', UserSchema);
 export const Institution = mongoose.model('Institution', InstitutionSchema);
 export const Physician = mongoose.model('Physician', PhysicianSchema);
-export const ForApproval = mongoose.model('ForApproval', ForApprovalSchema, 'forapproval');
+
+export const PhysiciansForApproval = mongoose.model('PhysiciansForApproval', PhysicianSchema, 'PhysiciansForApproval');
+export const UsersForApproval = mongoose.model('UsersForApproval', UserSchema, 'UsersForApproval');
+export const InstitutionsForApproval = mongoose.model('InstitutionsForApproval', InstitutionSchema, 'InstitutionsForApproval');

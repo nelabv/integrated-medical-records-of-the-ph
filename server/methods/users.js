@@ -1,12 +1,19 @@
 import bcryptjs from "bcryptjs";
 import { v4 as uuidv4 } from 'uuid';
-import { User, ForApproval } from "../models/index.js";
+import { User, UsersForApproval } from "../models/index.js";
 import dotenv from "dotenv";
 dotenv.config();
 
 export default class UsersAPI {
   static async register(req, res) {
-    const { username, password, firstName, lastName, sex, birthdate, bloodType } = req.body;
+    const { username, 
+            password, 
+            firstName, 
+            lastName, 
+            sex, 
+            birthdate, 
+            bloodType,
+            address } = req.body;
     const checkIfUsernameIsTaken = await User.findOne({ username });
 
     if (checkIfUsernameIsTaken) {
@@ -36,10 +43,11 @@ export default class UsersAPI {
                 lastName,
                 sex,
                 birthdate,
-                bloodType
+                bloodType,
+                address
               }
 
-              const newUser = new ForApproval(user);
+              const newUser = new UsersForApproval(user);
   
               newUser.save()
                 .then((response, error) => {
@@ -55,7 +63,6 @@ export default class UsersAPI {
                     })
                   }
                 }) 
-
             })
           }
         })

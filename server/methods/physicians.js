@@ -2,7 +2,7 @@ import bcryptjs from "bcryptjs";
 import multer from 'multer';
 import multerS3 from 'multer-s3';
 import aws from 'aws-sdk';
-import { ForApproval, Physician } from "../models/index.js";
+import { PhysiciansForApproval, Physician } from "../models/index.js";
 import { User } from "../models/index.js";
 import FileGenerators from "./fileGenerators/fileGenerators.js";
 import dotenv from "dotenv";
@@ -19,7 +19,7 @@ const s3 = new aws.S3();
 
 export default class PhysiciansAPI {
   static async register(req, res) {
-    const { licenseNumber, specialization, username, password, firstName, lastName } = req.body;
+    const { licenseNumber, specialization, username, password, firstName, lastName, address } = req.body;
     const checkIfUsernameIsTaken = await Physician.findOne({ username });
 
     if (checkIfUsernameIsTaken) {
@@ -48,10 +48,11 @@ export default class PhysiciansAPI {
                   username,
                   password: hash,
                   firstName,
-                  lastName
+                  lastName,
+                  address
                 }
 
-                const newPhysician = new ForApproval(physician);
+                const newPhysician = new PhysiciansForApproval(physician);
   
                 newPhysician.save()
                   .then((response, error) => {
