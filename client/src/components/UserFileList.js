@@ -8,12 +8,14 @@ function UserFileList({patientID}) {
   const [fileArray, setFileArray] = useState(null);
 
   useEffect(() => {
-    User.fetchFileList(patientID)
-      .then(res => {
-        setFileArray(res.data.data);
-        setIsLoading(false);
-        console.log('set')
-      })
+    async function fetchFiles() {
+      const files = await User.fetchFileList(patientID);
+      setFileArray(files.data);
+      setIsLoading(false);
+      console.log('set')
+    }
+
+    fetchFiles();
   }, [patientID])
 
   const downloadFile = async (fileName) => {

@@ -17,7 +17,7 @@ function UserDashboard() {
 
   useEffect(() => {
     User.fetchUserInformation(sessionStorage.getItem("LOGIN_INFO"))
-      .then((response) => {
+      .then(() => {
         dispatch({
           type: 'TOGGLE_VISIBILITY',
           payload: 'userDashboard'

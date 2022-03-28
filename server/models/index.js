@@ -134,11 +134,6 @@ const PhysicianSchema = new Schema({
   }
 })
 
-/* const ForApprovalSchema = new Schema(
-  {}, 
-  { strict: false }
-); */
-
 export const User = mongoose.model('Users', UserSchema);
 export const Institution = mongoose.model('Institution', InstitutionSchema);
 export const Physician = mongoose.model('Physician', PhysicianSchema);

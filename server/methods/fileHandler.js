@@ -39,12 +39,16 @@ export default class FileHandler {
   }
 
   static async fetchUserFiles(req, res, next) {
-    const userData = await User.findOne({ patientID: req.params.id });
-    
+    // Future patient ID will include numbers and letters.
+
+    const idConvertedToNumber = Number(req.params.id);
+
+    const userData = await User.findOne({ patientId: idConvertedToNumber});
+
     const params = {
       Bucket: process.env.BUCKET_NAME,
       Delimiter: '/',
-      Prefix: `${userData.patientID}/`
+      Prefix: `${idConvertedToNumber}/`
     };
       
     s3.listObjects(params, function(err, data) {
@@ -53,9 +57,7 @@ export default class FileHandler {
           error: err.message
         })
       } else {
-        res.status(200).json({
-          data: data.Contents
-        })
+        res.status(200).json(data.Contents)
       }
     })
   }

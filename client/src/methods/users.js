@@ -23,7 +23,7 @@ class User {
   }
 
   fetchFileList(patientID) {
-    return http.get(`/user/file/${patientID}`)
+    return http.get(`/user/files/${patientID}`);
   }
 
   downloadFile(filename) {

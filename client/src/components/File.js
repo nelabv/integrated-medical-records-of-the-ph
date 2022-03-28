@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaFileAlt, FaDownload } from "react-icons/fa";
 
 function File(props) {
   const { file, downloadFile } = props;
-
-  useEffect(() => {
-
-  }, [])
 
   return ( 
     <>
