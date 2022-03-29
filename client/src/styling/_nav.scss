@@ -1,21 +1,29 @@
 @import './mixins';
+@import './buttons';
 
-.nav {
-  @include flex(row, center, space-between);
-  background-color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.76);/* Black background color */
+.nav--bg {
+  @include flex(row, center, center);
+  background-color: $darkTeal;
   position: absolute; 
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 90%;
-  height: 7em;
+  width: 100%;
+  height: 5em;
   z-index: 1;
   padding: 1em;
+  margin: auto;
+}
+
+.nav {
+  @include flex(row, center, space-between);
+  max-width: 1200px;
 
   span {
     order: 1;
     font-weight: 600;
+    color: white;
+    font-size: 0.9em;
   }
 }
 
@@ -33,6 +41,14 @@
     fill: $teal;
     font-size: 1.5em;
   }
+}
+
+.navbar--btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  order: 2;
+  font-size: 0.9em;
 }
 
 .nav-sidebar--overlay {

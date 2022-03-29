@@ -30,7 +30,7 @@ function App() {
   
   return (
     <div className="center">
-      <NavHandler isNavTransparent={true} />
+      <NavHandler isNavTransparent={false} />
 
 
       <div className="max-width homepage" >

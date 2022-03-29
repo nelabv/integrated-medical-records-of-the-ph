@@ -1,26 +1,46 @@
-import React, { useState } from "react";
-import { CgMenuRight } from "react-icons/cg";
-import NavSidebar from "./Sidebar";
+import React, { useEffect, useState } from "react";
+import HamburgerMenu from "./HamburgerMenu";
+import NavbarButtons from "./NavbarButtons";
 
 function NavHandler(props) {
   const { isNavTransparent } = props;
-  const [sidebarVisibility, setSidebarVisibility] = useState(false);
+  const [hamburgerMenu, showHamburgerMenu] = useState(false);
 
-  const handleClick = () => {
-    setSidebarVisibility(prevState => !prevState)
+  const configureNavbar = () => {
+    const screenWidth = window.screen.width;
+
+    if (screenWidth < 600) {
+      showHamburgerMenu(true);
+    } else {
+      showHamburgerMenu(false);
+    }
   }
+
+  useEffect(() => {
+/*     window.addEventListener("scroll", configureNavbar);
+    return () => window.removeEventListener("scroll", configureNavbar); */
+
+    const screenWidth = window.screen.width;
+    console.log('running');
+
+    if (screenWidth < 600) {
+      showHamburgerMenu(true);
+    } else {
+      showHamburgerMenu(false);
+    }
+  }, [showHamburgerMenu]);
 
   return (
     <>
-      <div className= {isNavTransparent ? "max-width nav--transparent" : "max-width nav"}>
-            <span>LOGO</span> 
+      <div className="nav--bg">
+          <div className= {isNavTransparent ? "nav--transparent" : "nav"}>
+                <span>IRMP</span> 
 
-            <CgMenuRight size="2em" className="nav--icon" onClick={handleClick}/>
+                { hamburgerMenu ? 
+                      <HamburgerMenu /> : <NavbarButtons />
+                }
+          </div>
 
-            { sidebarVisibility ? 
-                  <NavSidebar 
-                      handleClick={handleClick} /> 
-                  : null }
       </div>
     </>
   );
