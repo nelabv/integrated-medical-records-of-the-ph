@@ -14,13 +14,11 @@ export default function Logout() {
     
     User.logout()
       .then((response, err) => {
-        if (err)
-          throw err;
+        if (err) throw err;
         
-          localStorage.clear();
+        localStorage.clear();
 
-        setAccount(null)
-        history.push("/");
+        history.push("/dashboard");
       })
   }
 
