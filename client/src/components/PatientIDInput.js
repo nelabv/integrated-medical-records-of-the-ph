@@ -2,6 +2,7 @@ import React, { useState, useReducer } from "react";
 import Physician from "../methods/physicians"
 import ErrorSpan from "./ErrorSpan";
 import FormReducer from "../reducers/FormReducer";
+import { setNativeValue } from "./FormComponents/SetNativeValue";
 
 const initialPatientVerificationForm = {
   patientID: 0,
@@ -15,6 +16,20 @@ function PatientIDInput({Component}) {
   const [patientInfo, setPatientInfo] = useState('');
 
   const [patientForm, dispatch] = useReducer(FormReducer, initialPatientVerificationForm);
+
+  const setTesterAccount = (e) => {
+    e.preventDefault();
+               
+    const testerAccount = {
+      idNumber: 1,
+      lastName: 'SMITH'
+    }
+
+    const patientIDNumber = document.getElementById("patient-id-number");
+    const patientLasTName = document.getElementById("patient-last-name");
+    setNativeValue(patientIDNumber, testerAccount.idNumber);
+    setNativeValue(patientLasTName, testerAccount.lastName);
+  }
 
   const handleChange = (e) => {
     if (e.target.name === 'patientID') {
@@ -65,6 +80,7 @@ function PatientIDInput({Component}) {
                   style={{
                     whiteSpace:'pre-line'
                   }}
+                  id="patient-id-number"
                   value={patientForm.patientID}
                   name="patientID"
                   onChange={handleChange}
@@ -79,8 +95,15 @@ function PatientIDInput({Component}) {
                   }}
                   value={patientForm.patientLastName}
                   name="patientLastName"
+                  id="patient-last-name"
                   onChange={handleChange}
                 />
+
+            <div className="login--tester-container">
+                    <span>No account yet? 
+                            <span className="teal--highlight" onClick={setTesterAccount}>View a Test Patient's Files</span>
+                    </span>
+            </div>
 
             <input className='btn--primary' type="submit" value="Submit" />
             

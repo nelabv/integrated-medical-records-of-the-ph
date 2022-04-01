@@ -2,9 +2,7 @@ import React from 'react';
 
 function HowItWorks() {
   return (
-    <div className="center gradient--gray">
-      <div className='howitworks--container max-width'>
-        <div className="howitworks--img"></div>
+    <div className='howitworks--container max-width'>
 
         <h2>How It <span className="teal--highlight">Works</span></h2>
 
@@ -15,7 +13,6 @@ function HowItWorks() {
             className='btn--primary'
             target="_blank"
             rel='noreferrer'>Github Repository</a>
-      </div>
     </div>
   );
 }
