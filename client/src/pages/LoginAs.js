@@ -17,24 +17,25 @@ function LoginAs() {
     <>
       <NavHandler isNavTransparent={true}/>
 
-      <div className='sign-in--container'>
-        <div className='max-width'>
-              <h2>Sign in</h2>
-                <span>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</span>
+      <div className='gradient--blue'>
+          <div className='max-width sign-in--container'>
+                  <h2 className='teal--highlight'>Sign in</h2>
+                    <span>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam</span>
 
-              <div className='sign-in--btn-container'>
-                <Link to="/users/login">
-                    <button className='btn--primary'>USER</button>
-                </Link>
+                  <div className='sign-in--btn-container'>
+                    <Link to="/users/login">
+                        <button className='btn--primary'>User</button>
+                    </Link>
 
-                <Link to="/physicians/login">
-                    <button className='btn--secondary'>PHYSICIANS</button>
-                </Link>
+                    <Link to="/physicians/login">
+                        <button className='btn--secondary'>Physician</button>
+                    </Link>
 
-                <button className='btn--disabled'>INSTITUTIONS (Coming Soon)</button>
-              </div>
-        </div>
+                    <button className='btn--disabled'>Institution</button>
+                  </div>
+          </div>
       </div>
+
       <Footer />
     </>
   );
