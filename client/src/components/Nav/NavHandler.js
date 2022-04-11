@@ -1,34 +1,8 @@
-import React, { useEffect, useState } from "react";
-import HamburgerMenu from "./HamburgerMenu";
-import NavbarButtons from "./NavbarButtons";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function NavHandler(props) {
   const { isNavTransparent } = props;
-  const [hamburgerMenu, showHamburgerMenu] = useState(false);
-
-  const configureNavbar = () => {
-    const screenWidth = window.screen.width;
-
-    if (screenWidth < 600) {
-      showHamburgerMenu(true);
-    } else {
-      showHamburgerMenu(false);
-    }
-  }
-
-  useEffect(() => {
-/*     window.addEventListener("scroll", configureNavbar);
-    return () => window.removeEventListener("scroll", configureNavbar); */
-
-    const screenWidth = window.screen.width;
-    console.log('running');
-
-    if (screenWidth < 600) {
-      showHamburgerMenu(true);
-    } else {
-      showHamburgerMenu(false);
-    }
-  }, [showHamburgerMenu]);
 
   return (
     <>
@@ -36,8 +10,12 @@ function NavHandler(props) {
           <div className= {isNavTransparent ? "nav--transparent" : "nav"}>
                 <span>IRMP</span> 
 
-                { hamburgerMenu ? 
-                      <HamburgerMenu /> : <NavbarButtons />
+                { localStorage.getItem('ID') ? <button className="navbar--btn" >Logout</button> : 
+                      <>
+                          <Link to='/login/as'  className="navbar--btn">
+                              Login
+                          </Link>
+                      </>
                 }
           </div>
 
