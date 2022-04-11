@@ -5,7 +5,7 @@ import SharedAPI from "../shared.js";
 
 export default class FileGenerators {
   static async medicalPrescription(req, res, PATIENT_ID, PHYSICIAN_INFO) {
-    const PATIENT_INFO = await User.findOne({ patientID: PATIENT_ID });
+    const PATIENT_INFO = await User.findOne({ patientId: PATIENT_ID });
     const { medications } = req.body;
 
     const today = new Date().toLocaleDateString('en-GB', {
