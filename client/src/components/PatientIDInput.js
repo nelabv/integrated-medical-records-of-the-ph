@@ -99,11 +99,7 @@ function PatientIDInput({Component}) {
                   onChange={handleChange}
                 />
 
-            <div className="login--tester-container">
-                    <span>No account yet? 
-                            <span className="teal--highlight" onClick={setTesterAccount}>View a Test Patient's Files</span>
-                    </span>
-            </div>
+            <span className="teal--highlight" onClick={setTesterAccount}>Click here to input sample user data.</span>
 
             <input className='btn--primary' type="submit" value="Submit" />
             

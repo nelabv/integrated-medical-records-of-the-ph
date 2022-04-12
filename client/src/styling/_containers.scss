@@ -95,13 +95,12 @@
   @include flex(column, center, center);
   order: 2;
   padding: 0 1em;
-  padding-bottom: 3em;
 }
 
 .howitworks--container {
   @include flex(column, center, center);
 
-  padding: 3em 1em;
+  padding: 1em;
 
   h2 {
     margin: 1em 0;
@@ -134,17 +133,6 @@
   
   span {
     text-align: center;
-  }
-}
-
-.login--tester-container {
-  @include flex(row, center, center);
-
-  margin-top: 1em;
-
-  .teal--highlight {
-    font-weight: 600;
-    cursor: pointer;
   }
 }
 
