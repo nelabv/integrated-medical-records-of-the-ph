@@ -15,16 +15,21 @@ function App() {
   let history = useHistory();
 
   useEffect(() => {
+    // This redirects user to dashboard if already logged in
     const accountID = localStorage.getItem('ID');
+    const physicianAccess = localStorage.getItem('ENTITY');
 
-    if (accountID) {
+    if (physicianAccess) {
+      history.push('/dashboard');
+    } else if (accountID) {
       User.fetchUserInformation()
-        .then(response => {
-          setAccount(response.data);
-          history.push('/dashboard');
-        })
+      .then(response => {
+        console.log(response)
+        setAccount(response.data);
+        history.push('/dashboard');
+      })
 
-        .catch(error => console.log(error))
+      .catch(error => console.log(error))
     }
   }, [history, setAccount])
   
