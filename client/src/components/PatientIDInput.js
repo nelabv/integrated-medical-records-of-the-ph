@@ -13,6 +13,7 @@ function PatientIDInput({Component}) {
   const [patientID, setPatientID] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [showComponent, setShowComponent] = useState(false);
+  // eslint-disable-next-line
   const [patientInfo, setPatientInfo] = useState('');
 
   const [patientForm, dispatch] = useReducer(FormReducer, initialPatientVerificationForm);
