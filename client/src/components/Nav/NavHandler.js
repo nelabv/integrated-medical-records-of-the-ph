@@ -23,7 +23,9 @@ function NavHandler(props) {
     <>
       <div className="nav--bg">
           <div className= {isNavTransparent ? "nav--transparent" : "nav"}>
-                <span>IRMP</span> 
+                <Link to='/'  className="navbar--btn">
+                  IMRP
+                </Link>
 
                 { localStorage.getItem('ID') 
                 

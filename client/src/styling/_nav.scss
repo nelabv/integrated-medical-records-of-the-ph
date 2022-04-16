@@ -19,7 +19,7 @@
   @include flex(row, center, space-between);
   max-width: 1200px;
 
-  span {
+  a {
     order: 1;
     font-weight: 600;
     color: white;

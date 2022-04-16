@@ -24,7 +24,6 @@ function App() {
     } else if (accountID) {
       User.fetchUserInformation()
       .then(response => {
-        console.log(response)
         setAccount(response.data);
         history.push('/dashboard');
       })
