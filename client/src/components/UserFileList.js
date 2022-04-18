@@ -12,7 +12,6 @@ function UserFileList({patientID}) {
       const files = await User.fetchFileList(patientID);
       setFileArray(files.data);
       setIsLoading(false);
-      console.log('set')
     }
 
     fetchFiles();

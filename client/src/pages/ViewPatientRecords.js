@@ -12,7 +12,7 @@ export default function ViewPatientRecords() {
       <div className="gradient--blue">
         <div className="max-width dashboard--container view-records--container">
             <h2 className="teal--highlight">View Patient's Records</h2>
-            <p>To view a patient's file collection, the patient ID and last name should match the records. </p>
+            <p>To view a patient's file collection, the patient ID and last name should match the records.</p>
 
             <PatientIDInput Component={PatientsRecords} />
         </div>
