@@ -8,7 +8,7 @@ export default function HomepageBanner() {
           <div className="homepage--text">
             <h1 className="homepage--h1">Your <span className="teal--highlight">medical records </span>in <span className='orange--highlight'>one tap.</span></h1>
             
-            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam.</p>
+            <span>Access your medical records in any health care institution you go to.</span>
 
             <Link to="/login/as">
               <button className="btn--primary">Try A Tester Account</button>

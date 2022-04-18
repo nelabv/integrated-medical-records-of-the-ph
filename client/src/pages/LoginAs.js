@@ -20,7 +20,7 @@ function LoginAs() {
       <div className='gradient--blue'>
           <div className='max-width sign-in--container'>
                   <h2 className='teal--highlight'>Sign in</h2>
-                    <span>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam</span>
+                    <span>Tester accounts for both patients and physicians are available for use.</span>
 
                   <div className='sign-in--btn-container'>
                     <Link to="/users/login">

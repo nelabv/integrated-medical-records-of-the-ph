@@ -6,7 +6,12 @@ function HowItWorks() {
 
         <h2>How It <span className="teal--highlight">Works</span></h2>
 
-        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+        <p>The Integrated Medical Records of the Philippines (IRMP) envisions organization, transparency, and continuity of care by providing a seamless, and centralized file organization system for its users. This prototype provides two user entities at the moment – for patients and physicians. 
+
+        The app (1) collects its users medical records though a file directory system; (2) allows participating physicians to view a patient’s files in his/her directory; (3) allows physicians to generate medical prescription based on a patient’s needs, and automatically upload the file to the patient’s database; (4) allows physicians to directly upload relevant files to a patient’s database.
+
+        The app, presently in its infancy stage, pursues to develop more features in the next coming months.
+        </p>
 
 
         <a  href="https://github.com/nelabv/integrated-medical-records-of-the-ph" 
