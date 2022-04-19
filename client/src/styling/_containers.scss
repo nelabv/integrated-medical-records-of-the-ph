@@ -251,3 +251,21 @@
 .view-records--container {
   padding-top: 9em;
 }
+
+.icon--container {
+  background-color: yellow;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.icon-and-text {
+  @include flex(column, center, center);
+  padding: 1em;
+  margin-bottom: 1em;
+
+  svg {
+    fill: $teal;
+    margin-bottom: 0.5em;
+  }
+}
