@@ -19,7 +19,7 @@ function HowItWorks() {
 
         <h2>How It <span className="teal--highlight">Works</span></h2>
 
-        <span>The Integrated Medical Records of the Philippines (IRMP) envisions organization, transparency, and continuity of care by providing a seamless, and centralized file organization system for its users. This prototype provides two user entities at the moment – for patients and physicians. The app: </span>
+        <span>The <b className='teal--highlight'>Integrated Medical Records of the Philippines (IRMP)</b> envisions organization, transparency, and continuity of care by providing a seamless, and centralized file organization system for its users. This prototype provides two user entities at the moment – for patients and physicians. The app: </span>
 
         <IconAndText Icon={FaFileArchive} description={fileDirectory} />
         <IconAndText Icon={AiOutlineFileSearch} description={viewFiles} />

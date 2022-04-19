@@ -57,6 +57,7 @@
 .homepage {
   @include flex(column-reverse, center, center);
 
+  min-height: 80vh;
   @media ($laptop) {
     @include flex(row, center, center);
   }
@@ -75,6 +76,7 @@
   img {
     width: 100%;
     height: 100%; 
+    max-width: 600px;
     object-fit: contain;
   }
 
@@ -95,11 +97,25 @@
   @include flex(column, center, center);
   order: 2;
   padding: 0 1em;
+
+  span {
+    margin-bottom: 1em;
+  }
+
+  @media ($laptop) {
+    @include flex(column, flex-start, flex-start);
+
+    h1 {
+      margin: 0;
+    }
+  }
 }
 
 .howitworks--container {
   @include flex(column, center, center);
+  background-color: $powderedBlue;
 
+  margin-bottom: 1em;
   padding: 1em;
 
   h2 {
