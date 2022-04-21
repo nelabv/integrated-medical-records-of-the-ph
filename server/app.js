@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000',  // Dev only
+  origin: 'https://irmp-testing.herokuapp.com/',  // Dev only
   credentials: true,
 }));
 

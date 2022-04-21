@@ -4,7 +4,7 @@ import app from "./app.js";
 import AWS from 'aws-sdk';
 
 dotenv.config();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 try {
   mongoose.connect(

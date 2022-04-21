@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const http = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: "https://irmp-testing.herokuapp.com/",
   headers: {
     "Content-type": "application/json",
   },
@@ -10,7 +10,7 @@ const http = axios.create({
 });
 
 const httpTESTING = axios.create({
-  baseURL: "http://localhost:8080/",
+  baseURL: "https://irmp-testing.herokuapp.com/",
   headers: {
     "Content-type": "multipart/form-data",
   },
