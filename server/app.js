@@ -29,7 +29,8 @@ app.use(session({
   maxAge: 7200000, // 2 hrs validity
   store: MongoDBStore,
   cookie: {
-    secure: false
+    secure: false,
+    sameSite: 'none'
   }
 }))
 
