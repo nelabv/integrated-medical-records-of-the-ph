@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import User from "../methods/users";
 import UserFileList from "./UserFileList";
 import DashboardTag from "./DashboardTag";
-import NavHandler from "../components/Nav/NavHandler";
+import NavHandler from "./Nav/NavHandler";
 import Footer from "./Footer";
 
 const initialVisibility = {

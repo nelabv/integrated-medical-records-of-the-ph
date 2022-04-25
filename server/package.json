@@ -4,7 +4,8 @@
   "description": "Server code for MediRecords (An application that stores your medical records for easier access)",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "type": "module",
   "author": "nelabv",
