@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'https://irmp-testing.netlify.app',  // Dev only
+  origin: 'https://irmp-testing.herokuapp.app',  // Dev only
   credentials: true,
 }));
 
