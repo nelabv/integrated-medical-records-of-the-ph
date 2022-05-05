@@ -11,10 +11,8 @@ const MongoDBSession = connectMongo(session);
 dotenv.config();
 
 const app = express();
-app.use(cors({
-  origin: 'https://integrated-medical-records-of-the-ph.vercel.app/',  // Dev only
-  credentials: true,
-}));
+
+app.use('*', cors());
 
 const MongoDBStore = new MongoDBSession({
   uri: process.env.MEDIRECORDS_URI,
