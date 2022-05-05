@@ -1,11 +1,10 @@
 {
-  "name": "medirecords",
+  "name": "integrated-medical-records-of-the-ph",
   "version": "1.0.0",
-  "description": "Server code for MediRecords (An application that stores your medical records for easier access)",
+  "description": "IRMP 2021",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node index"
   },
   "type": "module",
   "author": "nelabv",
