@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: 'https://irmp-testing.herokuapp.app',  // Dev only
+  origin: 'https://integrated-medical-records-of-the-ph.vercel.app/',  // Dev only
   credentials: true,
 }));
 
