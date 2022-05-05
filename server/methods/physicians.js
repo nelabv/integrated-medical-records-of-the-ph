@@ -11,8 +11,8 @@ import { v4 as uuidv4 } from 'uuid';
 dotenv.config();
 
 aws.config.update({
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  accessKeyId: process.env.ACCESS_KEY_ID
 });
 
 const s3 = new aws.S3();
