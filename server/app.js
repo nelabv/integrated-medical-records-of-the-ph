@@ -12,7 +12,12 @@ dotenv.config();
 
 const app = express();
 
-app.use('*', cors());
+const corsOptions = {
+  origin: 'https://integrated-medical-records-of-the-ph.vercel.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use('*', cors(corsOptions));
 
 const MongoDBStore = new MongoDBSession({
   uri: process.env.MEDIRECORDS_URI,
