@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const URL = 'https://irmp-api.herokuapp.com/';
+
 const http = axios.create({
-  baseURL: "https://irmp-testing.herokuapp.com/",
+  baseURL: URL,
   headers: {
     "Content-type": "application/json",
   },
