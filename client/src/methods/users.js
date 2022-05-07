@@ -17,7 +17,7 @@ class User {
   }
   
   fetchUserInformation() {
-    return http.get("/users/profile");
+    return http.get("/users/profile", { withCredentials: true });
   }
   
   logout() {
