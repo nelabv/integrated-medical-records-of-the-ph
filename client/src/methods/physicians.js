@@ -6,8 +6,8 @@ const http = axios.create({
   baseURL: URL,
   headers: {
     "Content-type": "application/json",
+    "Access-Control-Allow-Credentials": true
   },
-  withCredentials: true,
   credentials: 'same-origin'
 });
 
@@ -15,14 +15,14 @@ const httpTESTING = axios.create({
   baseURL: URL,
   headers: {
     "Content-type": "multipart/form-data",
+    "Access-Control-Allow-Credentials": true
   },
-  withCredentials: true,
   credentials: 'same-origin'
 });
 
 class Physician {
   login(form) {
-    return http.post("/physicians/login", form, { withCredentials: true })
+    return http.post("/physicians/login", form)
   }
 
   register(physicianInformation) {

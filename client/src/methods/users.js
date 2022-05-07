@@ -6,14 +6,14 @@ const http = axios.create({
   baseURL: URL,
   headers: {
     "Content-type": "application/json",
+    "Access-Control-Allow-Credentials": true
   },
-  withCredentials: true,
   credentials: 'same-origin'
 });
 
 class User {
   login(form) {
-    return http.post("/users/login", form, { withCredentials: true })
+    return http.post("/users/login", form)
   }
   
   fetchUserInformation() {

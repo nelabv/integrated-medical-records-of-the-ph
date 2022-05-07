@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: 'https://integrated-medical-records-of-the-ph.vercel.app/',
+  origin: 'https://integrated-medical-records-of-the-ph.vercel.app',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
