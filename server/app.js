@@ -13,27 +13,38 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: 'https://integrated-medical-records-of-the-ph.vercel.app',
+  // origin: process.env.API_URL,
+  origin: 'http://localhost:3001',
+  credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
 app.use('*', cors(corsOptions));
+app.use(cookieParser());
 
 const MongoDBStore = new MongoDBSession({
   uri: process.env.MEDIRECORDS_URI,
   collection: "sessions"
 })
 
+app.set("trust proxy", 1);
+
+const oneDay = 1000 * 60 * 60 * 24;
+
 app.use(session({
-  secret: process.env.SESSION_KEY,
+  name: "irmp_session",
+  secret: process.env.AWS_SESSION_KEY,
   resave: true,
   saveUninitialized: false,
-  httpOnly: false,
+  httpOnly: true,
   maxAge: 7200000, // 2 hrs validity
   store: MongoDBStore,
   cookie: {
-    secure: false,
-    sameSite: 'none'
+/*     path: "/",
+    secure: true,
+    sameSite: 'none',
+    domain: '.niellebv.app' */
+    maxAge: oneDay
   }
 }))
 

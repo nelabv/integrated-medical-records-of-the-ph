@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const URL = 'https://irmp-api.herokuapp.com/';
+// const URL = 'https://irmp-api.niellebv.app'; prod
+
+const URL = 'http://localhost:3000';
 
 const http = axios.create({
   baseURL: URL,
@@ -13,7 +15,7 @@ const http = axios.create({
 
 class User {
   login(form) {
-    return http.post("/users/login", form)
+    return http.post("/users/login", form, { withCredentials: true })
   }
   
   fetchUserInformation() {
@@ -21,15 +23,15 @@ class User {
   }
   
   logout() {
-    return http.post("/logout")
+    return http.post("/logout", { withCredentials: true })
   }
 
   fetchFileList(patientID) {
-    return http.get(`/user/files/${patientID}`);
+    return http.get(`/user/files/${patientID}`, { withCredentials: true });
   }
 
   downloadFile(filename) {
-    return http.get(`/download/${filename}`);
+    return http.get(`/download/${filename}`, { withCredentials: true });
   }
 
   register(userInformation) {

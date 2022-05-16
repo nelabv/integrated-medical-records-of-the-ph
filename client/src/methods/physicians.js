@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const URL = 'https://irmp-api.herokuapp.com/';
+// const URL = 'https://irmp-api.niellebv.app'; prod
+
+const URL = 'http://localhost:3000';
 
 const http = axios.create({
   baseURL: URL,
