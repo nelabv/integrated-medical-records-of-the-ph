@@ -13,13 +13,19 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
+/* app.use(cors({
   origin: process.env.API_URL,
   credentials: true,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+  optionsSuccessStatus: 200
+})); */
 
-app.use('*', cors(corsOptions));
+app.use((req, res, next) => {
+  res.append('Access-Control-Allow-Origin', ['*']);
+  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.append('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 app.use(cookieParser());
 
 const MongoDBStore = new MongoDBSession({
@@ -43,7 +49,7 @@ app.use(session({
 /*     path: "/",
     secure: true,
     sameSite: 'none',
-    domain: '.niellebv.app' */
+    domain: '.niellebv.app', */
     maxAge: oneDay
   }
 }))

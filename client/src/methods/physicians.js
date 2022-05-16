@@ -6,7 +6,9 @@ const http = axios.create({
   baseURL: URL,
   headers: {
     "Content-type": "application/json",
-    "Access-Control-Allow-Credentials": true
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": true,
+    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
   },
   credentials: 'same-origin'
 });
@@ -15,7 +17,8 @@ const httpTESTING = axios.create({
   baseURL: URL,
   headers: {
     "Content-type": "multipart/form-data",
-    "Access-Control-Allow-Credentials": true
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Origin": "*"
   },
   credentials: 'same-origin'
 });
