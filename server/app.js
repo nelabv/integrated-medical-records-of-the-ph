@@ -5,6 +5,7 @@ import router from "./methods/router.js";
 import bodyParser from 'body-parser';
 import dotenv from "dotenv";
 import connectMongo from 'connect-mongodb-session';
+import cookieParser from "cookie-parser";
 
 const MongoDBSession = connectMongo(session);
 
@@ -13,8 +14,7 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  // origin: process.env.API_URL,
-  origin: 'http://localhost:3001',
+  origin: process.env.API_URL,
   credentials: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }

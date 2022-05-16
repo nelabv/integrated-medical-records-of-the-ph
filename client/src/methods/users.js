@@ -1,8 +1,6 @@
 import axios from "axios";
 
-// const URL = 'https://irmp-api.niellebv.app'; prod
-
-const URL = 'http://localhost:3000';
+const URL = 'https://irmp-api.niellebv.app';
 
 const http = axios.create({
   baseURL: URL,
