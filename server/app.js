@@ -33,17 +33,17 @@ const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
   name: "irmp_session",
   secret: process.env.AWS_SESSION_KEY,
-  resave: true,
+  resave: false,
   saveUninitialized: false,
   httpOnly: true,
   maxAge: 7200000, // 2 hrs validity
   store: MongoDBStore,
   cookie: {
-/*     path: "/",
-    secure: true,
-    sameSite: 'none',
-    domain: '.niellebv.app', */
-    maxAge: oneDay
+    path: '/',
+    sameSite: false,
+    secure: false,
+    maxAge: oneDay,
+    httpOnly: true
   }
 }))
 
