@@ -10,7 +10,6 @@ const http = axios.create({
     "Access-Control-Allow-Credentials": true,
     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
   },
-  credentials: 'same-origin'
 });
 
 const httpTESTING = axios.create({
@@ -19,8 +18,7 @@ const httpTESTING = axios.create({
     "Content-type": "multipart/form-data",
     "Access-Control-Allow-Credentials": true,
     "Access-Control-Allow-Origin": "*"
-  },
-  credentials: 'same-origin'
+  }
 });
 
 class Physician {
