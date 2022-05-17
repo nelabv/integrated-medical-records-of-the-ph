@@ -15,6 +15,7 @@ const app = express();
 
 app.use(cors({
   origin: process.env.API_URL,
+  methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
   credentials: true,
   optionsSuccessStatus: 200
 }));
@@ -26,24 +27,20 @@ const MongoDBStore = new MongoDBSession({
   collection: "sessions"
 })
 
-app.set("trust proxy", 1);
+app.set('trust proxy', 1);
 
 const oneDay = 1000 * 60 * 60 * 24;
 
 app.use(session({
   name: "irmp_session",
   secret: process.env.AWS_SESSION_KEY,
-  resave: false,
-  saveUninitialized: false,
-  httpOnly: true,
-  maxAge: 7200000, // 2 hrs validity
   store: MongoDBStore,
+  saveUninitialized: false,
+  resave: false,
+  maxAge: 7200000, // 2 hrs validity
   cookie: {
-    path: '/',
-    sameSite: false,
-    secure: false,
-    maxAge: oneDay,
-    httpOnly: true
+    sameSite: "none",
+    secure: true // setting these two allows cookie storage on browser
   }
 }))
 

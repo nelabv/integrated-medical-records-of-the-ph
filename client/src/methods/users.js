@@ -10,7 +10,7 @@ const http = axios.create({
     "Access-Control-Allow-Credentials": true,
     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
   },
-  credentials: 'same-origin'
+  withCredentials: true
 });
 
 class User {
