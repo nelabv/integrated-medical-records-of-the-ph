@@ -20,7 +20,7 @@ function CommonRXGenerator(props) {
       patientID
     }
 
-    fetch("http://localhost:8080/physicians/generate-prescription", { // Does not work in axios for some reason, to FIX
+    fetch("https://irmp-api.niellebv.app/physicians/generate-prescription", { // Does not work in axios for some reason, to FIX
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
