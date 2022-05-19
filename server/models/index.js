@@ -3,24 +3,26 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const AddressSchema = new Schema({
-  houseNumber: { 
-    type: String, 
-    required: true },
-  street: { 
-    type: String, 
-    required: true },
-  barangay: { 
-    type: String, 
-    required: true },
-  city: { 
-    type: String, 
-    required: true },
-  province: { 
-    type: String, 
-    required: true },
-  zipCode: { 
-    type: Number, 
-    required: true },
+    region: {
+      type: String,
+      required: true
+    },
+    province: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    barangay: {
+      type: String,
+      required: true
+    },
+    houseNumberStreet: {
+      type: String,
+      required: true
+    },
 })
 
 const UserSchema = new Schema({
