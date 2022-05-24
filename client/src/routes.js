@@ -7,7 +7,8 @@ import {
 import App from "./App";
 import User from "./methods/users";
 import Physician from "./methods/physicians";
-import RegisterForm from "./pages/RegisterForm";
+import Register from './pages/Register';
+import UserRegistration from './pages/UserRegistration';
 import LoginAs from "./pages/LoginAs";
 import UserLogin from "./pages/UserLogin";
 import PhysicianLogin from "./pages/PhysicianLogin";
@@ -54,7 +55,8 @@ export default function Routes() {
                 <Route exact path='/' component={App} />
 
                 {/* ALL OPEN ACCESS ROUTES */}
-                <PublicRoute path="/register" component={RegisterForm} />
+                <PublicRoute exact path="/register" component={Register} />
+                <PublicRoute exact path="/register/user" component={UserRegistration} />
                 <PublicRoute path="/login/as" component={LoginAs} />
                 <PublicRoute path='/users/login' component={UserLogin} />
                 <PublicRoute path='/physicians/login' component={PhysicianLogin} />

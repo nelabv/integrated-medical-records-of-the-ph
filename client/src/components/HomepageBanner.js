@@ -13,6 +13,10 @@ export default function HomepageBanner() {
             <Link to="/login/as">
               <button className="btn--primary">Try A Tester Account</button>
             </Link>
+
+            <Link to="/register">
+              <button className="btn--secondary">Register an Account</button>
+            </Link>
           </div>
 
           <div className="homepage--img">

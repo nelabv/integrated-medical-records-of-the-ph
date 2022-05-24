@@ -1,59 +1,91 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import User from "../../methods/users.js";
+import PasswordVerifier from './PasswordVerifier';
 import FormReducer from '../../reducers/FormReducer';
 import BloodTypeForm from './BloodTypeForm';
+import AddressSelector from './AddressSelector.js';
 
-const initialUserForm = {
+const initialUserRegistration = {
   username: '',
   password: '',
   firstName: '',
   lastName: '',
   sex: '',
   birthdate: '',
-  bloodType: ''
+  bloodType: '',
+  address: {
+    region: '',
+    province: '',
+    city: '',
+    barangay: '',
+    houseNumberStreet: ''
+  }
 }
 
-function UserRegistrationForm(props) {
-  const [userForm, dispatch] = useReducer(FormReducer, initialUserForm);
+function UserRegistrationForm() {
+  const [userRegForm, dispatch] = useReducer(FormReducer, initialUserRegistration);
 
-  const handleChange = (e) => {
+  const [ houseNumberStreet, setHouseNumberStreet ] = useState('');
+
+  const handleChange = (e, address) => {
+    // Check if address is to be changed.
     let input = e.target.value;
 
-    if (e.target.name !== 'password' && e.target.name !== 'username') {
+    if (e.target.name !== 'password' && e.target.name !== 'username' && e.target.id === 'region') {
       input = e.target.value.toUpperCase();
     }
 
     dispatch({
-      type: 'ON CHANGE',
-      field: e.target.name,
-      payload: input
+      type: address ? "UPDATE ADDRESS": "ON CHANGE",
+      field: address ? e.target.id: e.target.name,
+      payload: address ? e.target.selectedOptions[0].text: input
     })
+  }
+
+  const handleHouseNumberStreet = (e) => {
+    dispatch({
+      type: "UPDATE ADDRESS",
+      field: e.target.id,
+      payload: e.target.value
+    })
+
+    setHouseNumberStreet(e.target.value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     // Prepare object
     const userInformation = {
-      username: userForm.username[0],
-      password: userForm.password[0],
-      firstName: userForm.firstName[0],
-      lastName: userForm.lastName[0],
-      sex: userForm.sex[0],
-      birthdate: userForm.birthdate[0],
-      bloodType: userForm.bloodType[0],
+      username: userRegForm.username[0],
+      password: userRegForm.password[0],
+      firstName: userRegForm.firstName[0],
+      lastName: userRegForm.lastName[0],
+      sex: userRegForm.sex[0],
+      birthdate: userRegForm.birthdate[0],
+      bloodType: userRegForm.bloodType[0],
+      address: {
+        region: userRegForm.address.region[0],
+        province: userRegForm.address.province[0],
+        city: userRegForm.address.city[0],
+        barangay: userRegForm.address.barangay[0],
+        houseNumberStreet: userRegForm.address.houseNumberStreet[0]
+      }
     }
 
-    User.register(userInformation)
+    console.log(userInformation)
+
+/*     User.register(userInformation)
         .then((res) => {
           console.log(res)
 
           // do redirections here
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err)) */
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form--group' onSubmit={handleSubmit}>
       <div style={{
         display: 'flex', 
         flexDirection: 'column',
@@ -62,7 +94,7 @@ function UserRegistrationForm(props) {
           <label>Username</label>
           <input 
             type="text"
-            value={userForm.username}
+            value={userRegForm.username}
             name="username"
             onChange={e => {
               handleChange(e)
@@ -70,21 +102,16 @@ function UserRegistrationForm(props) {
             required
           />
 
-          <label>Password</label>
-          <input 
-            type="password"
-            value={userForm.password}
-            name="password"
-            onChange={e => {
-              handleChange(e)
-            }}
-            required
-          />
+          <PasswordVerifier 
+                  formState={userRegForm.password}
+                  onChange={e => { handleChange(e) }} 
+                  inputID='password' />
+
           
           <label>First Name</label>
           <input 
             type="text"
-            value={userForm.firstName}
+            value={userRegForm.firstName}
             name="firstName"
             style={{textTransform: "uppercase"}}
             onChange={e => {
@@ -96,7 +123,7 @@ function UserRegistrationForm(props) {
           <label>Last Name</label>
           <input 
             type="text"
-            value={userForm.lastName}
+            value={userRegForm.lastName}
             name="lastName"
             style={{textTransform: "uppercase"}}
             onChange={e => {
@@ -132,9 +159,14 @@ function UserRegistrationForm(props) {
                   name="birthdate"
                   onChange={e => {
                     handleChange(e)
-                  }} />    
+                  }} required/>    
 
           <BloodTypeForm handleChange={handleChange} />
+
+          <AddressSelector handleChange={handleChange} 
+                          userRegForm={userRegForm}
+                          houseNumberStreet={houseNumberStreet}
+                          handleHouseNumberStreet={handleHouseNumberStreet} />
 
           <button type="submit">Register as User</button>
       </div>
