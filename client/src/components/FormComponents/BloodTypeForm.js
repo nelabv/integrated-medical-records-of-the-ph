@@ -12,7 +12,7 @@ function BloodTypeForm(props) {
               value="A" 
               onChange={e => {
                 handleChange(e)
-              }}/>
+              }} required/>
       <label htmlFor="A">A</label>      
 
       <input type="radio" 
