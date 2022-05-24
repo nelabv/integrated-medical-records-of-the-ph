@@ -9,6 +9,7 @@
 
 .max-width {
   max-width: 1200px;
+  min-height: 90vh;
 }
 
 .curved-container--white {
@@ -128,9 +129,19 @@
 
   background: white;
   text-align: center;
-  height: 90vh;
   width: 100%;
   padding: 0 1em;
+}
+
+.registration--container {
+  @extend .sign-in--container;
+
+  padding: 9em 1em;
+  @include flex(column, flex-start, flex-start);
+
+  span {
+    text-align: left;
+  }
 }
 
 .sign-in--btn-container {
@@ -211,7 +222,7 @@
   @include flex(row, center, flex-center);
 }
 
-.footer {
+footer {
   background: #004848;
   height: 6em;
   width: 100%;

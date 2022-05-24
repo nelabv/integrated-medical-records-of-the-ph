@@ -64,34 +64,38 @@ function AddressSelector(props) {
 
   return (
     <div>
-          <select onChange={province} onSelect={region} id="region" required>
+          <label htmlFor="region" className='form--label'>Region</label>
+          <select onChange={province} onSelect={region} className="form--field" id="region" required>
               <option disabled>Select Region</option>
               { regionData && regionData.length > 0 && regionData.map((item) => <option
                       key={uuidv4()} value={item.region_code}>{item.region_name}</option>) }
           </select><br/>
 
-
-          <select onChange={city} id="province" required>
+          <label htmlFor="province" className='form--label'>Province</label>
+          <select onChange={city} id="province" className="form--field" required>
               <option disabled>Select Province</option>
               { provinceData && provinceData.length > 0 && provinceData.map((item) => <option
                       key={uuidv4()} value={item.province_code}>{item.province_name}</option>) }
           </select><br/>
 
-          <select onChange={barangay} id="city" required>
+          <label htmlFor="city" className='form--label'>City</label>
+          <select onChange={barangay} id="city" className="form--field" required>
               <option disabled>Select City</option>
               { cityData && cityData.length > 0 && cityData.map((item) => <option
                       key={uuidv4()} value={item.city_code}>{item.city_name}</option>) }
           </select><br/>
 
-          <select onChange={brgy} id="barangay" required>
+          <label htmlFor="barangay" className='form--label'>Barangay</label>
+          <select onChange={brgy} id="barangay" className="form--field" required>
               <option disabled>Select Barangay</option>
               { barangayData && barangayData.length > 0 && barangayData.map((item) => <option
                       key={uuidv4()} value={item.brgy_code}>{item.brgy_name}</option>) }
           </select>
 
-          <label>House Number & Street Name</label>
+          <label className='form--label'>House Number & Street Name</label>
           <input 
             type="text"
+            className='form--field'
             value={houseNumberStreet}
             id="houseNumberStreet"
             style={{textTransform: "uppercase"}}

@@ -85,17 +85,18 @@ function UserRegistrationForm() {
   }
 
   return (
-    <form className='form--group' onSubmit={handleSubmit}>
+    <form className='form--group form--register' onSubmit={handleSubmit}>
       <div style={{
         display: 'flex', 
         flexDirection: 'column',
         marginBottom: '1em'}}>
 
-          <label>Username</label>
+          <label className='form--label'>Username</label>
           <input 
             type="text"
             value={userRegForm.username}
             name="username"
+            className='form--field'
             onChange={e => {
               handleChange(e)
             }}
@@ -108,58 +109,70 @@ function UserRegistrationForm() {
                   inputID='password' />
 
           
-          <label>First Name</label>
+          <label className='form--label'>First Name</label>
           <input 
             type="text"
             value={userRegForm.firstName}
             name="firstName"
             style={{textTransform: "uppercase"}}
+            className='form--field'
             onChange={e => {
               handleChange(e)
             }}
             required
           />
 
-          <label>Last Name</label>
+          <label className='form--label'>Last Name</label>
           <input 
             type="text"
             value={userRegForm.lastName}
             name="lastName"
             style={{textTransform: "uppercase"}}
+            className='form--field'
             onChange={e => {
               handleChange(e)
             }}
             required
           />
 
-          <label>Sex</label>
+          <label className='form--label'>Sex</label>
 
-          <label htmlFor="male">Male</label>
-          <input type="radio" 
-                  id="male"
-                  name="sex" 
-                  value="M" 
-                  onChange={e => {
-                    handleChange(e)
-                  }}
-                  required />
+          <div>
+                <label className='radio-btn'>
+                      <span className='checkmark'></span>
+                      <input type="radio" 
+                              id="male"
+                              name="sex" 
+                              value="M" 
+                              onChange={e => {
+                                handleChange(e)
+                              }}
+                              required/>
+                      <span className='label'>Male</span>
+                </label>
 
-          <label htmlFor="female">Female</label>   
-          <input type="radio" 
-                  id="female" 
-                  name="sex" 
-                  value="F" 
-                  onChange={e => {
-                    handleChange(e)
-                  }}/>    
+                <label className='radio-btn'>
+                    <span className='checkmark'></span>
+                    <input type="radio" 
+                            id="female" 
+                            name="sex" 
+                            value="F" 
+                            onChange={e => {
+                              handleChange(e)
+                            }}/>
+                    <span className='label'>Female</span> 
+                </label>   
+          </div>   
           
-          <label htmlFor="birthdate">Birthday:</label>
+          <label className='form--label' htmlFor="birthdate">Birthday:</label>
           <input type="date" 
                   id="birthdate" 
                   name="birthdate"
                   onChange={e => {
                     handleChange(e)
-                  }} required/>    
+                  }} 
+                  className="form--field"
+                  required/>    
 
           <BloodTypeForm handleChange={handleChange} />
 
@@ -168,7 +181,7 @@ function UserRegistrationForm() {
                           houseNumberStreet={houseNumberStreet}
                           handleHouseNumberStreet={handleHouseNumberStreet} />
 
-          <button type="submit">Register as User</button>
+          <button type="submit" className='btn--primary'>Register as User</button>
       </div>
     </form>
   );

@@ -6,41 +6,50 @@ function BloodTypeForm(props) {
   return (
     <>
       <label>Blood Type</label>
-      <input type="radio" 
-              id="A"
-              name="bloodType" 
-              value="A" 
-              onChange={e => {
-                handleChange(e)
-              }} required/>
-      <label htmlFor="A">A</label>      
 
-      <input type="radio" 
-              id="AB"
-              name="bloodType" 
-              value="AB" 
-              onChange={e => {
-                handleChange(e)
-              }}/>
-      <label htmlFor="AB">AB</label>    
+      <label htmlFor="A" className='radio-btn'>
+          <input type="radio" 
+                  id="A"
+                  name="bloodType" 
+                  value="A" 
+                  onChange={e => {
+                    handleChange(e)
+                  }} required/>
+          <span className='label'>A</span>
+      </label>      
 
-      <input type="radio" 
-              id="B"
-              name="bloodType" 
-              value="B" 
-              onChange={e => {
-                handleChange(e)
-              }}/>
-      <label htmlFor="B">B</label>   
+      <label htmlFor="AB" className='radio-btn'>
+          <input type="radio" 
+                  id="AB"
+                  name="bloodType" 
+                  value="AB" 
+                  onChange={e => {
+                    handleChange(e)
+                  }}/>
+          <span className='label'>AB</span>
+      </label>    
 
-      <input type="radio" 
-              id="O"
-              name="bloodType" 
-              value="O" 
-              onChange={e => {
-                handleChange(e)
-              }}/>
-      <label htmlFor="O">O</label>   
+      <label htmlFor="B" className='radio-btn'>
+          <input type="radio" 
+                  id="B"
+                  name="bloodType" 
+                  value="B" 
+                  onChange={e => {
+                    handleChange(e)
+                  }}/>  
+          <span className='label'>B</span>
+      </label>   
+
+      <label htmlFor="O" className='radio-btn'>
+          <input type="radio" 
+                  id="O"
+                  name="bloodType" 
+                  value="O" 
+                  onChange={e => {
+                    handleChange(e)
+                  }}/>  
+          <span className='label'>O</span>
+      </label>   
     </>
   );
 }

@@ -2,6 +2,18 @@
 @import './colors';
 
 // FORMS
+.form--register {
+  text-align: left;
+
+  input {
+    margin-bottom: 1em;
+  }
+
+  @media ($laptop) {
+    max-width: 40%;
+  }
+}
+
 .form--group {
   @include flex(column, center, center);
 
@@ -49,8 +61,6 @@
   svg {
     margin-right: 0.5em;
   }
-
-  margin: 1em 0;
 }
 
 .password-shown {
@@ -91,4 +101,12 @@
 .file-upload-info {
   text-align: left;
   margin-top: 1em;
+}
+
+.radio-btn {
+  margin-right: 2em;
+
+  input {
+    margin-right: 1em;
+  }
 }
