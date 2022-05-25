@@ -73,15 +73,13 @@ function UserRegistrationForm() {
       }
     }
 
-    console.log(userInformation)
-
-/*     User.register(userInformation)
+    User.register(userInformation)
         .then((res) => {
           console.log(res)
 
           // do redirections here
         })
-        .catch(err => console.log(err)) */
+        .catch(err => console.log(err))
   }
 
   return (

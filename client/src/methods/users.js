@@ -35,7 +35,7 @@ class User {
   }
 
   register(userInformation) {
-    return http.post("/users/register", userInformation)
+    return http.post("/users/register", userInformation, { withCredentials: false })
   }
 }
 
