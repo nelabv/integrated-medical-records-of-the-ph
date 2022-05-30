@@ -19,7 +19,7 @@ export default function PhysicianRegistration() {
 
       <div className='gradient--blue'>
           <div className='max-width registration--container'>
-                  <h2 className='teal--highlight'>Register as Patient</h2>
+                  <h2 className='teal--highlight'>Register as Physician</h2>
                     <span>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</span>
 
                     <PhysicianRegistrationForm />

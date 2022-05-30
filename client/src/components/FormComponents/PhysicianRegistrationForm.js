@@ -34,10 +34,6 @@ function UserRegistrationForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(physicianForm)
-    // Code below is for registration
-    e.preventDefault();
     // Prepare object
     const physicianInformation = {
       licenseNumber: physicianForm.licenseNumber[0],
@@ -46,8 +42,8 @@ function UserRegistrationForm(props) {
       password: physicianForm.password[0],
       firstName: physicianForm.firstName[0],
       lastName: physicianForm.lastName[0],
-      sex: physicianForm.sex[0],
-      birthdate: physicianForm.birthdate[0]
+      birthdate: physicianForm.birthdate[0],
+      sex: physicianForm.sex[0]
     }
 
     Physician.register(physicianInformation)

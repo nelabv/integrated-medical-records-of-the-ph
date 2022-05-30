@@ -10,6 +10,7 @@ const http = axios.create({
     "Access-Control-Allow-Credentials": true,
     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
   },
+  withCredentials: true
 });
 
 const httpTESTING = axios.create({
@@ -28,7 +29,7 @@ class Physician {
   }
 
   register(physicianInformation) {
-    return http.post("/physicians/register", physicianInformation, {withCredentials: true})
+    return http.post("/physicians/register", physicianInformation, { withCredentials: false })
   }
 
   fetchPhysicianInformation() {
