@@ -1,12 +1,47 @@
 import { User, 
-  Institution, 
   Physician, 
   UsersForApproval,
   PhysiciansForApproval
-} from "../../models/index.js";
+} from "../models/index.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export default class AdminAPI {
+  static async login(req, res) {
+    const { username, password } = req.body;
+
+    if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
+      req.session.AUTH = true;
+      req.session.USERNAME = username;
+      req.session.ADMIN = true;
+
+      res.status(200).json({
+        status: "Admin access granted."
+      })
+    } else {
+      res.status(404).json({
+        error: "Forbidden. Invalid admin access."
+      })
+    }
+  }
+
+  static async fetchForApprovalData(req, res) {
+    try {
+      const usersForApproval = await UsersForApproval.find({});
+
+      const physiciansForApproval = await PhysiciansForApproval.find({});
+  
+      res.status(200).json({
+        usersForApproval,
+        physiciansForApproval
+      })
+    } catch (error) {
+      res.status(404).json({
+        error: "Unknown error occurred",
+        message: `${error}`
+      })
+    }
+  }
+
   static async approveOrDeclineUser(req, res) {
     const { id, status } = req.query;
 
