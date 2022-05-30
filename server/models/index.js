@@ -133,7 +133,15 @@ const PhysicianSchema = new Schema({
   lastName: {
     type: String,
     required: true
-  }
+  },
+  sex: {
+    type: String,
+    required: true
+  },
+  birthdate: {
+    type: Date,
+    required: true
+  },
 })
 
 export const User = mongoose.model('Users', UserSchema);
