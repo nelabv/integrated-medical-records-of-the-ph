@@ -15,7 +15,7 @@ const http = axios.create({
 
 class Admin {
   login(form) {
-    return http.post("/login/admin", form, { withCredentials: true })
+    return http.post('/admin/login', form, { withCredentials: true })
   }
 }
 

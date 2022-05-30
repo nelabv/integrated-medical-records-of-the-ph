@@ -67,8 +67,8 @@ router.route("/verify")
 
 
 // ADMIN ACCESS ONLY
-router.route('/login/admin')
-  .get(AdminAPI.login);
+router.route('/admin/login')
+  .post(AdminAPI.login);
 
 router.route('/approval')
   .post(InstitutionsAPI.register)
