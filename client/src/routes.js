@@ -14,6 +14,7 @@ import LoginAs from "./pages/LoginAs";
 import UserLogin from "./pages/UserLogin";
 import PhysicianLogin from "./pages/PhysicianLogin";
 import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 import DashboardHandler from "./pages/DashboardHandler";
 import RXGenerator from "./components/RXGenerator";
@@ -66,6 +67,7 @@ export default function Routes() {
                 <PublicRoute path='/admin/login' component={AdminLogin} />
 
                 <Route path="/dashboard" component={DashboardHandler} />
+                <Route path="/admin/dashboard" component={AdminDashboard} />
 
                 {/* PHYSICIANS ONLY */}
                 <PhysiciansOnlyRoute path="/generate-prescription" userAccess={false} component={GeneratePrescription} />

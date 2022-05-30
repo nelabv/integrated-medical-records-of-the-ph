@@ -9,6 +9,10 @@ export default function DashboardHandler() {
   let history = useHistory();
 
   useEffect(() => {
+    if (localStorage.getItem('ADMIN')) {
+      history.push('/admin/dashboard')
+    }
+    
     if (!localStorage.getItem('ID')) {
       history.push('/');
     }

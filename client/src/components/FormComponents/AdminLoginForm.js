@@ -35,8 +35,7 @@ export default function AdminLoginForm() {
         localStorage.setItem("AUTH", true);
         localStorage.setItem("ID", response.data.id);
         localStorage.setItem("ADMIN", true);
-        console.log(response)
-        // history.push("/dashboard");
+        history.push("/admin/dashboard");
       })
 
       .catch((error) => 

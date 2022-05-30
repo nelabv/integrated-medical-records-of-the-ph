@@ -19,6 +19,10 @@ function App() {
     const accountID = localStorage.getItem('ID');
     const physicianAccess = localStorage.getItem('ENTITY');
 
+    if (localStorage.getItem('ADMIN')) {
+      history.push('/admin/dashboard')
+    }
+    
     if (physicianAccess) {
       history.push('/dashboard');
     } else if (accountID) {
