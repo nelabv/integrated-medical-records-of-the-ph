@@ -19,7 +19,7 @@ const s3 = new aws.S3();
 
 export default class PhysiciansAPI {
   static async register(req, res) {
-    const { licenseNumber, specialization, username, password, firstName, lastName, address } = req.body;
+    const { licenseNumber, specialization, username, password, firstName, lastName, address, birthdate, sex } = req.body;
     const checkIfUsernameIsTaken = await Physician.findOne({ username });
 
     if (checkIfUsernameIsTaken) {
@@ -49,7 +49,9 @@ export default class PhysiciansAPI {
                   password: hash,
                   firstName,
                   lastName,
-                  address
+                  address,
+                  birthdate,
+                  sex
                 }
 
                 const newPhysician = new PhysiciansForApproval(physician);
