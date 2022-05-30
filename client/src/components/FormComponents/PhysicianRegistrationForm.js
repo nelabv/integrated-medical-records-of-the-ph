@@ -1,6 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import FormReducer from '../../reducers/FormReducer';
-import Physician from "../../methods/physicians"
+import Physician from "../../methods/physicians";
+import PasswordVerifier from './PasswordVerifier';
 
 const initialPhysicianForm = {
   licenseNumber: '',
@@ -8,11 +9,14 @@ const initialPhysicianForm = {
   username: '',
   password: '',
   firstName: '',
-  lastName: ''
+  lastName: '',
+  sex: '',
+  birthdate: ''
 }
 
 function UserRegistrationForm(props) {
   const [physicianForm, dispatch] = useReducer(FormReducer, initialPhysicianForm);
+  const [ buttonDisable, setButtonDisabled ] = useState(true);
 
   const handleChange = (e) => {
     let input = e.target.value;
@@ -41,29 +45,31 @@ function UserRegistrationForm(props) {
       username: physicianForm.username[0],
       password: physicianForm.password[0],
       firstName: physicianForm.firstName[0],
-      lastName: physicianForm.lastName[0]
+      lastName: physicianForm.lastName[0],
+      sex: physicianForm.sex[0],
+      birthdate: physicianForm.birthdate[0]
     }
 
     Physician.register(physicianInformation)
         .then((res) => {
           console.log(res);
-          alert('registered')
           // do redirections here
         })
         .catch(err => console.log(err))
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='form--group form--register' onSubmit={handleSubmit}>
       <div style={{
         display: 'flex', 
         flexDirection: 'column',
         marginBottom: '1em'}}>
 
-          <label>License Number</label>
+          <label className='form--label'>License Number</label>
           <input 
             type="number"
             value={physicianForm.licenseNumber}
+            className='form--field'
             name="licenseNumber"
             onChange={e => {
               handleChange(e)
@@ -71,7 +77,7 @@ function UserRegistrationForm(props) {
             required
           />
 
-          <label>Specialization</label>
+          <label className='form--label'>Specialization</label>
           <input
             type="text"
             value={physicianForm.specialization}
@@ -79,10 +85,11 @@ function UserRegistrationForm(props) {
             onChange={e => {
               handleChange(e)
             }}
+            className='form--field'
             required
           />
 
-          <label>Username</label>
+          <label className='form--label'>Username</label>
           <input
             type="text"
             value={physicianForm.username}
@@ -90,21 +97,17 @@ function UserRegistrationForm(props) {
             onChange={e => {
               handleChange(e)
             }}
+            className='form--field'
             required
           />
 
-          <label>Password</label>
-          <input
-            type="password"
-            value={physicianForm.password}
-            name="password"
-            onChange={e => {
-              handleChange(e)
-            }}
-            required
-          />
+          <PasswordVerifier 
+                  formState={physicianForm.password}
+                  onChange={e => { handleChange(e) }} 
+                  inputID='password'
+                  setButtonDisabled={setButtonDisabled} />
 
-          <label>First Name</label>
+          <label className='form--label'>First Name</label>
           <input 
             type="text"
             value={physicianForm.firstName}
@@ -113,10 +116,11 @@ function UserRegistrationForm(props) {
             onChange={e => {
               handleChange(e)
             }}
+            className='form--field'
             required
           />
 
-          <label>Last Name</label>
+          <label className='form--label'>Last Name</label>
           <input 
             type="text"
             value={physicianForm.lastName}
@@ -125,10 +129,51 @@ function UserRegistrationForm(props) {
             onChange={e => {
               handleChange(e)
             }}
+            className='form--field'
             required
           />
 
-      <button type="submit">Submit</button>
+          <label className='form--label'>Sex</label>
+
+          <div>
+                <label className='radio-btn'>
+                      <span className='checkmark'></span>
+                      <input type="radio" 
+                              id="male"
+                              name="sex" 
+                              value="M" 
+                              onChange={e => {
+                                handleChange(e)
+                              }}
+                              required/>
+                      <span className='label'>Male</span>
+                </label>
+
+                <label className='radio-btn'>
+                    <span className='checkmark'></span>
+                    <input type="radio" 
+                            id="female" 
+                            name="sex" 
+                            value="F" 
+                            onChange={e => {
+                              handleChange(e)
+                            }}/>
+                    <span className='label'>Female</span> 
+                </label>   
+          </div> 
+
+          <label className='form--label' htmlFor="birthdate">Birthday:</label>
+          <input type="date" 
+                  id="birthdate" 
+                  name="birthdate"
+                  onChange={e => {
+                    handleChange(e)
+                  }} 
+                  className="form--field"
+                  required/>  
+
+          <button type="submit" 
+                  className={buttonDisable ? 'btn--disabled' : 'btn--primary'}>Register as Physician</button>
 
       </div>
     </form>

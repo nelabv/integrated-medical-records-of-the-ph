@@ -110,3 +110,14 @@
     margin-right: 1em;
   }
 }
+
+.pw-verify--match {
+  color: $green;
+  margin: 1em 0;
+}
+
+.pw-verify--not-match {
+  @extend .pw-verify--match;
+  color: $red;
+}
+

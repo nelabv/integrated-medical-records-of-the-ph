@@ -9,6 +9,7 @@ import User from "./methods/users";
 import Physician from "./methods/physicians";
 import Register from './pages/Register';
 import UserRegistration from './pages/UserRegistration';
+import PhysicianRegistration from './pages/PhysiciansRegistration';
 import LoginAs from "./pages/LoginAs";
 import UserLogin from "./pages/UserLogin";
 import PhysicianLogin from "./pages/PhysicianLogin";
@@ -57,6 +58,7 @@ export default function Routes() {
                 {/* ALL OPEN ACCESS ROUTES */}
                 <PublicRoute exact path="/register" component={Register} />
                 <PublicRoute exact path="/register/user" component={UserRegistration} />
+                <PublicRoute exact path="/register/physician" component={PhysicianRegistration} />
                 <PublicRoute path="/login/as" component={LoginAs} />
                 <PublicRoute path='/users/login' component={UserLogin} />
                 <PublicRoute path='/physicians/login' component={PhysicianLogin} />
