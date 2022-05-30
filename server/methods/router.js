@@ -5,7 +5,7 @@ import PhysiciansAPI from "./physicians.js";
 import InstitutionsAPI from "./institutions.js";
 import AdminAPI from "./admin.js";
 import FileHandler from "./fileHandler.js";
-import { checkIfAuthenticated, physiciansAccessOnly, userAccessOnly } from "../middlewares/index.js";
+import { checkIfAuthenticated, physiciansAccessOnly, adminAccessOnly } from "../middlewares/index.js";
 
 const router = express.Router(); 
 
@@ -69,6 +69,9 @@ router.route("/verify")
 // ADMIN ACCESS ONLY
 router.route('/admin/login')
   .post(AdminAPI.login);
+
+router.route('/approval/waitlist')
+  .get(checkIfAuthenticated, adminAccessOnly, AdminAPI.fetchForApprovalData);
 
 router.route('/approval')
   .post(InstitutionsAPI.register)

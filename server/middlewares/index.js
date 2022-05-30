@@ -41,3 +41,13 @@ export const usersProhibited = (req, res, next) => {
     next()
   }
 }
+
+export const adminAccessOnly = (req, res, next) => {
+  if (!req.session.ADMIN) {
+    res.status(403).json({
+      message: "Unauthorized. For PHYSICIANS and INSTITUTIONS' access only."
+    })
+  } else {
+    next()
+  }
+}
