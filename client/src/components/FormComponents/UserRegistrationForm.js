@@ -26,6 +26,7 @@ function UserRegistrationForm() {
   const [userRegForm, dispatch] = useReducer(FormReducer, initialUserRegistration);
 
   const [ houseNumberStreet, setHouseNumberStreet ] = useState('');
+  const [ buttonDisable, setButtonDisabled ] = useState(true);
 
   const handleChange = (e, address) => {
     // Check if address is to be changed.
@@ -75,9 +76,7 @@ function UserRegistrationForm() {
 
     User.register(userInformation)
         .then((res) => {
-          console.log(res)
-
-          // do redirections here
+          console.log(res);
         })
         .catch(err => console.log(err))
   }
@@ -104,7 +103,8 @@ function UserRegistrationForm() {
           <PasswordVerifier 
                   formState={userRegForm.password}
                   onChange={e => { handleChange(e) }} 
-                  inputID='password' />
+                  inputID='password'
+                  setButtonDisabled={setButtonDisabled} />
 
           
           <label className='form--label'>First Name</label>
@@ -179,7 +179,8 @@ function UserRegistrationForm() {
                           houseNumberStreet={houseNumberStreet}
                           handleHouseNumberStreet={handleHouseNumberStreet} />
 
-          <button type="submit" className='btn--primary'>Register as User</button>
+          <button type="submit" 
+                  className={buttonDisable ? 'btn--disabled' : 'btn--primary'}>Register as User</button>
       </div>
     </form>
   );

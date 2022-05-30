@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 export default function PasswordVerifier(props) {
-  const { formState, onChange, inputID } = props;
+  const { formState, onChange, inputID, setButtonDisabled } = props;
   const [ verifyInput, setVerifyInput ] = useState('');
-  const [ passwordStatus, setPasswordStatus ] = useState(''); // Set status if passwords match or not
+  const [ passwordErrorMsg, setPasswordErrorMsg ] = useState(''); // Set status if passwords match or not
+  const [ passwordsMatch, setPasswordsMatch ] = useState(false);
 
   const [passwordVisibility, setPasswordVisibility] = useState(false);
 
@@ -21,11 +22,15 @@ export default function PasswordVerifier(props) {
     // Check if inputs from A and B match
 
     if (passwordInput.length === 0 || confirmPasswordInput.length === 0) {
-      setPasswordStatus('')
+      setPasswordErrorMsg('');
     } else if (passwordInput !== e.target.value) {
-      setPasswordStatus("Please make sure your passwords match.")
+      setPasswordErrorMsg("Please make sure your passwords match.");
+      setButtonDisabled(true)
+      setPasswordsMatch(false);
     } else if (passwordInput === e.target.value) {
-      setPasswordStatus("Passwords match.")
+      setPasswordErrorMsg("Passwords match.");
+      setPasswordsMatch(true);
+      setButtonDisabled(false)
     }
   }
 
@@ -67,7 +72,7 @@ export default function PasswordVerifier(props) {
                   </span>
           }
 
-          <span>{passwordStatus}</span>
+          <span className={passwordsMatch ? "pw-verify--match" : "pw-verify--not-match"}>{passwordErrorMsg}</span>
     </>
   );
 }
