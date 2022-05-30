@@ -13,6 +13,7 @@ import PhysicianRegistration from './pages/PhysiciansRegistration';
 import LoginAs from "./pages/LoginAs";
 import UserLogin from "./pages/UserLogin";
 import PhysicianLogin from "./pages/PhysicianLogin";
+import AdminLogin from './pages/AdminLogin';
 
 import DashboardHandler from "./pages/DashboardHandler";
 import RXGenerator from "./components/RXGenerator";
@@ -62,6 +63,7 @@ export default function Routes() {
                 <PublicRoute path="/login/as" component={LoginAs} />
                 <PublicRoute path='/users/login' component={UserLogin} />
                 <PublicRoute path='/physicians/login' component={PhysicianLogin} />
+                <PublicRoute path='/admin/login' component={AdminLogin} />
 
                 <Route path="/dashboard" component={DashboardHandler} />
 

@@ -2,14 +2,14 @@ import React from 'react';
 
 function Footer() {
   return (
-    <>
+    <footer>
       <div className='footer--bar'></div>
       
-      <footer className='footer'>
+      <div>
           <span className='all-caps'>INTEGRATED MEDICAL RECORDS OF THE PHILIPPINES 2021</span>
-      </footer>
+      </div>
 
-    </>
+    </footer>
   );
 }
 

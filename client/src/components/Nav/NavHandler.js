@@ -34,6 +34,10 @@ function NavHandler(props) {
                           <Link to='/login/as'  className="navbar--btn">
                               Login
                           </Link>
+
+                          <Link to='/admin/login'  className="navbar--btn">
+                            Admin
+                          </Link>
                       </>
                 }
           </div>
