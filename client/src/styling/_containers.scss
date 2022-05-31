@@ -223,20 +223,71 @@
 }
 
 footer {
-  background: #004848;
-  height: 6em;
+  @include flex(column, center, center);
+  
+  background-color: #0C4B4B;
   width: 100%;
   padding: 1em;
+  text-align: left;
 
-  span {
-    color: rgba(255, 255, 255, 0.685);
-    font-size: 0.9em;
+  .footer--max {
+    @include flex(column, center, center);
+
+    max-width: 1200px;
   }
-}
 
-.footer--bar {
-  background: #1F6A6A;
-  height: 2em;
+  .footer--nav--container {
+    @include flex(row, flex-start, space-between);
+
+    a {
+      display: block;
+      font-size: 0.85em;
+    }
+  }
+
+  .footer--links {
+    @include flex(column, flex-start, flex-start);
+    width: 60%;
+    margin-bottom: 5em;
+    opacity: 0.9;
+
+    div {
+      @include flex(row, flex-start, flex-start);
+
+      margin-bottom: 1em;
+      color: white;
+      font-size: 0.85em;
+
+      svg {
+        fill: white;
+        margin-right: 0.75em;
+      }
+    }
+
+    .github--repo {
+      @include flex(row, flex-start, flex-start);
+      cursor: pointer;
+
+      a {
+        @include flex(row, flex-start, flex-start);
+        font-size: 1em;
+        color: white;
+      }
+    }
+  }
+
+  .footer--irmp {
+    opacity: 0.8;
+    @include flex(row, center, center);
+    justify-content: space-between;
+    border-top: solid 1px white;
+    padding-top: 1em;
+
+    span {
+      color: white;
+      font-size: 0.9em;
+    }
+  }
 }
 
 .generate-rx--container {
