@@ -51,8 +51,8 @@ export default function UserLoginForm() {
     e.preventDefault();
 
     const testerAccount = {
-      username: 'johnsmith',
-      password: 'johnsmith'
+      username: 'willsmith',
+      password: 'willsmith'
     }
 
     const usernameField = document.getElementById("user-username");

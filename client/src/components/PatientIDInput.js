@@ -22,7 +22,7 @@ function PatientIDInput({Component}) {
     e.preventDefault();
                
     const testerAccount = {
-      idNumber: 1,
+      idNumber: '1653991372357',
       lastName: 'SMITH'
     }
 
@@ -78,7 +78,7 @@ function PatientIDInput({Component}) {
                 <label className="form--label">PATIENT ID</label>
                 <input 
                   className="form--field"
-                  type="number"
+                  type="text"
                   style={{
                     whiteSpace:'pre-line'
                   }}

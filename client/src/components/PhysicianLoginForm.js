@@ -51,8 +51,8 @@ export default function PhysicianLoginForm() {
     e.preventDefault();
 
     const testerAccount = {
-      username: 'monay',
-      password: 'monay'
+      username: 'janedoe',
+      password: 'janedoe'
     }
 
     const usernameField = document.getElementById("physician-username");
