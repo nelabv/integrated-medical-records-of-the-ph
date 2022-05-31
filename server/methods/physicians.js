@@ -42,7 +42,7 @@ export default class PhysiciansAPI {
               }
               else {
                 const physician = {
-                  physicianID: uuidv4(),
+                  physicianID: Date.now(),
                   licenseNumber,
                   specialization,
                   username,

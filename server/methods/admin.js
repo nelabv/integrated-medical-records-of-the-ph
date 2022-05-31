@@ -60,7 +60,7 @@ export default class AdminAPI {
     if (status === "true") {
       const toSave = {
         ...pendingDocument,
-        patientID: uuidv4()
+        patientID: Date.now()
       }
       const newUser = new User(toSave);
 
@@ -99,7 +99,7 @@ export default class AdminAPI {
     if (status === "true") {
       const toSave = {
         ...pendingDocument,
-        physicianID: uuidv4()
+        physicianID: Date.now()
       }
       const newPhysician = new Physician(toSave);
 

@@ -36,7 +36,7 @@ export default class UsersAPI {
               }
 
               const user = {
-                patientID: uuidv4(),
+                patientID: Date.now(),
                 username,
                 password: hash,
                 firstName,
