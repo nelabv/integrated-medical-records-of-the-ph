@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NoDocsForApproval from './NoDocsForApproval';
+import ApproveDecline from './ApproveDecline';
 
 export default function ForApprovalUsers(props) {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -25,6 +26,8 @@ export default function ForApprovalUsers(props) {
                         <span>DATE OF BIRTH: {document.birthdate}</span>
                         <span>BLOOD TYPE: {document.bloodType}</span>
                         <span>ADDRESS: {document.address.region}, {document.address.province}, {document.address.city}, {document.address.barangay}, {document.address.houseNumberStreet}</span>
+
+                        <ApproveDecline docType="user" id={document._id} />
                   </div>
                 )
           })

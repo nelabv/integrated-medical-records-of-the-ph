@@ -21,6 +21,14 @@ class Admin {
   fetchForApprovalData() {
     return http.get('/approval/waitlist', { withCredentials: true })
   }
+
+  approveOrDeclineUser(id, status) {
+    return http.post(`/approval/users?id=${id}&status=${status}`, { withCredentials: true})
+  }
+
+  approveOrDeclinePhysician(id, status) {
+    return http.post(`/approval/physician?id=${id}&status=${status}`, { withCredentials: true})
+  }
 }
 
 export default new Admin();

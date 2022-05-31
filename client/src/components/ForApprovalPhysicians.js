@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NoDocsForApproval from './NoDocsForApproval';
+import ApproveDecline from './ApproveDecline';
 
 export default function ForApprovalPhysicians(props) {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -26,6 +27,8 @@ export default function ForApprovalPhysicians(props) {
                         <span>LAST NAME: {document.lastName}</span>
                         <span>SEX: {document.sex}</span>
                         <span>DATE OF BIRTH: {document.birthdate}</span>
+
+                        <ApproveDecline docType="physician" id={document._id} />
                   </div>
                 )
           })
