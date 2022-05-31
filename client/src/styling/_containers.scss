@@ -300,3 +300,11 @@ footer {
 .admin--container {
   padding-top: 9em;
 }
+
+.for-approval--container {
+  @include flex(column, flex-start, flex-start);
+  background-color: rgb(237, 237, 237);
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 1em;
+}

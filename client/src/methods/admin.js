@@ -17,6 +17,10 @@ class Admin {
   login(form) {
     return http.post('/admin/login', form, { withCredentials: true })
   }
+
+  fetchForApprovalData() {
+    return http.get('/approval/waitlist', { withCredentials: true })
+  }
 }
 
 export default new Admin();
