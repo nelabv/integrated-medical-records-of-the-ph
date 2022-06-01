@@ -24,6 +24,8 @@ function AddressSelector(props) {
   }
 
   const province = (e) => {
+      handleChange(e, true)
+
       setRegionAddr(e.target.selectedOptions[0].text);
       provinces(e.target.value).then(response => {
           setProvince(response);
@@ -31,7 +33,6 @@ function AddressSelector(props) {
           setBarangay([]);
       });
 
-      handleChange(e, true)
   }
 
   const city = (e) => {
@@ -67,29 +68,37 @@ function AddressSelector(props) {
           <label htmlFor="region" className='form--label'>Region</label>
           <select onChange={province} onSelect={region} className="form--field" id="region" required>
               <option disabled>Select Region</option>
-              { regionData && regionData.length > 0 && regionData.map((item) => <option
-                      key={uuidv4()} value={item.region_code}>{item.region_name}</option>) }
+              {
+                    regionData && regionData.length > 0 && regionData.map((item) => <option
+                        key={item.region_code} value={item.region_code}>{item.region_name}</option>)
+              }
           </select><br/>
 
           <label htmlFor="province" className='form--label'>Province</label>
           <select onChange={city} id="province" className="form--field" required>
               <option disabled>Select Province</option>
-              { provinceData && provinceData.length > 0 && provinceData.map((item) => <option
-                      key={uuidv4()} value={item.province_code}>{item.province_name}</option>) }
+              {
+                        provinceData && provinceData.length > 0 && provinceData.map((item) => <option
+                            key={item.province_code} value={item.province_code}>{item.province_name}</option>)
+              }
           </select><br/>
 
           <label htmlFor="city" className='form--label'>City</label>
           <select onChange={barangay} id="city" className="form--field" required>
               <option disabled>Select City</option>
-              { cityData && cityData.length > 0 && cityData.map((item) => <option
-                      key={uuidv4()} value={item.city_code}>{item.city_name}</option>) }
+              {
+                        cityData && cityData.length > 0 && cityData.map((item) => <option
+                            key={item.city_code} value={item.city_code}>{item.city_name}</option>)
+              }
           </select><br/>
 
           <label htmlFor="barangay" className='form--label'>Barangay</label>
           <select onChange={brgy} id="barangay" className="form--field" required>
               <option disabled>Select Barangay</option>
-              { barangayData && barangayData.length > 0 && barangayData.map((item) => <option
-                      key={uuidv4()} value={item.brgy_code}>{item.brgy_name}</option>) }
+              {
+                        barangayData && barangayData.length > 0 && barangayData.map((item) => <option
+                            key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>)
+              }
           </select>
 
           <label className='form--label'>House Number & Street Name</label>
@@ -102,9 +111,6 @@ function AddressSelector(props) {
             onChange={handleHouseNumberStreet}
             required
           />
-
-          <p>Address</p>
-          {barangayAddr}, {cityAddr}, {provinceAddr}, {regionAddr}
     </div>
         );
       }
