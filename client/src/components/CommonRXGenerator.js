@@ -68,7 +68,7 @@ function CommonRXGenerator(props) {
 
 
       { success 
-            ? <SuccessMsg msg="File uploadefdfdd to patient's database successfully." /> 
+            ? <SuccessMsg msg="File uploaded to patient's database successfully." /> 
             : null }
     </>
   )

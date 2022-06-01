@@ -80,7 +80,7 @@ export default function UserLoginForm() {
 
         <div className="login--tester-container">
             <span>No account yet? 
-                    <span className="teal--highlight" onClick={setTesterAccount}> Try a tester account.</span>
+                    <span className="teal--highlight clickable--span" onClick={setTesterAccount}> Try a tester account.</span>
             </span>
         </div>
       </form>

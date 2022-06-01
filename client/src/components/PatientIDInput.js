@@ -101,7 +101,7 @@ function PatientIDInput({Component}) {
                   onChange={handleChange}
                 />
 
-            <span className="teal--highlight" onClick={setTesterAccount}>Click here to input sample user data.</span>
+            <span className="teal--highlight clickable--span" onClick={setTesterAccount}>Click here to input sample user data.</span>
 
             <input className='btn--primary' type="submit" value="Submit" />
             

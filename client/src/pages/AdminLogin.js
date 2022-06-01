@@ -9,13 +9,16 @@ export default function AdminLogin() {
     <>
         <div className="gradient--blue">
           <div className="max-width login--container">
-            <NavHandler />
+            <div className="form--div">
+                  <NavHandler />
 
-            <h2 className="teal--highlight">Login as Admin</h2>
+                  <h2 className="teal--highlight">Login as Admin</h2>
 
-            <span>Enter valid credentials to access administrative privileges.</span>
+                  <span>Enter valid credentials to access administrative privileges.</span>
 
-            <AdminLoginForm />
+                  <AdminLoginForm />
+
+            </div>
           </div>
         </div>
         

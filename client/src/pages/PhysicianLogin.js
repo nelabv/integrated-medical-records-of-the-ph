@@ -8,13 +8,15 @@ export default function UserLogin() {
     <>
         <div className="gradient--blue">
           <div className="max-width login--container">
-            <NavHandler />
+              <div className="form--div">
+                  <NavHandler />
 
-            <h2 className="teal--highlight">Login as Physician</h2>
+                  <h2 className="teal--highlight">Login as Physician</h2>
 
-            <span>Access your patients' medical history. Send relevant files easily.</span>
+                  <span>Access your patients' medical history. Send relevant files easily.</span>
 
-            <PhysicianLoginForm />
+                  <PhysicianLoginForm />
+              </div>
           </div>
         </div>
         

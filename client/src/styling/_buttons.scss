@@ -6,7 +6,8 @@
 .btn--primary {
   background: linear-gradient(270deg, #FFB258 -47.48%, #C26F41 131.72%);
   border: none;
-  max-width: 300px;
+  min-width: 10em;
+  max-width: 15em;
   color: white;
   padding: 1em;
   font-size: 0.9em;
@@ -14,7 +15,8 @@
   border-radius: 1.5em;
   display: block;
   text-align: center;
-  margin-bottom: 0.9em;
+  margin: 0.5em 0;
+  cursor: pointer;
 
 
   span { 

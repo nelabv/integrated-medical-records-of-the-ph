@@ -5,7 +5,7 @@ import { AiOutlineFileSearch, AiOutlineUpload } from 'react-icons/ai';
 import { BiPlusMedical } from 'react-icons/bi';
 
 
-const fileDirectory = "Collects its users medical records though a file directory system";
+const fileDirectory = "Collects its users medical records through a file directory system";
 
 const viewFiles = "Allows participating physicians to view a patient’s files in his/her directory";
 
@@ -19,7 +19,7 @@ function HowItWorks() {
 
         <h2>How It <span className="teal--highlight">Works</span></h2>
 
-        <span>The <b className='teal--highlight'>Integrated Medical Records of the Philippines (IRMP)</b> envisions organization, transparency, and continuity of care by providing a seamless, and centralized file organization system for its users. This prototype provides two user entities at the moment – for patients and physicians. The app: </span>
+        <span>The <b className='teal--highlight'>Integrated Medical Records of the Philippines (IMRP)</b> envisions organization, transparency, and continuity of care by providing a seamless, and centralized file organization system for its users. This prototype provides two user entities at the moment – for patients and physicians. The app: </span>
 
         <IconAndText Icon={FaFileArchive} description={fileDirectory} />
         <IconAndText Icon={AiOutlineFileSearch} description={viewFiles} />

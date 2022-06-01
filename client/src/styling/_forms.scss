@@ -52,11 +52,12 @@
 }
 
 .password-hidden {
-  @include flex(row, center, center);
+  @include flex(row, flex-start, flex-start);
 
   flex-direction: row;
   align-items: center;
   font-size: 0.9em;
+  cursor: pointer;
 
   svg {
     margin-right: 0.5em;
@@ -81,6 +82,8 @@
 }
 
 .custom-file-upload {
+  cursor: pointer;
+  
   input {
     display: none; // Change the display to none so it becomes customizable with the label
   }

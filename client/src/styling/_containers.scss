@@ -145,7 +145,14 @@
 }
 
 .sign-in--btn-container {
+  @include flex(column, center, center);
+
   margin-top: 2em;
+  width: 100%;
+}
+
+.form--div {
+  max-width: 600px;
 }
 
 .login--container {
@@ -208,6 +215,7 @@
 
   .download--icon {
     fill: $teal;
+    cursor: pointer;
   }
 
   .file--icon {

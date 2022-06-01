@@ -30,8 +30,6 @@ function Register() {
                     <Link to="/register/physician">
                         <button className='btn--secondary'>Physician</button>
                     </Link>
-
-                    <button className='btn--disabled'>Institution</button>
                   </div>
           </div>
       </div>

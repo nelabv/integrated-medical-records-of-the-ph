@@ -30,8 +30,6 @@ function LoginAs() {
                     <Link to="/physicians/login">
                         <button className='btn--secondary'>Physician</button>
                     </Link>
-
-                    <button className='btn--disabled'>Institution</button>
                   </div>
           </div>
       </div>
