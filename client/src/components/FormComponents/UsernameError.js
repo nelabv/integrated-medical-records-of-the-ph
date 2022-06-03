@@ -3,7 +3,7 @@ import React from 'react';
 export default function UsernameError() {
 
   return (
-    <div className='username--error'>
+    <div className='input-field--error'>
       <ul style={{listStyleType: 'circle'}}>
         <li>Only contains <b>alphanumeric characters, underscore and dot.</b></li>
         <li>Number of characters <b>must be between 8 to 20.</b></li>

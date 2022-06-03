@@ -19,24 +19,25 @@ const initialPhysicianForm = {
 function UserRegistrationForm(props) {
   const [physicianForm, dispatch] = useReducer(FormReducer, initialPhysicianForm);
   const [ buttonDisable, setButtonDisabled ] = useState(true);
-  const [ isPwValid, setIsPwValid ] = useState(false);
+  const [ showErrorMsg, setShowErrorMsg ] = useState(false);
 
   const handleChange = (e) => {
     let input = e.target.value;
+    console.log('handle change');
 
     if (e.target.name !== 'password' && e.target.name !== 'username') {
       input = e.target.value.toUpperCase();
     }
-
+    
     if (e.target.name === 'password') {
-      if (input.length === 0) {
-        setIsPwValid(true);
-        setButtonDisabled(true)
-      } else if (validPassword.test(input)) {
-        setIsPwValid(true);
-      } else if (!validPassword.test(input)) {
-        setIsPwValid(false);
-      }
+          if (e.target.value.length === 0) {
+            setShowErrorMsg(false);
+          } else if (!validPassword.test(e.target.value)) {
+            setShowErrorMsg(true);
+            setButtonDisabled(true);
+          } else if (validPassword.test(e.target.value)) {
+            setShowErrorMsg(false);
+          }
     }
 
     dispatch({
@@ -105,7 +106,7 @@ function UserRegistrationForm(props) {
                   formState={physicianForm.password}
                   onChange={handleChange} 
                   inputID='password'
-                  isPwValid={isPwValid}
+                  showErrorMsg={showErrorMsg}
                   setButtonDisabled={setButtonDisabled} />
 
           <label className='form--label'>First Name</label>

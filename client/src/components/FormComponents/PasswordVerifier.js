@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 export default function PasswordVerifier(props) {
-  const { formState, onChange, inputID, setButtonDisabled, isPwValid } = props;
+  const { formState, onChange, inputID, setButtonDisabled, showErrorMsg } = props;
   const [ verifyInput, setVerifyInput ] = useState('');
   const [ passwordErrorMsg, setPasswordErrorMsg ] = useState(''); // Set status if passwords match or not
   const [ passwordsMatch, setPasswordsMatch ] = useState(false);
@@ -48,7 +48,11 @@ export default function PasswordVerifier(props) {
 
               </input>
 
-          { isPwValid ? null : <div>PW NOT VALID</div> }
+          { showErrorMsg ?
+              <div className='input-field--error'>
+                <span>Password must be a minimum of 8 characters including numbers, upper and lower characters, and one special character.</span>
+              </div>
+          : null }
 
           <label className='form--label'>Confirm your Password</label>
 
