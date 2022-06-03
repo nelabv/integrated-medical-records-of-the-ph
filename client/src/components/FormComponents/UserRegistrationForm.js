@@ -4,6 +4,7 @@ import PasswordVerifier from './PasswordVerifier';
 import FormReducer from '../../reducers/FormReducer';
 import BloodTypeForm from './BloodTypeForm';
 import AddressSelector from './AddressSelector.js';
+import UsernameInput from './UsernameInput';
 
 const initialUserRegistration = {
   username: '',
@@ -88,17 +89,7 @@ function UserRegistrationForm() {
         flexDirection: 'column',
         marginBottom: '1em'}}>
 
-          <label className='form--label'>Username</label>
-          <input 
-            type="text"
-            value={userRegForm.username}
-            name="username"
-            className='form--field'
-            onChange={e => {
-              handleChange(e)
-            }}
-            required
-          />
+          <UsernameInput handleChange={handleChange} reducerForm={userRegForm} setButtonDisabled={setButtonDisabled} />
 
           <PasswordVerifier 
                   formState={userRegForm.password}

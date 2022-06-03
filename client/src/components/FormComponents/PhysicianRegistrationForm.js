@@ -2,6 +2,7 @@ import React, { useState, useReducer } from 'react';
 import FormReducer from '../../reducers/FormReducer';
 import Physician from "../../methods/physicians";
 import PasswordVerifier from './PasswordVerifier';
+import UsernameInput from './UsernameInput';
 
 const initialPhysicianForm = {
   licenseNumber: '',
@@ -85,17 +86,7 @@ function UserRegistrationForm(props) {
             required
           />
 
-          <label className='form--label'>Username</label>
-          <input
-            type="text"
-            value={physicianForm.username}
-            name="username"
-            onChange={e => {
-              handleChange(e)
-            }}
-            className='form--field'
-            required
-          />
+          <UsernameInput handleChange={handleChange} reducerForm={physicianForm} setButtonDisabled={setButtonDisabled} />
 
           <PasswordVerifier 
                   formState={physicianForm.password}

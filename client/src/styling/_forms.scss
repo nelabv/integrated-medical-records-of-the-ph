@@ -124,3 +124,17 @@
   color: $red;
 }
 
+.username--error {
+  background-color: #ffdfdf;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+
+  ul, li {
+    margin-left: 0.5em;
+    text-align: left;
+    font-size: 0.96em;
+    color: $red;
+  }
+}
+
