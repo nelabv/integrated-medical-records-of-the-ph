@@ -3,6 +3,7 @@ import FormReducer from '../../reducers/FormReducer';
 import Physician from "../../methods/physicians";
 import PasswordVerifier from './PasswordVerifier';
 import UsernameInput from './UsernameInput';
+import { validPassword } from '../../regex';
 
 const initialPhysicianForm = {
   licenseNumber: '',
@@ -18,12 +19,24 @@ const initialPhysicianForm = {
 function UserRegistrationForm(props) {
   const [physicianForm, dispatch] = useReducer(FormReducer, initialPhysicianForm);
   const [ buttonDisable, setButtonDisabled ] = useState(true);
+  const [ isPwValid, setIsPwValid ] = useState(false);
 
   const handleChange = (e) => {
     let input = e.target.value;
 
     if (e.target.name !== 'password' && e.target.name !== 'username') {
       input = e.target.value.toUpperCase();
+    }
+
+    if (e.target.name === 'password') {
+      if (input.length === 0) {
+        setIsPwValid(true);
+        setButtonDisabled(true)
+      } else if (validPassword.test(input)) {
+        setIsPwValid(true);
+      } else if (!validPassword.test(input)) {
+        setIsPwValid(false);
+      }
     }
 
     dispatch({
@@ -90,8 +103,9 @@ function UserRegistrationForm(props) {
 
           <PasswordVerifier 
                   formState={physicianForm.password}
-                  onChange={e => { handleChange(e) }} 
+                  onChange={handleChange} 
                   inputID='password'
+                  isPwValid={isPwValid}
                   setButtonDisabled={setButtonDisabled} />
 
           <label className='form--label'>First Name</label>

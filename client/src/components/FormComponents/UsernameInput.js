@@ -23,7 +23,6 @@ export default function UsernameInput(props) {
 
   return (
     <>
-
           <label className='form--label'>Username</label>
           <input 
             type="text"
@@ -36,12 +35,7 @@ export default function UsernameInput(props) {
             required
           />
 
-          { showErrorMsg ? 
-                  <UsernameError />
-                  
-                  
-                  
-                  : null }
+          { showErrorMsg ? <UsernameError /> : null }
     </>
   );
 }
